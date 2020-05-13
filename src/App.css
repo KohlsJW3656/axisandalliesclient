@@ -1,38 +1,273 @@
-.App {
+* {
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+}
+
+html {
+  background-color: lightgrey;
+}
+
+.center {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+table, th, td {
+  border: 1px solid black;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+#backgroundContainer { 
+  position: relative;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.backgroundImage {
+  position: absolute;
+  display: block;
+  opacity: .15;
+  z-index: -1;
+}
+
+#backgroundGermany {
+  left: 8.33%;
+  width: 83.34%;
+  padding-top: 60px;
+}
+
+#backgroundSovietUnion {
+  width: 60%;
+  left: 20%;
+  top: -40px;
+}
+
+#backgroundUnitedStates {
+  width: 50%;
+  left: 25%;
+  opacity: .10;
+}
+
+#backgroundJapan {
+  width: 80%;
+  left: 10%;
+  padding-top: 70px;
+}
+
+#backgroundFrance {
+  width: 30%;
+  left: 35%;
+  padding-top: 50px;
+}
+
+.utilities {
+  position: relative;
+  z-index: -2;
+}
+
+.icon {
+  position: relative;
+  z-index: -1;
+}
+
+button {
+  background-color: #333;
+  color: white;
+  padding: 5px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 15px;
+}
+
+button:hover {
+  background-color: #111;
+}
+
+.row {
+  border: 2px solid black;
+}
+
+/* Debugging Lines
+[class*="col-"] {
+  border: 2px dotted red;
+}
+*/
+
+nav ul {
+  left: 0;
+  background-color: #333;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  top: 0;
+  width: 100%;
+}
+
+nav a {
+  display: block;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  padding: 14px 16px;
+}
+
+nav li {
+  float: left;
+  border-right: 1px solid #bbb;
+}
+
+nav li:hover {
+  background-color: #111;
+}
+
+[class*="col-"] {
+  float: left;
+  padding: 15px;
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+input[type=text] {
+  padding: 12px 20px;
+  border-radius: 10px;
+  background-color: lightgray;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 3px solid gray;
+  transition: 0.5s;
+  outline: none;
+}
+
+input[type=text]:focus {
+  border: 3px solid #555;
+}
+
+.cityButton {
+  float: right;
+  background-color: black;
+}
+
+.breakthroughButton  {
+  background-color: transparent;
+  border-radius: 25px;
+  color: black;
+  width: 200px;
+  height: 150px;
+  transition: 0.5s;
+  border: 3px solid gray;
+  outline: none;
+}
+
+.breakthroughButton:hover {
+  background-color: #111;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.active {
+  background-color: black;
+  border-radius: 25px;
+  color: white;
+  width: 200px;
+  height: 150px;
+  transition: 0.5s;
+  border: 3px solid gray;
+  outline: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.breakthroughIcons {
+  width: 10%;
 }
+
+.cityIcons {
+  width: 30%;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 250px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: 95%;
+  left: 20%;
+  margin-left: -60px;
+  font-size: 15px;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent black transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  font-size: 15px;
+}
+
+.tooltiptop {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltiptop .tooltiptexttop {
+  visibility: hidden;
+  width: 250px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 95%;
+  left: 20%;
+  margin-left: -60px;
+  font-size: 15px;
+}
+
+.tooltiptop .tooltiptexttop::after {
+  content: "";
+  position: absolute;
+  top: 100%; /* At the bottom of the tooltip */
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+}
+
+.tooltiptop:hover .tooltiptexttop {
+  visibility: visible;
+  font-size: 15px;
+}
+
+.col-1 { width: 8.33%; }
+.col-2 { width: 16.66%; }
+.col-3 { width: 25%; }
+.col-4 { width: 33.33%; }
+.col-5 { width: 41.66%; }
+.col-6 { width: 50%; }
+.col-7 { width: 58.33%; }
+.col-8 { width: 66.66%; }
+.col-9 { width: 75%; }
+.col-10 { width: 83.33%; }
+.col-11 { width: 91.66%; }
+.col-12 { width: 100%; }
