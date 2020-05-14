@@ -1,4 +1,5 @@
-var window, document;
+var window;
+var document;
 var LEFT = 37;
 var RIGHT = 39;
 var countries = ["Germany", "Soviet Union", "Japan", "United States", "China", "United Kingdom Europe", "United Kingdom Pacific", "Italy", "ANZAC", "France"];
@@ -195,7 +196,7 @@ function onKeyDown(event) {
     countrySelectRightArrow();
   }
 }
-document.addEventListener("keydown", onKeyDown);
+// document.addEventListener("keydown", onKeyDown);
 
 function countrySelectLeftArrow() {
   if (turnCounter != 1 || i != 0) {
