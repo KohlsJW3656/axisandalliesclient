@@ -70,9 +70,19 @@ function App() {
         <Header turn={turn} dateString={dateString} country={country} leftArrow={leftArrow} rightArrow={rightArrow}/>
         {/* {countries.map(country=> <Header key={country.c_id} turnCounter={turnCounter} dateString={dateString} country={country} countrySelectLeftArrow={countrySelectLeftArrow} countrySelectRightArrow={countrySelectRightArrow}/>)} */}
       </div>
-      <div id="middle-root">
-        
-        <Table />
+
+      <div id="middle-root" className="row">
+        <div className="col-2" id="unitColumn">
+          <h2 id="costDisplay">Total Cost: 0</h2>
+          <h3 id="purchasingPower">Purchasing Power: </h3>
+          <button id="purchaseButton" type="button" onClick="purchaseButton()">Purchase</button>
+          <button id="clearButton" type="button" onClick="clearButton()">Clear</button>
+          <h3>Ordered:</h3>
+          <div id="unitDisplay"></div>
+          <h3>Purchased:</h3>
+          <div id="purchasedDisplay"></div>
+        </div>
+        <Table country={country}/>
       </div>
 
       {/*<div id="purchase-root">
