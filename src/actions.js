@@ -9,6 +9,12 @@ export function displayPurchase(purchases) {
     payload: purchases,
   };
 }
+export function loadMemories(memories) {
+  return {
+    type: Action.loadMemories,
+    payload: memories,
+  };
+}
 
 export function finishAddingPurchase(purchase) {
   return {
@@ -24,7 +30,8 @@ function checkForErrors(response) {
   return response;
 }
 
-const host = "https://axisandallies.duckdns.org:443";
+//const host = "https://axisandallies.duckdns.org:443";
+const host = 'http://localhost:3000/';
 
 export function loadPurchase(c_id, turn) {
   return dispatch => {
@@ -57,6 +64,21 @@ export function startAddingPurchase(p_id, amount, c_id, date, turn) {
       if (data.ok) {
         purchase.p_id = data.id;
         dispatch(finishAddingPurchase(purchase));
+      }
+    })
+    .catch(e => console.error(e));
+  };
+}
+
+
+export function loadCountry(c_id) {
+  return dispatch => {
+  fetch(`${host}/country/${c_id}`)
+    .then(checkForErrors)
+    .then(response => response.json())
+    .then(data => {
+      if (data.ok){
+        dispatch(loadMemories(data.country));
       }
     })
     .catch(e => console.error(e));
