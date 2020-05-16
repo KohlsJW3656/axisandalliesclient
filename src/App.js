@@ -1,25 +1,25 @@
 import React, {useState} from 'react';
 import './App.css';
-import {Purchase} from './Purchase';
+//mport {Purchase} from './Purchase';
 import {Header} from './Header';
 import {Table} from './Table';
 import {useSelector, useDispatch} from 'react-redux';
-import {loadPurchase, startAddingPurchase} from './actions';
+import {getCountry} from './actions';
 
 function App() {
+  const dispatch = useDispatch();
   let [turn, setTurn] = useState(1);
   const seasons = ["Spring/Summer", "Fall/Winter"];
   let [dateYear, setDateYear] = useState(1940);
   let [dateString, setDateString] = useState("Spring/Summer 1940");
-  
-  const purchases = useSelector(state => state.purchases);
+
   const country = useSelector(state => state.country);
   //let turn = useSelector(state => state.turn);
   
-  const dispatch = useDispatch();
+  
 
   const onLoad = () => {
-    dispatch(loadPurchase());
+    dispatch(getCountry(0));
   };
 
   /*
@@ -27,9 +27,9 @@ function App() {
     
   }
   */
-  const onAdd = () => {
-    dispatch(startAddingPurchase(0, 2, 0, "Spring/Summer 1940", 1));
-  }
+  // const onAdd = () => {
+  //   dispatch(startAddingPurchase(0, 2, 0, "Spring/Summer 1940", 1));
+  // }
 
   function leftArrow() {
     if (turn - 1 !== 0) {
@@ -90,6 +90,7 @@ function App() {
         <button onClick={onAdd}>Order</button>
         {purchases.map(purchase=> <Purchase key={purchase.p_id} purchase={purchase} />)}
   </div>*/}
+  <button onClick={onLoad}>Load</button>
     </div>
   );
 }
