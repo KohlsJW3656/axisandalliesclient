@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './App.css';
 import {Purchase} from './Purchase';
 import {Header} from './Header';
+import {Table} from './Table';
 import {useSelector, useDispatch} from 'react-redux';
 import {loadPurchase, startAddingPurchase} from './actions';
 
@@ -31,35 +32,35 @@ function App() {
   }
 
   function leftArrow() {
-    if (turn - 1 !== -1) {
-      setTurn(turn--);
-      //setDateBackward();
+    if (turn - 1 !== 0) {
+      setTurn(turn => turn - 1);
+      setDateBackward();
     }
   }
   
   function rightArrow() {
+    setTurn(turn => turn + 1);
     setDateForward();
-    setTurn(turn++);
   }
 
   function setDateBackward() {
     if (turn % 2 === 0) {
-      setDateYear(dateYear--);
-      setDateString(seasons[1] + " " + dateYear);
+      setDateYear(dateYear => dateYear - 1);
+      setDateString(dateString => seasons[1] + " " + dateYear);
     }
     else {    
-      setDateString(seasons[0] + " " + dateYear);
+      setDateString(dateString => seasons[0] + " " + dateYear);
     }  
   }
 
   function setDateForward() {
     //If Spring/Summer set to Fall/Winter
     if (turn % 2 === 0) {
-      setDateString(seasons[1] + " " + dateYear);
+      setDateString(dateString => seasons[1] + " " + dateYear);
     }
     else {
-      setDateYear(dateYear++);
-      setDateString(seasons[0] + " " + dateYear);
+      setDateYear(dateYear => dateYear + 1);
+      setDateString(dateString => seasons[0] + " " + dateYear);
     }   
   }
 
@@ -68,6 +69,10 @@ function App() {
       <div id="header-root">
         <Header turn={turn} dateString={dateString} country={country} leftArrow={leftArrow} rightArrow={rightArrow}/>
         {/* {countries.map(country=> <Header key={country.c_id} turnCounter={turnCounter} dateString={dateString} country={country} countrySelectLeftArrow={countrySelectLeftArrow} countrySelectRightArrow={countrySelectRightArrow}/>)} */}
+      </div>
+      <div id="middle-root">
+        
+        <Table />
       </div>
 
       {/*<div id="purchase-root">
