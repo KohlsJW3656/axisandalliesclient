@@ -30,8 +30,7 @@ function checkForErrors(response) {
   return response;
 }
 
-const host = "https://axisandallies.duckdns.org:443";
-//const host = 'http://localhost:3000/';
+const host = "https://axisandallies-server.duckdns.org:8442";
 
 export function loadPurchase(c_id, turn) {
   return dispatch => {
