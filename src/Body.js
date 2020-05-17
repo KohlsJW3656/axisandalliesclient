@@ -1,5 +1,6 @@
 import React from 'react';
 import {Order} from './Order';
+import {getCountry, addingPurchase} from './actions'
 
 const infantryIcons = ["images/Troops/Germany/Infantry.png",
                       "images/Troops/SovietUnion/Infantry.png",
@@ -181,6 +182,11 @@ function order(name, cost) {
   
 }
 
+const addPurchase = () => {
+  dispatch(addingPurchase(p_id, amount, c_id, season_year, turn))
+}
+
+
 export function Body(props) {
   const country = props.country;
   
@@ -189,7 +195,7 @@ export function Body(props) {
       <div className="col-2" id="unitColumn">
         <h2 id="costDisplay">Total Cost: 0</h2>
         <h3 id="purchasingPower">Purchasing Power: </h3>
-        <button id="purchaseButton" type="button" onClick="purchaseButton()">Purchase</button>
+        <button type="button" onClick={addPurchase}>Purchase</button>
         <button id="clearButton" type="button" onClick="clearButton()">Clear</button>
         <h3>Ordered:</h3>
         

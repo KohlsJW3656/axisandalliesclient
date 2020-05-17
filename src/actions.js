@@ -1,7 +1,15 @@
 
 export const Action = Object.freeze({
   LoadCountry: 'LoadCountry', 
+  finishAddingPurchase: 'FinishAddingPurchase',
 });
+
+export function finishAddingPurchase(purchase) {
+  return {
+    type: Action.FinishAddingPurchase,
+    payload: purchase,
+  };
+}
 
 
 // export function displayPurchase(purchases) {
@@ -89,3 +97,31 @@ export function getCountry(c_id) {
     .catch(e => console.error(e));
   };
 }
+
+export function addingPurchase(p_id, amount, c_id, season_year, turn) {
+  const purchase = {p_id, amount, c_id, season_year, turn: ''};
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(purchase), 
+  }
+  
+  return dispatch => {
+  fetch(`${host}/purchase`, options)
+    .then(checkForErrors)
+    .then(response => response.json())
+    .then(data => {
+      if (data.ok){
+        purchase.p_id = data.p_id;
+        purchase.c_id = data.c_id;
+        dispatch(finishAddingPurchase(purchase));
+      }
+    })
+    .catch(e => console.error(e));
+  };
+}
+
+
+
