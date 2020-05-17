@@ -2,9 +2,6 @@ import { Action } from "./actions";
 
 const initialState = {
 	isWaiting: false,
-	purchases: [],
-	countries: [{c_id: 0, c_name: "Germany", ipcs: 30},
-							{c_id: 1, c_name: "Soviet Union", ipcs: 37}],
 	country: {},
 };
 
@@ -23,7 +20,7 @@ function reducer(state = initialState, action) {
 		case Action.LoadCountry:
 			return {
 				...state,
-				country: action.payload,
+				country: action.payload[0],
 			}
 		default:
   		return state;

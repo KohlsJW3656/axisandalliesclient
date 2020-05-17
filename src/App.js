@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
-//mport {Purchase} from './Purchase';
+//import {Purchase} from './Purchase';
 import {Header} from './Header';
-import {Table} from './Table';
+import {Body} from './Body';
 import {useSelector, useDispatch} from 'react-redux';
 import {getCountry} from './actions';
 
@@ -11,59 +11,89 @@ function App() {
   let [turn, setTurn] = useState(1);
   const seasons = ["Spring/Summer", "Fall/Winter"];
   let [dateYear, setDateYear] = useState(1940);
-  let [dateString, setDateString] = useState("Spring/Summer 1940");
+  let [dateString, setDateString] = useState(seasons[0] + " " + dateYear);
+  let [i, setI] = useState(0);
 
   const country = useSelector(state => state.country);
-  //let turn = useSelector(state => state.turn);
-  
+
+  //setTurn(1);
+  //setDateYear(1940);
+  //setDateString(seasons[0] + " " + dateYear);
+
   useEffect(() => {
-    dispatch(getCountry(5));
-  }, [dispatch]);
+    dispatch(getCountry(i));
+  }, [dispatch, i]);
+  
+  const displayCountry = () => {
+    dispatch(getCountry(i));
+  };
 
-  //const onLoad = () => {
- //   dispatch(getCountry(0));
- // };
-
-  /*
-  const getCountry = () => {
-    
-  }
-  */
   // const onAdd = () => {
   //   dispatch(startAddingPurchase(0, 2, 0, "Spring/Summer 1940", 1));
   // }
 
   function leftArrow() {
-    if (turn - 1 !== 0) {
-      setTurn(turn => turn - 1);
-      setDateBackward();
+    if (turn !== 1 || i !== 0) {
+      if (i - 1 === -1) {
+        setI(9);
+        setTurn(turn => turn - 1);
+        setDateBackward();
+      }
+      else {
+        setI(i => i - 1);
+      }
+      displayCountry();
     }
   }
   
   function rightArrow() {
-    setTurn(turn => turn + 1);
-    setDateForward();
+    if (i + 1 === 10) {
+      setI(0);
+      setTurn(turn => turn + 1);
+      setDateForward();
+    }
+    else {
+      setI(i => i + 1);
+    }
+    displayCountry();
   }
 
   function setDateBackward() {
     if (turn % 2 === 0) {
       setDateYear(dateYear => dateYear - 1);
-      setDateString(dateString => seasons[1] + " " + dateYear);
+      setDateString(seasons[1] + " " + dateYear);
     }
     else {    
-      setDateString(dateString => seasons[0] + " " + dateYear);
+      setDateString(seasons[0] + " " + dateYear);
     }  
   }
 
   function setDateForward() {
-    //If Spring/Summer set to Fall/Winter
-    if (turn % 2 === 0) {
-      setDateString(dateString => seasons[1] + " " + dateYear);
+    if (turn === 1) {
+      setDateString(seasons[0] + " " + dateYear);
+      console.log("Turn 1");
     }
     else {
-      setDateYear(dateYear => dateYear + 1);
-      setDateString(dateString => seasons[0] + " " + dateYear);
-    }   
+      //If Spring/Summer set to Fall/Winter
+      console.log(turn % 2);
+      if (turn % 2 === 0) {
+        setDateString(seasons[1] + " " + dateYear);
+        console.log("Turn % 2 === 0");
+        console.log(dateYear);
+        console.log(dateString);
+      }
+      else {
+        console.log("Turn % 2 !=== 0");
+        console.log(dateYear);
+        console.log(dateString);
+        setDateYear(dateYear => dateYear + 1);
+        setDateString(seasons[0] + " " + dateYear);
+        console.log(dateYear);
+        console.log(dateString);
+      }   
+    }
+    console.log(dateYear);
+    console.log(dateString);
   }
 
   return (
@@ -74,17 +104,7 @@ function App() {
       </div>
 
       <div id="middle-root" className="row">
-        <div className="col-2" id="unitColumn">
-          <h2 id="costDisplay">Total Cost: 0</h2>
-          <h3 id="purchasingPower">Purchasing Power: </h3>
-          <button id="purchaseButton" type="button" onClick="purchaseButton()">Purchase</button>
-          <button id="clearButton" type="button" onClick="clearButton()">Clear</button>
-          <h3>Ordered:</h3>
-          <div id="unitDisplay"></div>
-          <h3>Purchased:</h3>
-          <div id="purchasedDisplay"></div>
-        </div>
-        <Table country={country}/>
+        <Body country={country}/>
       </div>
 
       {/*<div id="purchase-root">

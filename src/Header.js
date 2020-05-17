@@ -11,7 +11,7 @@ export function Header(props) {
                  "/images/Flags/UnitedKingdomPacificFlag.png",
                  "/images/Flags/ItalyFlag.png",
                  "/images/Flags/ANZACFlag.jpg",
-                 "/images/Flags/FranceFlag.png"
+                 "/images/Flags/FranceFlag.jpg"
   ];
 
   return (
