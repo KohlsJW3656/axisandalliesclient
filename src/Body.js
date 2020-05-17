@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {useDispatch} from 'react-redux';
 import {Order} from './Order';
 
 const infantryIcons = ["images/Troops/Germany/Infantry.png",
@@ -177,6 +178,8 @@ const backgroundId = ["backgroundGermany",
                     "",
                     "backgroundFrance"];
 
+const dispatch = useDispatch();
+
 export function Body(props) {
   const country = props.country;
   const [orders, setOrders] =  useState([]);
@@ -189,13 +192,21 @@ export function Body(props) {
     setOrders(orders => [newOrder, ...orders.filter(order => order.name !== newOrder.name)]);
   }
 
+  const clearOrders = () => {
+    setOrders(orders => []);
+  }
+
+  const addPurchase = (orders, country, dateString, turn) => {
+    dispatch(addingPurchase(order.p_id, amount, c_id, season_year, turn));
+  }
+
   return (
     <div>
       <div className="col-2" id="unitColumn">
         <h2 id="costDisplay">Total Cost: 0</h2>
         <h3 id="purchasingPower">Purchasing Power: </h3>
-        <button id="purchaseButton" type="button" onClick="purchaseButton()">Purchase</button>
-        <button id="clearButton" type="button" onClick="clearButton()">Clear</button>
+        <button type="button" >Purchase</button>
+        <button type="button" onClick={clearOrders}>Clear</button>
         <h3>Ordered:</h3>
         {orders.map(order => <Order key={order.name} order={order} remove={removeOrder}/>)}
         <h3>Purchased:</h3>

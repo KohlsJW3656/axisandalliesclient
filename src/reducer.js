@@ -7,6 +7,11 @@ const initialState = {
 
 function reducer(state = initialState, action) {
 	switch(action.type) {
+		case Action.FinishAddingPurchase:
+			return {
+				...state,
+				country: [action.payload[0], ...state.country],
+			}
 		// case Action.LoadPurchases:
 		// 	return {
 		// 		...state,
