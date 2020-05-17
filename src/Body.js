@@ -198,7 +198,7 @@ export function Body(props) {
       console.log(orderTemp);
     }
     
-    //setOrders(orders => orders.filter(order => order.name !== name));
+    //setOrders(orders => orders.filter(order => order.name !== name)); 
   }
 
   const clearOrders = () => {
