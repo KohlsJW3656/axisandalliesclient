@@ -5,7 +5,10 @@ export function Order(props) {
 
   return (
     <div className="order">
-      <p>{order.amount} x {order.name}</p>
+      <span className="amount">{order.amount}</span>
+      <spam> x </spam>
+      <span className="unit">{order.name}</span>
+      <span className="deleteButton" onClick={() => props.remove(order.name)}>&#x2716;</span>
     </div>
   );
 }

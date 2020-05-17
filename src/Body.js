@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Order} from './Order';
 
 const infantryIcons = ["images/Troops/Germany/Infantry.png",
@@ -177,13 +177,18 @@ const backgroundId = ["backgroundGermany",
                     "",
                     "backgroundFrance"];
 
-function order(name, cost) {
-  
-}
-
 export function Body(props) {
   const country = props.country;
+  const [orders, setOrders] =  useState([]);
   
+  const removeOrder = name => {
+    setOrders(orders => orders.filter(order => order.name !== name));
+  }
+
+  const addOrder = (newOrder, cost) => {
+    setOrders(orders => [newOrder, ...orders.filter(order => order.name !== newOrder.name)]);
+  }
+
   return (
     <div>
       <div className="col-2" id="unitColumn">
@@ -192,7 +197,7 @@ export function Body(props) {
         <button id="purchaseButton" type="button" onClick="purchaseButton()">Purchase</button>
         <button id="clearButton" type="button" onClick="clearButton()">Clear</button>
         <h3>Ordered:</h3>
-        
+        {orders.map(order => <Order key={order.name} order={order} remove={removeOrder}/>)}
         <h3>Purchased:</h3>
         <div id="purchasedDisplay"></div>
       </div>
@@ -223,85 +228,85 @@ export function Body(props) {
             <tr>
               <td><img src={infantryIcons[country.c_id]} alt="Infantry icon"/></td>
               <td><p>Infantry</p><p>Cost: 3</p></td>
-              <td><button type="button" onClick="purchaseInfantry()">Order</button></td>
+              <td><button type="button" onClick={orders => addOrder({name: "Infantry", amount: 1}, 3)}>Order</button></td>
 
               <td><img src={fighterIcons[country.c_id]} alt="Fighter icon"/></td>
               <td><p>Fighter</p><p>Cost: 10</p></td>
-              <td><button type="button" onClick="purchaseFighter()">Order</button></td>
+              <td><button type="button" onClick={orders => addOrder({name: "Fighter", amount: 1}, 10)}>Order</button></td>
 
               <td><img src={battleshipIcons[country.c_id]} alt="Battleship icon"/></td>
               <td><p>Battleship</p><p>Cost: 20</p></td>
-              <td><button type="button" onClick="purchaseBattleship()">Order</button></td>
+              <td><button type="button" onClick={orders => addOrder({name: "Battleship", amount: 1}, 20)}>Order</button></td>
 
               <td><img src="images/Facilities/MajorIC.png" alt="Major IC icon"/></td>
               <td><p>Major Industrial Complex</p><p>Cost: 30</p></td>
-              <td><button type="button" onClick="purchaseMajorIC()">Order</button></td>
+              <td><button type="button" onClick={orders => addOrder({name: "Major IC", amount: 1}, 30)}>Order</button></td>
 
               <td><img className="utilities" src="images/Utilities/Research.png" alt="Research icon"/></td>
               <td><p>Research</p><p>Cost: 5</p></td>
-              <td><button type="button" id="research" onClick="purchaseResearch()">Order</button></td>
+              <td><button type="button" id="research" onClick={orders => addOrder({name: "Research", amount: 1}, 5)}>Order</button></td>
             </tr>
 
             <tr>
               <td><img src={artilleryIcons[country.c_id]} alt="Artillery icon"/></td>
               <td><p>Artillery</p><p>Cost: 4</p></td>
-              <td><button type="button" id="artillery" onClick="purchaseArtillery()">Order</button></td>
+              <td><button type="button" id="artillery" onClick={orders => addOrder({name: "Artillery", amount: 1}, 4)}>Order</button></td>
 
               <td><img src={tacBomberIcons[country.c_id]} alt="Tactical Bomber icon"/></td>
               <td><p>Tactical Bomber</p><p>Cost: 11</p></td>
-              <td><button type="button" id="tacBomber" onClick="purchaseTacBomber()">Order</button></td>
+              <td><button type="button" id="tacBomber" onClick={orders => addOrder({name: "Tactical Bomber", amount: 1}, 11)}>Order</button></td>
 
               <td><img src={carrierIcons[country.c_id]} alt="Aircraft Carrier icon"/></td>
-              <td><p>Aircraft Carrier</p><p id="carrierCost"></p></td>
-              <td><button type="button" id="carrier" onClick="purchaseCarrier()">Order</button></td>
+              <td><p>Aircraft Carrier</p><p>Cost: 16</p></td>
+              <td><button type="button" id="carrier" onClick={orders => addOrder({name: "Aircraft Carrier", amount: 1}, 16)}>Order</button></td>
 
               <td><img src="images/Facilities/MinorIC.png" alt="Minor IC icon"/></td>
               <td>Minor Industrial Complex<p></p><p>Cost: 12</p></td>
-              <td><button type="button" id="minorIC" onClick="purchaseMinorIC()">Order</button></td>
+              <td><button type="button" id="minorIC" onClick={orders => addOrder({name: "Minor IC", amount: 1}, 12)}>Order</button></td>
 
-              <td><img className="utilities" src="images/Utilities/Wrench.jpg" alt="Major IC icon"/></td>
+              <td><img className="utilities" src="images/Utilities/Wrench.jpg" alt="Repair icon"/></td>
               <td><p>Repair</p><p>Cost: 1</p></td>
-              <td><button type="button" id="repair" onClick="purchaseRepair()">Order</button></td>
+              <td><button type="button" id="repair" onClick={orders => addOrder({name: "Repair", amount: 1}, 1)}>Order</button></td>
             </tr>
 
             <tr>
               <td><img src={mechIcons[country.c_id]} alt="Mechanized Infantry icon"/></td>
               <td><p>Mechanized Infantry</p><p>Cost: 4</p></td>
-              <td><button type="button" id="mecInfantry" onClick="purchaseMechInfantry()">Order</button></td>
+              <td><button type="button" id="mecInfantry" onClick={orders => addOrder({name: "Mechanized Infantry", amount: 1}, 4)}>Order</button></td>
 
               <td><img src={stratBomberIcons[country.c_id]} alt="Stategic Bomber icon"/></td>
               <td><p>Strategic Bomber</p><p>Cost: 12</p></td>
-              <td><button type="button" id="stratBomber" onClick="purchaseStratBomber()">Order</button></td>
+              <td><button type="button" id="stratBomber" onClick={orders => addOrder({name: "Strategic Bomber", amount: 1}, 12)}>Order</button></td>
 
               <td><img src={cruiserIcons[country.c_id]} alt="Cruiser icon"/></td>
-              <td><p>Cruiser</p><p id="cruiserCost"></p></td>
-              <td><button type="button" id="cruiser" onClick="purchaseCruiser()">Order</button></td>
+              <td><p>Cruiser</p><p>Cost: 12</p></td>
+              <td><button type="button" id="cruiser" onClick={orders => addOrder({name: "Cruiser", amount: 1}, 12)}>Order</button></td>
 
               <td><img src="images/Facilities/UpgradeIC.png" alt="Upgrade IC icon"/></td>
               <td><p>Upgrade Minor Industrial Complex</p><p>Cost: 20</p></td>
-              <td><button type="button" id="upgradeIC" onClick="purchaseUpgradeIC()">Order</button></td>
+              <td><button type="button" id="upgradeIC" onClick={orders => addOrder({name: "Upgraded Minor IC", amount: 1}, 20)}>Order</button></td>
 
               <td><img className="utilities" src="images/Utilities/airlift.png" alt="Airlift icon"/></td>
               <td><p>Airlift</p><p>Cost: 5</p></td>
-              <td><button type="button" id="airlift" onClick="purchaseAirlift()">Order</button></td>
+              <td><button type="button" id="airlift" onClick={orders => addOrder({name: "Airlift", amount: 1}, 5)}>Order</button></td>
             </tr>
 
             <tr>
             <td><img src={tankIcons[country.c_id]} alt="Tank icon"/></td>
               <td><p>Tank</p><p>Cost: 6</p></td>
-              <td><button type="button" id="tank" onClick="purchaseTank()">Order</button></td>
+              <td><button type="button" id="tank" onClick={orders => addOrder({name: "Tank", amount: 1}, 6)}>Order</button></td>
 
               <td></td>
               <td></td>
               <td></td>
 
               <td><img src={destroyerIcons[country.c_id]} alt="Destroyer icon"/></td>
-              <td><p>Destroyer</p><p id="destroyerCost"></p></td>
-              <td><button type="button" id="destroyer" onClick="purchaseDestroyer()">Order</button></td>
+              <td><p>Destroyer</p><p>Cost: 8</p></td>
+              <td><button type="button" id="destroyer" onClick={orders => addOrder({name: "Destroyer", amount: 1}, 8)}>Order</button></td>
 
               <td><img src="images/Facilities/AirBase.png" alt="Airbase icon"/></td>
               <td><p>Air Base</p><p>Cost: 15</p></td>
-              <td><button type="button" id="airBase" onClick="purchaseAirBase()">Order</button></td>
+              <td><button type="button" id="airBase" onClick={orders => addOrder({name: "Air Base", amount: 1}, 15)}>Order</button></td>
 
               <td></td>
               <td></td>
@@ -311,19 +316,19 @@ export function Body(props) {
             <tr>
               <td><img src={aaaIcons[country.c_id]} alt="Anti Aircraft Artillery icon"/></td>
               <td><p>AAA</p><p>Cost: 5</p></td>
-              <td><button type="button" id="aaa" onClick="purchaseAAA()">Order</button></td>
+              <td><button type="button" id="aaa" onClick={orders => addOrder({name: "AAA", amount: 1}, 5)}>Order</button></td>
 
               <td></td>
               <td></td>
               <td></td>
 
               <td><img src={subIcons[country.c_id]} alt="Submarine icon"/></td>
-              <td><p>Submarine</p><p id="subCost"></p></td>
-              <td><button type="button" id="sub" onClick="purchaseSub()">Order</button></td>
+              <td><p>Submarine</p><p>Cost: 6</p></td>
+              <td><button type="button" id="sub" onClick={orders => addOrder({name: "Submarine", amount: 1}, 6)}>Order</button></td>
 
               <td><img src="images/Facilities/NavalBase.png" alt="Navalbase icon"/></td>
               <td><p>Naval Base</p><p>Cost: 15</p></td>
-              <td><button type="button" id="navalBase" onClick="purchaseNavalBase()">Order</button></td>
+              <td><button type="button" id="navalBase" onClick={orders => addOrder({name: "Naval Base", amount: 1}, 15)}>Order</button></td>
 
               <td></td>
               <td></td>
@@ -338,8 +343,8 @@ export function Body(props) {
               <td></td>
               <td></td>
               <td><img src={transportIcons[country.c_id]} alt="Transport icon"/></td>
-              <td><p>Transport</p><p id="transportCost"></p></td>
-              <td><button type="button" id="transport" onClick="purchaseTransport()">Order</button></td>
+              <td><p>Transport</p><p>Cost: 7</p></td>
+              <td><button type="button" id="transport" onClick={orders => addOrder({name: "Transport", amount: 1}, 7)}>Order</button></td>
               <td></td>
               <td></td>
               <td></td>

@@ -15,6 +15,22 @@ table, th, td {
   border: 1px solid black;
 }
 
+.order {
+  position: relative;
+  box-sizing: border-box;
+  padding: 5px;
+}
+
+.order > .deleteButton {
+  position: absolute;
+  right: 10px;
+}
+
+.order > .deleteButton:hover {
+  cursor: pointer;
+  transform: scale(1.5);
+}
+
 #backgroundContainer { 
   position: relative;
 }
