@@ -98,8 +98,8 @@ export function getCountry(c_id) {
   };
 }
 
-export function addingPurchase(p_id, amount, c_id, season_year, turn) {
-  const purchase = {p_id, amount, c_id, season_year, turn: ''};
+export function addingPurchase(p_name, amount, c_id, season_year, turn) {
+  const purchase = {p_name, amount, c_id, season_year, turn: turn};
   const options = {
     method: 'POST',
     headers: {

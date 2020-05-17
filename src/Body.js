@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {useDispatch} from 'react-redux';
+//import {useDispatch} from 'react-redux';
 import {Order} from './Order';
 
 const infantryIcons = ["images/Troops/Germany/Infantry.png",
@@ -178,9 +178,8 @@ const backgroundId = ["backgroundGermany",
                     "",
                     "backgroundFrance"];
 
-const dispatch = useDispatch();
-
 export function Body(props) {
+  //const dispatch = useDispatch();
   const country = props.country;
   const [orders, setOrders] =  useState([]);
   
@@ -189,17 +188,24 @@ export function Body(props) {
   }
 
   const addOrder = (newOrder, cost) => {
-    setOrders(orders => [newOrder, ...orders.filter(order => order.name !== newOrder.name)]);
+    if (orders.filter(order => order.name !== newOrder.name)) {
+      setOrders(orders => [newOrder, ...orders.filter(order => order.name !== newOrder.name)]);
+    }
+    else {
+      newOrder.amount = newOrder.amount + 1;
+      setOrders(orders => [newOrder, ...orders]);
+    }
   }
 
   const clearOrders = () => {
     setOrders(orders => []);
   }
 
+  /*
   const addPurchase = (orders, country, dateString, turn) => {
-    dispatch(addingPurchase(order.p_id, amount, c_id, season_year, turn));
+    dispatch(addingPurchase(orders.map(order => order.name, order.amount, country.c_id, dateString, turn)));
   }
-
+*/
   return (
     <div>
       <div className="col-2" id="unitColumn">
