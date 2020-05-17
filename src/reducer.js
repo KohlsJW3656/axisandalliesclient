@@ -5,7 +5,7 @@ const initialState = {
 	purchases: [],
 	countries: [{c_id: 0, c_name: "Germany", ipcs: 30},
 							{c_id: 1, c_name: "Soviet Union", ipcs: 37}],
-	country: {"c_id":0,"c_name":"Germany","ipcs":30},
+	country: {},
 };
 
 function reducer(state = initialState, action) {

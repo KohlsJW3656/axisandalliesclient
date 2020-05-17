@@ -74,7 +74,7 @@ export function loadCountry(country) {
   }
 }
 
-const host = "https://axisandallies-server.duckdns.org:8442";
+const host = 'https://axisandallies-server.duckdns.org:8442';
 
 export function getCountry(c_id) {
   return dispatch => {

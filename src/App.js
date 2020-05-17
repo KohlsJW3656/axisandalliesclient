@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.css';
 //mport {Purchase} from './Purchase';
 import {Header} from './Header';
@@ -16,11 +16,13 @@ function App() {
   const country = useSelector(state => state.country);
   //let turn = useSelector(state => state.turn);
   
-  
+  useEffect(() => {
+    dispatch(getCountry(5));
+  }, [dispatch]);
 
-  const onLoad = () => {
-    dispatch(getCountry(0));
-  };
+  //const onLoad = () => {
+ //   dispatch(getCountry(0));
+ // };
 
   /*
   const getCountry = () => {
@@ -90,7 +92,7 @@ function App() {
         <button onClick={onAdd}>Order</button>
         {purchases.map(purchase=> <Purchase key={purchase.p_id} purchase={purchase} />)}
   </div>*/}
-  <button onClick={onLoad}>Load</button>
+  
     </div>
   );
 }
