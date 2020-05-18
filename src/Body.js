@@ -181,24 +181,14 @@ const backgroundId = ["backgroundGermany",
 export function Body(props) {
   //const dispatch = useDispatch();
   const country = props.country;
-  const [orders, setOrders] =  useState([{name: "Infantry", amount: 3}]);
-  const [orderTemp, setTempOrder] = useState({name: "", amount: 1});
-  
+  const [orders, setOrders] =  useState([]);
+
   const removeOrder = name => {
     setOrders(orders => orders.filter(order => order.name !== name));
   }
 
   const addOrder = (newOrder, cost) => {
-    if (orders.find(order => order.name !== newOrder.name)) {
-      setOrders(orders => [newOrder, ...orders.filter(order => order.name !== newOrder.name)]);
-    }
-    else {
-      console.log("Check");
-      setTempOrder(orderTemp => orders.find(order => order.name === newOrder.name));
-      console.log(orderTemp);
-    }
-    
-    //setOrders(orders => orders.filter(order => order.name !== name)); 
+    setOrders(orders => [newOrder, ...orders.filter(order => order.name !== newOrder.name)]);
   }
 
   const clearOrders = () => {
