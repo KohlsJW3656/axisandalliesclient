@@ -3,6 +3,8 @@ export const Action = Object.freeze({
   StartAddingPurchase: 'StartAddingPurchase',
   FinishAddingPurchase: 'FinishAddingPurchase',
   StartWaiting: 'StartWaiting',
+  LoadPurchase: 'LoadPurchase',
+  
 });
 
 export function startWaiting() {
@@ -109,6 +111,27 @@ export function getCountry(c_id) {
   };
 }
 
+export function loadPurchase(purchase) {
+  return {
+    type: Action.LoadPurchase,
+    payload: purchase,
+  }
+}
+
+export function startGettingPurchase() {
+  return dispatch => {
+  dispatch(startWaiting());
+  fetch(`${host}/purchase`)
+    .then(checkForErrors)
+    .then(response => response.json())
+    .then(data => {
+      if (data.ok){
+        dispatch(loadPurchase(data.purchase));
+      }
+    })
+    .catch(e => console.error(e));
+  };
+}
 
 
 
