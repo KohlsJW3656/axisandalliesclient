@@ -214,7 +214,7 @@ export function Body(props) {
 
   return (
     <div>
-      <div className="col-2" id="unitColumn">
+      <div className="col-xs-12 col-md-2" id="unitColumn">
         <h2>Total Cost: {totalCost}</h2>
         <button type="button" className="closeButtons" onClick={() => addPurchase(orders, country, dateString, turn)}>Purchase</button>
         <button type="button" className="closeButtons" onClick={() => clearOrders()}>Clear Orders</button>
@@ -223,7 +223,7 @@ export function Body(props) {
         {orders.map(order => <Order key={order.name} order={order} remove={removeOrder}/>)}
       </div>
 
-      <div className="col-10"  id="tableColumn">
+      <div className="col-xs-12 col-md-10"  id="tableColumn">
         <div id="backgroundContainer"><img className="backgroundImage" id={backgroundId[country.c_id]} src={background[country.c_id]} alt=""/></div>
 
         {country.c_id !== 4 &&
