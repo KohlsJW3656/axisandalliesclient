@@ -2,8 +2,8 @@ import { Action } from "./actions";
 
 const initialState = {
 	isWaiting: false,
-	country: {},
-	purchases: {},
+	country: [],
+	purchases: [],
 };
 
 function reducer(state = initialState, action) {

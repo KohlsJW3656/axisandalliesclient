@@ -50,8 +50,8 @@ export function Header(props) {
           </div>
           <div className="col-3">
             <br/>
-            <button type="button" className="closeButtons" onClick={props.resetPurchases()}>Reset Purchases</button>
-            <button type="button" className="closeButtons" onClick={props.viewPurchases()}>View Purchases</button>
+            <button type="button" className="closeButtons" onClick={() => props.resetPurchases()}>Reset Purchases</button>
+            <button type="button" className="closeButtons" onClick={() => props.viewPurchases()}>View Purchases</button>
           </div>
           <div className="col-2">
             <br/>

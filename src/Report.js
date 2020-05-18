@@ -2,13 +2,16 @@ import React from 'react';
 
 export function Report(props) {
   const purchase = props.purchase;
-  const country = props.country;
+
+  const countries = ["Germany", "Soviet Union", "Japan", "United States", "China", "United Kingdom Europe", "United Kingdom Pacific", "Italy", "ANZAC", "France"];
 
   return (
-    <div>
-      <h1>{country.c_name}</h1>
-      <h2>Units: </h2>
-      <p></p>
+    <div className="purchaseBlock">
+      <h1>{countries[purchase.c_id]}</h1>
+      <h2>Unit: {purchase.p_name}</h2>
+      <p>Amount: {purchase.amount}</p>
+      <p>{purchase.season_year}</p>
+      <p>Turn: {purchase.turn}</p>
     </div>
   );
 }

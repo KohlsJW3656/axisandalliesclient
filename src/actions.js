@@ -4,8 +4,16 @@ export const Action = Object.freeze({
   FinishAddingPurchase: 'FinishAddingPurchase',
   StartWaiting: 'StartWaiting',
   LoadPurchase: 'LoadPurchase',
-  
 });
+
+const host = 'https://axisandallies-server.duckdns.org:8442';
+
+function checkForErrors(response) {
+  if (!response.ok) {
+    throw Error(`${response.status}: ${response.statusText}`);
+  }
+  return response;
+}
 
 export function startWaiting() {
   return {
@@ -19,48 +27,6 @@ export function finishAddingPurchase(purchase) {
     payload: purchase,
   };
 }
-
-
-// export function displayPurchase(purchases) {
-//   return {
-//     type: Action.DisplayPurchases,
-//     payload: purchases,
-//   };
-// }
-// export function loadMemories(memories) {
-//   return {
-//     type: Action.loadMemories,
-//     payload: memories,
-//   };
-// }
-
-// export function finishAddingPurchase(purchase) {
-//   return {
-//     type: Action.FinishAddingPurchase,
-//     payload: purchase,
-//   };
-// }
-
-function checkForErrors(response) {
-  if (!response.ok) {
-    throw Error(`${response.status}: ${response.statusText}`);
-  }
-  return response;
-}
-
-// export function loadPurchase(c_id, turn) {
-//   return dispatch => {
-//     fetch(`${host}/purchase/${c_id}/${turn}`)
-//     .then(checkForErrors)
-//     .then(response => response.json())
-//     .then(data => {
-//       if (data.ok) {
-//         dispatch(displayPurchase(data.purchases));
-//       }
-//     })
-//     .catch(e => console.error(e));
-//   };
-// }
 
 export function startAddingPurchase(p_name, amount, c_id, season_year, turn) {
   const purchase = {p_name, amount, c_id, season_year, turn};
@@ -87,14 +53,34 @@ export function startAddingPurchase(p_name, amount, c_id, season_year, turn) {
 }
 
 
+export function loadPurchase(purchase) {
+  return {
+    type: Action.LoadPurchase,
+    payload: purchase,
+  }
+}
+
+export function getPurchase() {
+  return dispatch => {
+  dispatch(startWaiting());
+  fetch(`${host}/purchase`)
+    .then(checkForErrors)
+    .then(response => response.json())
+    .then(data => {
+      if (data.ok){
+        dispatch(loadPurchase(data.purchase));
+      }
+    })
+    .catch(e => console.error(e));
+  };
+}
+
 export function loadCountry(country) {
   return {
     type: Action.LoadCountry,
     payload: country,
   }
 }
-
-const host = 'https://axisandallies-server.duckdns.org:8442';
 
 export function getCountry(c_id) {
   return dispatch => {
@@ -111,27 +97,7 @@ export function getCountry(c_id) {
   };
 }
 
-export function loadPurchase(purchase) {
-  return {
-    type: Action.LoadPurchase,
-    payload: purchase,
-  }
-}
 
-export function startGettingPurchase() {
-  return dispatch => {
-  dispatch(startWaiting());
-  fetch(`${host}/purchase`)
-    .then(checkForErrors)
-    .then(response => response.json())
-    .then(data => {
-      if (data.ok){
-        dispatch(loadPurchase(data.purchase));
-      }
-    })
-    .catch(e => console.error(e));
-  };
-}
 
 
 

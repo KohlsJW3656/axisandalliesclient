@@ -4,7 +4,7 @@ import './App.css';
 import {Header} from './Header';
 import {Body} from './Body';
 import {useSelector, useDispatch} from 'react-redux';
-import {getCountry, startGettingPurchase} from './actions';
+import {getCountry, getPurchase} from './actions';
 import {Report} from './Report';
 
 function App() {
@@ -17,6 +17,7 @@ function App() {
 
   const country = useSelector(state => state.country);
   const isWaiting = useSelector(state => state.isWaiting);
+  const purchases = useSelector(state => state.purchases);
 
   //setTurn(1);
   //setDateYear(1940);
@@ -91,7 +92,7 @@ function App() {
   }
 
   const viewPurchases = () => {
-    dispatch(startGettingPurchase());
+    dispatch(getPurchase());
   }
 
   return (
@@ -104,7 +105,7 @@ function App() {
         <Body country={country} dateString={dateString} turn={turn}/>
       </div>
       <div id="report-root" className="row">
-        <Report />
+        {purchases.map(purchase => <Report key={purchase.c_id} {purchase.turn} {purchase.p_name} purchase={purchase}/>)}
       </div>
     </div>
   );

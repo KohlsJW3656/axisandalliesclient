@@ -220,12 +220,13 @@ export function Body(props) {
 
         <h3>Ordered:</h3>
         {orders.map(order => <Order key={order.name} order={order} remove={removeOrder}/>)}
-        <h3>Purchased:</h3>
-        <div id="purchasedDisplay"></div>
       </div>
 
       <div className="col-10"  id="tableColumn">
         <div id="backgroundContainer"><img className="backgroundImage" id={backgroundId[country.c_id]} src={background[country.c_id]} alt=""/></div>
+
+        {country.c_id !== 4 &&
+
         <table id="unitTable" className="center">
           <thead>
             <tr>
@@ -375,7 +376,35 @@ export function Body(props) {
               <td></td>
             </tr>
           </tbody>
-        </table>
+        </table>}
+
+        {country.c_id === 4 && 
+        
+        <table id="unitTable" className="center">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Land Units</th>
+              <th>Order</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td><img src={infantryIcons[country.c_id]} alt="Infantry icon"/></td>
+              <td><p>Infantry</p><p>Cost: 3</p></td>
+              <td><button type="button" onClick={orders => addOrder({name: "Infantry", amount: 1}, 3)}>Order</button></td>
+            </tr>
+
+            <tr>
+              <td><img src={artilleryIcons[country.c_id]} alt="Artillery icon"/></td>
+              <td><p>Artillery</p><p>Cost: 4</p></td>
+              <td><button type="button" id="artillery" onClick={orders => addOrder({name: "Artillery", amount: 1}, 4)}>Order</button></td>
+            </tr>
+
+          </tbody>
+        </table>}
+
       </div>
     </div>
 
