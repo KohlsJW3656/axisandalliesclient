@@ -4,6 +4,7 @@ export const Action = Object.freeze({
   FinishAddingPurchase: 'FinishAddingPurchase',
   StartWaiting: 'StartWaiting',
   LoadPurchase: 'LoadPurchase',
+
 });
 
 const host = 'https://axisandallies-server.duckdns.org:8442';
@@ -96,6 +97,28 @@ export function getCountry(c_id) {
     .catch(e => console.error(e));
   };
 }
+
+export function unloadDelete(purchase) {
+  return {
+    type: Action.UnloadDelete,
+    payload: purchase,
+  }
+}
+
+export function deletePurchase() {
+  const requestDelete = {
+    method: 'DELETE'
+  };
+  fetch(`${host}/purchase`, requestDelete)
+    .then(checkForErrors)
+    .then(response => response.json())
+    .then(data => {
+      if (data.ok){
+      }
+    })
+    .catch(e => console.error(e));
+  };
+
 
 
 

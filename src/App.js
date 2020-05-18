@@ -88,7 +88,7 @@ function App() {
   }
 
   const resetPurchases = () => {
-
+    dispatch(deletePurchase());
   }
 
   const viewPurchases = () => {
