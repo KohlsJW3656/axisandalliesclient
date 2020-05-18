@@ -207,7 +207,6 @@ export function Body(props) {
     setTotalCost(totalCost => 0);
   }
 
-
   const addPurchase = (orders, country, dateString, turn) => {
     orders.map(order => dispatch(startAddingPurchase(order.name, order.amount, country.c_id, dateString, turn)));
     clearOrders();

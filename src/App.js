@@ -1,10 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
-//import {Purchase} from './Purchase';
 import {Header} from './Header';
 import {Body} from './Body';
 import {useSelector, useDispatch} from 'react-redux';
-import {getCountry, getPurchase} from './actions';
+import {getCountry, getPurchase, deletePurchase} from './actions';
 import {Report} from './Report';
 
 function App() {
@@ -97,7 +96,7 @@ function App() {
         <Body country={country} dateString={dateString} turn={turn}/>
       </div>
       <div id="reportRoot">
-        {purchases.map(purchase => <Report purchase={purchase}/>)}
+        {purchases.map(purchase => <Report key={Math.random()  * (+1000 - +1) + +1000} purchase={purchase}/>)}
       </div>
     </div>
   );
