@@ -92,7 +92,7 @@ function App() {
       </div>
       {isWaiting && <div className="spinner" />}
       <div id="middle-root" className="row">
-        <Body country={country}/>
+        <Body country={country} dateString={dateString} turn={turn}/>
       </div>
     </div>
   );
