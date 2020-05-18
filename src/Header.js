@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 export function Header(props) {
+  const [pressed, setPressed] = useState(false);
   const country = props.country;
   const flags = ["/images/Flags/GermanFlag.png", 
                  "/images/Flags/SovietUnionFlag.jpg",
@@ -45,13 +46,14 @@ export function Header(props) {
           <div className="col-2">
             <img src={flags[country.c_id]} alt="Country Flag"/>
           </div>
-          <div className="col-5">
+          <div className="col-4">
             <h2 id="country1">Country: {country.c_name}</h2>
           </div>
-          <div className="col-3">
+          <div className="col-4">
             <br/>
-            <button type="button" className="closeButtons" onClick={() => props.resetPurchases()}>Clear Purchase Database</button>
+            <button type="button" className="closeButtons" onClick={() => {setPressed(pressed => !pressed)}}>Instructions</button>
             <button type="button" className="closeButtons" onClick={() => props.viewPurchases()}>View Purchases</button>
+            <button type="button" className="closeButtons" onClick={() => props.resetPurchases()}>Clear Purchase Database</button>
           </div>
           <div className="col-2">
             <br/>
@@ -61,6 +63,18 @@ export function Header(props) {
           </div>
         </div>
       </div>
+      {pressed && 
+      <div className="row">
+        <div className="col-12">
+          <p><b>Order:</b> Adds troops to a cart.</p>   
+          <p><b>Clear Orders:</b> Resets cart and total cost.</p>
+          <p><b>Purchase:</b> Sends troops to a database. Make sure country, turn, and troop are different from other entries.</p>
+          <p><b>View Purchases:</b> View all purchase history.</p>
+          <p><b>Clear Purchase Database:</b> Clears purchase history.</p>
+          <p><b>Select Country Arrows:</b> Change country. When all countries cycle, turn changes.</p>
+        </div>
+      </div>
+      }
     </div>
   );
 }

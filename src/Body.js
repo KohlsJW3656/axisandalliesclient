@@ -47,16 +47,16 @@ const tankIcons = ["images/Troops/Germany/Tank.png",
                   "images/Troops/ANZAC/Tank.png",
                   "images/Troops/France/Tank.png"];
 
-const aaaIcons = ["images/Troops/Germany/aaa.png",
-                  "images/Troops/SovietUnion/aaa.png",
-                  "images/Troops/Japan/aaa.png",
-                  "images/Troops/UnitedStates/aaa.png",
-                  "images/Troops/China/aaa.png",
-                  "images/Troops/UnitedKingdom/aaa.png",
-                  "images/Troops/UnitedKingdom/aaa.png",
-                  "images/Troops/Italy/aaa.png",
-                  "images/Troops/ANZAC/aaa.png",
-                  "images/Troops/France/aaa.png"];
+const aaaIcons = ["images/Troops/Germany/AAA.png",
+                  "images/Troops/SovietUnion/AAA.png",
+                  "images/Troops/Japan/AAA.png",
+                  "images/Troops/UnitedStates/AAA.png",
+                  "images/Troops/China/AAA.png",
+                  "images/Troops/UnitedKingdom/AAA.png",
+                  "images/Troops/UnitedKingdom/AAA.png",
+                  "images/Troops/Italy/AAA.png",
+                  "images/Troops/ANZAC/AAA.png",
+                  "images/Troops/France/AAA.png"];
 
 const fighterIcons = ["images/Troops/Germany/Fighter.png",
                     "images/Troops/SovietUnion/Fighter.png",
