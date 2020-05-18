@@ -3,6 +3,7 @@ import { Action } from "./actions";
 const initialState = {
 	isWaiting: false,
 	country: {},
+	purchases: {},
 };
 
 function reducer(state = initialState, action) {
@@ -11,18 +12,8 @@ function reducer(state = initialState, action) {
 			return {
 				...state,
 				isWaiting: false,
-				country: [action.payload[0], ...state.country],
-			}
-		// case Action.LoadPurchases:
-		// 	return {
-		// 		...state,
-		// 		purchases: action.payload,
-		// 	};
-		// case Action.FinishAddingPurchase:
-		// 	return {
-		// 		...state,
-		// 		purchases: [action.payload],
-		// 	};
+				purchases: [action.payload, ...state.purchases],
+			};
 		case Action.LoadCountry:
 			return {
 				...state,

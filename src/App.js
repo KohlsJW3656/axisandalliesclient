@@ -81,7 +81,7 @@ function App() {
       else {
         setDateYear(dateYear => dateYear + 1);
         setDateString(dateString => seasons[0] + " " + dateYear);
-      }   
+      }
     }
   }
 

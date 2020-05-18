@@ -1,5 +1,6 @@
 export const Action = Object.freeze({
   LoadCountry: 'LoadCountry', 
+  StartAddingPurchase: 'StartAddingPurchase',
   FinishAddingPurchase: 'FinishAddingPurchase',
   StartWaiting: 'StartWaiting',
 });
@@ -59,28 +60,31 @@ function checkForErrors(response) {
 //   };
 // }
 
-// export function startAddingPurchase(p_id, amount, c_id, date, turn) {
-//   const purchase = {p_id, amount, c_id, date, turn};
-//   const options = {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify(purchase),
-//   }
-//   return dispatch => {
-//     fetch(`${host}/purchase`, options)
-//     .then(checkForErrors)
-//     .then(response => response.json())
-//     .then(data => {
-//       if (data.ok) {
-//         purchase.p_id = data.id;
-//         dispatch(finishAddingPurchase(purchase));
-//       }
-//     })
-//     .catch(e => console.error(e));
-//   };
-// }
+export function startAddingPurchase(p_name, amount, c_id, season_year, turn) {
+  const purchase = {p_name, amount, c_id, season_year, turn};
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(purchase),
+  }
+  return dispatch => {
+    fetch(`${host}/purchase`, options)
+    .then(checkForErrors)
+    .then(response => response.json())
+    .then(data => {
+      if (data.ok) {
+        purchase.c_id = data.c_id;
+        purchase.turn = data.turn;
+        dispatch(finishAddingPurchase(purchase));
+      }
+    })
+    .catch(e => console.error(e));
+  };
+}
+
+
 export function loadCountry(country) {
   return {
     type: Action.LoadCountry,
@@ -105,31 +109,7 @@ export function getCountry(c_id) {
   };
 }
 
-export function addingPurchase(p_name, amount, c_id, season_year, turn) {
-  const purchase = {p_name, amount, c_id, season_year, turn: turn};
-  const options = {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(purchase), 
-  }
-  
-  return dispatch => {
-  dispatch(startWaiting());
-  fetch(`${host}/purchase`, options)
-    .then(checkForErrors)
-    .then(response => response.json())
-    .then(data => {
-      if (data.ok){
-        purchase.p_id = data.p_id;
-        purchase.c_id = data.c_id;
-        dispatch(finishAddingPurchase(purchase));
-      }
-    })
-    .catch(e => console.error(e));
-  };
-}
+
 
 
 

@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
-//import {useDispatch} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {Order} from './Order';
+import {startAddingPurchase} from './actions';
 
 const infantryIcons = ["images/Troops/Germany/Infantry.png",
                       "images/Troops/SovietUnion/Infantry.png",
@@ -179,17 +180,20 @@ const backgroundId = ["backgroundGermany",
                     "backgroundFrance"];
 
 export function Body(props) {
-  //const dispatch = useDispatch();
+  const turn = props.turn;
+  const dateString = props.dateString;
+
+  const dispatch = useDispatch();
   const country = props.country;
   const [orders, setOrders] =  useState([]);
   const [totalCost, setTotalCost] = useState(0);
   const [purchasingPower, setPP] = useState(country.ipcs);
 
-  /*
+  
   const removeOrder = name => {
     setOrders(orders => orders.filter(order => order.name !== name));
   }
-  */
+  
   const addOrder = (newOrder, unitCost) => {
     if (country.ipcs >= totalCost + unitCost) {
       if (orders => orders.fiilter(order => order.name !== newOrder.name)) {
@@ -206,20 +210,19 @@ export function Body(props) {
     setPP(country.ipcs);
   }
 
-  /*
   const addPurchase = (orders, country, dateString, turn) => {
-    dispatch(addingPurchase(orders.map(order => order.name, order.amount, country.c_id, dateString, turn)));
+    orders.map(order => dispatch(startAddingPurchase(order.name, order.amount, country.c_id, dateString, turn)));
   }
-*/
+
   return (
     <div>
       <div className="col-2" id="unitColumn">
         <h2>Total Cost: {totalCost}</h2>
         <h3>Purchasing Power: {purchasingPower}</h3>
-        <button type="button" >Purchase</button>
+        <button type="button" onClick={addPurchase(orders, country, dateString, turn)}>Purchase</button>
         <button type="button" onClick={clearOrders}>Clear</button>
         <h3>Ordered:</h3>
-        {orders.map(order => <Order key={order.name} order={order} /*remove={removeOrder}*//>)}
+        {orders.map(order => <Order key={order.name} order={order} remove={removeOrder}/>)}
         <h3>Purchased:</h3>
         <div id="purchasedDisplay"></div>
       </div>
