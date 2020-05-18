@@ -34,6 +34,33 @@ table, th, td {
 .closeButtons {
   margin: 3px;
 }
+
+#reportRoot {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.report {
+  background-color: white;
+  box-sizing: border-box;
+  box-shadow: 3px 5px 9px;
+  width: 350px;
+  height: 300px;
+  margin: 10px;
+  padding-left: 15px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  border-radius: 5%;
+}
+
+.report > h2 {
+  font-size: 20pt;
+}
+
+.report > p {
+  font-size: 16pt;
+}
  
 .spinner {
   position: fixed;
