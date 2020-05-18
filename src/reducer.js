@@ -19,12 +19,18 @@ function reducer(state = initialState, action) {
 				...state,
 				isWaiting: false,
 				country: action.payload[0],
-			}
+			};
 		case Action.StartWaiting:
 			return {
 				...state,
 				isWaiting: true,
-			}
+			};
+			case Action.LoadPurchase:
+			return {
+				...state,
+				isWaiting: false,
+				purchases: action.payload,
+			};
 		default:
   		return state;
 	}

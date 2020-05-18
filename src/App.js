@@ -4,7 +4,7 @@ import './App.css';
 import {Header} from './Header';
 import {Body} from './Body';
 import {useSelector, useDispatch} from 'react-redux';
-import {getCountry} from './actions';
+import {getCountry, startGettingPurchase} from './actions';
 import {Report} from './Report';
 
 function App() {
@@ -91,7 +91,7 @@ function App() {
   }
 
   const viewPurchases = () => {
-    
+    dispatch(startGettingPurchase());
   }
 
   return (
