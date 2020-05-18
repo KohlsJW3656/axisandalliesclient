@@ -1,8 +1,14 @@
-
 export const Action = Object.freeze({
   LoadCountry: 'LoadCountry', 
-  finishAddingPurchase: 'FinishAddingPurchase',
+  FinishAddingPurchase: 'FinishAddingPurchase',
+  StartWaiting: 'StartWaiting',
 });
+
+export function startWaiting() {
+  return {
+    type: Action.StartWaiting,
+  };
+}
 
 export function finishAddingPurchase(purchase) {
   return {
@@ -86,6 +92,7 @@ const host = 'https://axisandallies-server.duckdns.org:8442';
 
 export function getCountry(c_id) {
   return dispatch => {
+  dispatch(startWaiting());
   fetch(`${host}/country/${c_id}`)
     .then(checkForErrors)
     .then(response => response.json())
@@ -109,6 +116,7 @@ export function addingPurchase(p_name, amount, c_id, season_year, turn) {
   }
   
   return dispatch => {
+  dispatch(startWaiting());
   fetch(`${host}/purchase`, options)
     .then(checkForErrors)
     .then(response => response.json())

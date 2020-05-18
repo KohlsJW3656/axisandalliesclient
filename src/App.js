@@ -15,6 +15,7 @@ function App() {
   let [i, setI] = useState(0);
 
   const country = useSelector(state => state.country);
+  const isWaiting = useSelector(state => state.isWaiting);
 
   //setTurn(1);
   //setDateYear(1940);
@@ -35,7 +36,7 @@ function App() {
   function leftArrow() {
     if (turn !== 1 || i !== 0) {
       if (i - 1 === -1) {
-        setI(9);
+        setI(i => 9);
         setTurn(turn => turn - 1);
         setDateBackward();
       }
@@ -61,58 +62,38 @@ function App() {
   function setDateBackward() {
     if (turn % 2 === 0) {
       setDateYear(dateYear => dateYear - 1);
-      setDateString(seasons[1] + " " + dateYear);
+      setDateString(dateString => seasons[1] + " " + dateYear);
     }
     else {    
-      setDateString(seasons[0] + " " + dateYear);
+      setDateString(dateString => seasons[0] + " " + dateYear);
     }  
   }
 
   function setDateForward() {
     if (turn === 1) {
-      setDateString(seasons[0] + " " + dateYear);
-      console.log("Turn 1");
+      setDateString(dateString => seasons[0] + " " + dateYear);
     }
     else {
       //If Spring/Summer set to Fall/Winter
-      console.log(turn % 2);
       if (turn % 2 === 0) {
-        setDateString(seasons[1] + " " + dateYear);
-        console.log("Turn % 2 === 0");
-        console.log(dateYear);
-        console.log(dateString);
+        setDateString(dateString => seasons[1] + " " + dateYear);
       }
       else {
-        console.log("Turn % 2 !=== 0");
-        console.log(dateYear);
-        console.log(dateString);
         setDateYear(dateYear => dateYear + 1);
-        setDateString(seasons[0] + " " + dateYear);
-        console.log(dateYear);
-        console.log(dateString);
+        setDateString(dateString => seasons[0] + " " + dateYear);
       }   
     }
-    console.log(dateYear);
-    console.log(dateString);
   }
 
   return (
     <div>
       <div id="header-root">
         <Header turn={turn} dateString={dateString} country={country} leftArrow={leftArrow} rightArrow={rightArrow}/>
-        {/* {countries.map(country=> <Header key={country.c_id} turnCounter={turnCounter} dateString={dateString} country={country} countrySelectLeftArrow={countrySelectLeftArrow} countrySelectRightArrow={countrySelectRightArrow}/>)} */}
       </div>
-
+      {isWaiting && <div className="spinner" />}
       <div id="middle-root" className="row">
         <Body country={country}/>
       </div>
-
-      {/*<div id="purchase-root">
-        <button onClick={onLoad}>Purchase</button>
-        <button onClick={onAdd}>Order</button>
-        {purchases.map(purchase=> <Purchase key={purchase.p_id} purchase={purchase} />)}
-  </div>*/}
-  
     </div>
   );
 }
