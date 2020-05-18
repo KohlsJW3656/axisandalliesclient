@@ -45,10 +45,14 @@ export function Header(props) {
           <div className="col-2">
             <img src={flags[country.c_id]} alt="Country Flag"/>
           </div>
-          <div className="col-7">
+          <div className="col-5">
             <h2 id="country1">Country: {country.c_name}</h2>
           </div>
-          
+          <div className="col-3">
+            <br/>
+            <button type="button" className="closeButtons" onClick={props.resetPurchases()}>Reset Purchases</button>
+            <button type="button" className="closeButtons" onClick={props.viewPurchases()}>View Purchases</button>
+          </div>
           <div className="col-2">
             <br/>
             <button type="button" id="leftArrow" onClick={() => props.leftArrow()}>&lt;</button>   

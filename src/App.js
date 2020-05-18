@@ -85,10 +85,18 @@ function App() {
     }
   }
 
+  const resetPurchases = () => {
+
+  }
+
+  const viewPurchases = () => {
+    
+  }
+
   return (
     <div>
       <div id="header-root">
-        <Header turn={turn} dateString={dateString} country={country} leftArrow={leftArrow} rightArrow={rightArrow}/>
+        <Header turn={turn} dateString={dateString} country={country} leftArrow={leftArrow} rightArrow={rightArrow} resetPurchases={resetPurchases} viewPurchases={viewPurchases}/>
       </div>
       {isWaiting && <div className="spinner" />}
       <div id="middle-root" className="row">

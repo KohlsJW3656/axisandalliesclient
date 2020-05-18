@@ -31,6 +31,10 @@ table, th, td {
   transform: scale(1.5);
 }
 
+.closeButtons {
+  margin: 3px;
+}
+
 .spinner {
   position: fixed;
   width: 100px;

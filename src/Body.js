@@ -187,7 +187,6 @@ export function Body(props) {
   const country = props.country;
   const [orders, setOrders] =  useState([]);
   const [totalCost, setTotalCost] = useState(0);
-  const [purchasingPower, setPP] = useState(country.ipcs);
 
   
   const removeOrder = name => {
@@ -199,7 +198,6 @@ export function Body(props) {
       if (orders => orders.fiilter(order => order.name !== newOrder.name)) {
         setOrders(orders => [newOrder, ...orders.filter(order => order.name !== newOrder.name)]);
         setTotalCost(totalCost => totalCost + unitCost);
-        setPP(purchasingPower => purchasingPower - totalCost);
       }
     }
   }
@@ -207,7 +205,6 @@ export function Body(props) {
   const clearOrders = () => {
     setOrders(orders => []);
     setTotalCost(totalCost => 0);
-    setPP(country.ipcs);
   }
 
   const addPurchase = (orders, country, dateString, turn) => {
@@ -218,9 +215,9 @@ export function Body(props) {
     <div>
       <div className="col-2" id="unitColumn">
         <h2>Total Cost: {totalCost}</h2>
-        <h3>Purchasing Power: {purchasingPower}</h3>
-        <button type="button" onClick={addPurchase(orders, country, dateString, turn)}>Purchase</button>
-        <button type="button" onClick={clearOrders}>Clear</button>
+        <button type="button" className="closeButtons" onClick={addPurchase(orders, country, dateString, turn)}>Purchase</button>
+        <button type="button" className="closeButtons" onClick={clearOrders}>Clear Orders</button>
+
         <h3>Ordered:</h3>
         {orders.map(order => <Order key={order.name} order={order} remove={removeOrder}/>)}
         <h3>Purchased:</h3>
