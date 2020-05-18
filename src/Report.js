@@ -6,7 +6,7 @@ export function Report(props) {
   const countries = ["Germany", "Soviet Union", "Japan", "United States", "China", "United Kingdom Europe", "United Kingdom Pacific", "Italy", "ANZAC", "France"];
 
   return (
-    <div className="purchaseBlock">
+    <div className="report">
       <h1>{countries[purchase.c_id]}</h1>
       <h2>Unit: {purchase.p_name}</h2>
       <p>Amount: {purchase.amount}</p>

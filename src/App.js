@@ -19,10 +19,6 @@ function App() {
   const isWaiting = useSelector(state => state.isWaiting);
   const purchases = useSelector(state => state.purchases);
 
-  //setTurn(1);
-  //setDateYear(1940);
-  //setDateString(seasons[0] + " " + dateYear);
-
   useEffect(() => {
     dispatch(getCountry(i));
   }, [dispatch, i]);
@@ -30,10 +26,6 @@ function App() {
   const displayCountry = () => {
     dispatch(getCountry(i));
   };
-
-  // const onAdd = () => {
-  //   dispatch(startAddingPurchase(0, 2, 0, "Spring/Summer 1940", 1));
-  // }
 
   function leftArrow() {
     if (turn !== 1 || i !== 0) {
@@ -97,15 +89,15 @@ function App() {
 
   return (
     <div>
-      <div id="header-root">
+      <div id="headerRoot">
         <Header turn={turn} dateString={dateString} country={country} leftArrow={leftArrow} rightArrow={rightArrow} resetPurchases={resetPurchases} viewPurchases={viewPurchases}/>
       </div>
       {isWaiting && <div className="spinner" />}
-      <div id="middle-root" className="row">
+      <div id="middleRoot" className="row">
         <Body country={country} dateString={dateString} turn={turn}/>
       </div>
-      <div id="report-root" className="row">
-        {purchases.map(purchase => <Report key={purchase.c_id} purchase={purchase}/>)}
+      <div id="reportRoot">
+        {purchases.map(purchase => <Report purchase={purchase}/>)}
       </div>
     </div>
   );

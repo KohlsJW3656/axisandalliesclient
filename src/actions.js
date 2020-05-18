@@ -39,6 +39,7 @@ export function startAddingPurchase(p_name, amount, c_id, season_year, turn) {
     body: JSON.stringify(purchase),
   }
   return dispatch => {
+    dispatch(startWaiting());
     fetch(`${host}/purchase`, options)
     .then(checkForErrors)
     .then(response => response.json())
