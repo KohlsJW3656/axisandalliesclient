@@ -5,6 +5,7 @@ import {Header} from './Header';
 import {Body} from './Body';
 import {useSelector, useDispatch} from 'react-redux';
 import {getCountry} from './actions';
+import {Report} from './Report';
 
 function App() {
   const dispatch = useDispatch();
@@ -101,6 +102,9 @@ function App() {
       {isWaiting && <div className="spinner" />}
       <div id="middle-root" className="row">
         <Body country={country} dateString={dateString} turn={turn}/>
+      </div>
+      <div id="report-root" className="row">
+        <Report />
       </div>
     </div>
   );
