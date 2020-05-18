@@ -105,7 +105,7 @@ function App() {
         <Body country={country} dateString={dateString} turn={turn}/>
       </div>
       <div id="report-root" className="row">
-        {purchases.map(purchase => <Report key={purchase.c_id} {purchase.turn} {purchase.p_name} purchase={purchase}/>)}
+        {purchases.map(purchase => <Report key={purchase.c_id} purchase={purchase}/>)}
       </div>
     </div>
   );
