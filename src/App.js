@@ -98,7 +98,7 @@ function App() {
       <div id="reportRoot">
         {purchases.map(purchase => <Report key={Math.random()  * (+1000 - +1) + +1000} purchase={purchase}/>)}
       </div>
-    </div>
+    </div> 
   );
 }
 
