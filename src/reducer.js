@@ -12,7 +12,6 @@ function reducer(state = initialState, action) {
 			return {
 				...state,
 				isWaiting: false,
-				purchases: [action.payload, ...state.purchases],
 			};
 		case Action.LoadCountry:
 			return {
@@ -35,6 +34,7 @@ function reducer(state = initialState, action) {
 				return {
 					...state,
 					isWaiting: false,
+					purchases: [],
 				};
 		default:
   		return state;

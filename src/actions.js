@@ -124,9 +124,3 @@ export function deletePurchase() {
   };
 }
 
-
-
-
-
-
-

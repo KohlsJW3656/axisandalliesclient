@@ -134,6 +134,7 @@ table, th, td {
 #countrySelectText {
   display: inline;
 }
+
 .utilities {
   position: relative;
   z-index: -2;
@@ -208,42 +209,6 @@ nav li:hover {
   display: table;
 }
 
-input[type=text] {
-  padding: 12px 20px;
-  border-radius: 10px;
-  background-color: lightgray;
-  margin: 8px 0;
-  box-sizing: border-box;
-  border: 3px solid gray;
-  transition: 0.5s;
-  outline: none;
-}
-
-input[type=text]:focus {
-  border: 3px solid #555;
-}
-
-.cityButton {
-  float: right;
-  background-color: black;
-}
-
-.breakthroughButton  {
-  background-color: transparent;
-  border-radius: 25px;
-  color: black;
-  width: 200px;
-  height: 150px;
-  transition: 0.5s;
-  border: 3px solid gray;
-  outline: none;
-}
-
-.breakthroughButton:hover {
-  background-color: #111;
-  color: white;
-}
-
 .active {
   background-color: black;
   border-radius: 25px;
@@ -253,88 +218,6 @@ input[type=text]:focus {
   transition: 0.5s;
   border: 3px solid gray;
   outline: none;
-}
-
-.breakthroughIcons {
-  width: 10%;
-}
-
-.cityIcons {
-  width: 30%;
-}
-
-.tooltip {
-  position: relative;
-  display: inline-block;
-}
-
-.tooltip .tooltiptext {
-  visibility: hidden;
-  width: 250px;
-  background-color: black;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-  position: absolute;
-  z-index: 1;
-  top: 95%;
-  left: 20%;
-  margin-left: -60px;
-  font-size: 15px;
-}
-
-.tooltip .tooltiptext::after {
-  content: "";
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: transparent transparent black transparent;
-}
-
-.tooltip:hover .tooltiptext {
-  visibility: visible;
-  font-size: 15px;
-}
-
-.tooltiptop {
-  position: relative;
-  display: inline-block;
-}
-
-.tooltiptop .tooltiptexttop {
-  visibility: hidden;
-  width: 250px;
-  background-color: black;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-  position: absolute;
-  z-index: 1;
-  bottom: 95%;
-  left: 20%;
-  margin-left: -60px;
-  font-size: 15px;
-}
-
-.tooltiptop .tooltiptexttop::after {
-  content: "";
-  position: absolute;
-  top: 100%; /* At the bottom of the tooltip */
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: black transparent transparent transparent;
-}
-
-.tooltiptop:hover .tooltiptexttop {
-  visibility: visible;
-  font-size: 15px;
 }
 
 .col-1 { width: 8.33%; }
