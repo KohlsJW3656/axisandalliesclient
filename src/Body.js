@@ -262,11 +262,11 @@ export function Body(props) {
               <td><p>Battleship</p><p>Cost: 20</p></td>
               <td><button type="button" onClick={orders => addOrder({name: "Battleship", amount: 1}, 20)}>Order</button></td>
 
-              <td><img src="images/Facilities/major.png" alt="Major IC icon"/></td>
+              <td><img src="images/facilities/major.png" alt="Major IC icon"/></td>
               <td><p>Major Industrial Complex</p><p>Cost: 30</p></td>
               <td><button type="button" onClick={orders => addOrder({name: "Major IC", amount: 1}, 30)}>Order</button></td>
 
-              <td><img className="utilities" src="images/Utilities/research.png" alt="Research icon"/></td>
+              <td><img className="utilities" src="images/utilities/research.png" alt="Research icon"/></td>
               <td><p>Research</p><p>Cost: 5</p></td>
               <td><button type="button" id="research" onClick={orders => addOrder({name: "Research", amount: 1}, 5)}>Order</button></td>
             </tr>
@@ -284,11 +284,11 @@ export function Body(props) {
               <td><p>Aircraft Carrier</p><p>Cost: 16</p></td>
               <td><button type="button" id="carrier" onClick={orders => addOrder({name: "Aircraft Carrier", amount: 1}, 16)}>Order</button></td>
 
-              <td><img src="images/Facilities/minor.png" alt="Minor IC icon"/></td>
+              <td><img src="images/facilities/minor.png" alt="Minor IC icon"/></td>
               <td>Minor Industrial Complex<p></p><p>Cost: 12</p></td>
               <td><button type="button" id="minorIC" onClick={orders => addOrder({name: "Minor IC", amount: 1}, 12)}>Order</button></td>
 
-              <td><img className="utilities" src="images/Utilities/repair.jpg" alt="Repair icon"/></td>
+              <td><img className="utilities" src="images/utilities/repair.jpg" alt="Repair icon"/></td>
               <td><p>Repair</p><p>Cost: 1</p></td>
               <td><button type="button" id="repair" onClick={orders => addOrder({name: "Repair", amount: 1}, 1)}>Order</button></td>
             </tr>
@@ -306,11 +306,11 @@ export function Body(props) {
               <td><p>Cruiser</p><p>Cost: 12</p></td>
               <td><button type="button" id="cruiser" onClick={orders => addOrder({name: "Cruiser", amount: 1}, 12)}>Order</button></td>
 
-              <td><img src="images/Facilities/upgrade.png" alt="Upgrade IC icon"/></td>
+              <td><img src="images/facilities/upgrade.png" alt="Upgrade IC icon"/></td>
               <td><p>Upgrade Minor Industrial Complex</p><p>Cost: 20</p></td>
               <td><button type="button" id="upgradeIC" onClick={orders => addOrder({name: "Upgraded Minor IC", amount: 1}, 20)}>Order</button></td>
 
-              <td><img className="utilities" src="images/Utilities/airlift.png" alt="Airlift icon"/></td>
+              <td><img className="utilities" src="images/utilities/airlift.png" alt="Airlift icon"/></td>
               <td><p>Airlift</p><p>Cost: 5</p></td>
               <td><button type="button" id="airlift" onClick={orders => addOrder({name: "Airlift", amount: 1}, 5)}>Order</button></td>
             </tr>
@@ -328,7 +328,7 @@ export function Body(props) {
               <td><p>Destroyer</p><p>Cost: 8</p></td>
               <td><button type="button" id="destroyer" onClick={orders => addOrder({name: "Destroyer", amount: 1}, 8)}>Order</button></td>
 
-              <td><img src="images/Facilities/airbase.png" alt="Airbase icon"/></td>
+              <td><img src="images/facilities/airbase.png" alt="Airbase icon"/></td>
               <td><p>Air Base</p><p>Cost: 15</p></td>
               <td><button type="button" id="airBase" onClick={orders => addOrder({name: "Air Base", amount: 1}, 15)}>Order</button></td>
 
@@ -350,7 +350,7 @@ export function Body(props) {
               <td><p>Submarine</p><p>Cost: 6</p></td>
               <td><button type="button" id="sub" onClick={orders => addOrder({name: "Submarine", amount: 1}, 6)}>Order</button></td>
 
-              <td><img src="images/Facilities/navalbase.png" alt="Navalbase icon"/></td>
+              <td><img src="images/facilities/navalbase.png" alt="Navalbase icon"/></td>
               <td><p>Naval Base</p><p>Cost: 15</p></td>
               <td><button type="button" id="navalBase" onClick={orders => addOrder({name: "Naval Base", amount: 1}, 15)}>Order</button></td>
 
