@@ -18,7 +18,7 @@ const artilleryIcons = ["images/troops/germany/artillery.png",
                       "images/troops/sovietunion/artillery.png",
                       "images/troops/japan/artillery.png",
                       "images/troops/usa/artillery.png",
-                      "images/troops/usa/artillery.png",
+                      "images/troops/china/artillery.png",
                       "images/troops/uk/artillery.png",
                       "images/troops/uk/artillery.png",
                       "images/troops/italy/artillery.png",
@@ -135,16 +135,16 @@ const destroyerIcons = ["images/troops/germany/destroyer.png",
                       "images/troops/anzac/destroyer.png",
                       "images/troops/france/destroyer.png"];
 
-const subIcons = ["images/troops/germany/sub.png",
-                "images/troops/sovietunion/sub.png",
-                "images/troops/japan/sub.png",
-                "images/troops/usa/sub.png",
-                "images/troops/china/sub.png",
-                "images/troops/uk/sub.png",
-                "images/troops/uk/sub.png",
-                "images/troops/italy/sub.png",
-                "images/troops/anzac/sub.png",
-                "images/troops/france/sub.png"];
+const subIcons = ["images/troops/germany/submarine.png",
+                "images/troops/sovietunion/submarine.png",
+                "images/troops/japan/submarine.png",
+                "images/troops/usa/submarine.png",
+                "images/troops/china/submarine.png",
+                "images/troops/uk/submarine.png",
+                "images/troops/uk/submarine.png",
+                "images/troops/italy/submarine.png",
+                "images/troops/anzac/submarine.png",
+                "images/troops/france/submarine.png"];
 
 const transportIcons = ["images/troops/germany/transport.png",
                       "images/troops/sovietunion/transport.png",
@@ -288,7 +288,7 @@ export function Body(props) {
               <td>Minor Industrial Complex<p></p><p>Cost: 12</p></td>
               <td><button type="button" id="minorIC" onClick={orders => addOrder({name: "Minor IC", amount: 1}, 12)}>Order</button></td>
 
-              <td><img className="utilities" src="images/Utilities/wrench.jpg" alt="Repair icon"/></td>
+              <td><img className="utilities" src="images/Utilities/repair.jpg" alt="Repair icon"/></td>
               <td><p>Repair</p><p>Cost: 1</p></td>
               <td><button type="button" id="repair" onClick={orders => addOrder({name: "Repair", amount: 1}, 1)}>Order</button></td>
             </tr>
