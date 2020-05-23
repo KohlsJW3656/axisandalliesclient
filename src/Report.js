@@ -69,8 +69,6 @@ export function Report(props) {
   else {
     srcString = imageFolder + countrySRC[purchase.c_id] + "/" + unitName;
   }
-
-  console.log(srcString.toLowerCase());
   
   return (
     <div className="report">
