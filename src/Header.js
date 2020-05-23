@@ -3,16 +3,16 @@ import React, {useState} from 'react';
 export function Header(props) {
   const [pressed, setPressed] = useState(false);
   const country = props.country;
-  const flags = ["/images/Flags/GermanFlag.png", 
-                 "/images/Flags/SovietUnionFlag.jpg",
-                 "/images/Flags/JapanFlag.png",
-                 "/images/Flags/USFlag.jpg",
-                 "/images/Flags/ChinaFlag.png",
-                 "/images/Flags/UnitedKingdomEuropeFlag.png",
-                 "/images/Flags/UnitedKingdomPacificFlag.png",
-                 "/images/Flags/ItalyFlag.png",
-                 "/images/Flags/ANZACFlag.jpg",
-                 "/images/Flags/FranceFlag.jpg"
+  const flags = ["/images/Flags/germany.png", 
+                 "/images/Flags/sovietunion.jpg",
+                 "/images/Flags/japan.png",
+                 "/images/Flags/usa.jpg",
+                 "/images/Flags/china.png",
+                 "/images/Flags/ukeurope.png",
+                 "/images/Flags/ukpacific.png",
+                 "/images/Flags/italy.png",
+                 "/images/Flags/anzac.jpg",
+                 "/images/Flags/france.jpg"
   ];
 
   return (

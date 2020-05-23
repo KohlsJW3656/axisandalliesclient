@@ -3,170 +3,170 @@ import {useDispatch} from 'react-redux';
 import {Order} from './Order';
 import {startAddingPurchase} from './actions';
 
-const infantryIcons = ["images/Troops/Germany/Infantry.png",
-                      "images/Troops/SovietUnion/Infantry.png",
-                      "images/Troops/Japan/Infantry.png",
-                      "images/Troops/UnitedStates/Infantry.png",
-                      "images/Troops/China/Infantry.png",
-                      "images/Troops/UnitedKingdom/Infantry.png",
-                      "images/Troops/UnitedKingdom/Infantry.png",
-                      "images/Troops/Italy/Infantry.png",
-                      "images/Troops/ANZAC/Infantry.png",
-                      "images/Troops/France/Infantry.png"];
+const infantryIcons = ["images/Troops/germany/infantry.png",
+                      "images/Troops/sovietunion/infantry.png",
+                      "images/Troops/japan/infantry.png",
+                      "images/Troops/usa/infantry.png",
+                      "images/Troops/china/infantry.png",
+                      "images/Troops/uk/infantry.png",
+                      "images/Troops/uk/infantry.png",
+                      "images/Troops/italy/infantry.png",
+                      "images/Troops/anzac/infantry.png",
+                      "images/Troops/france/infantry.png"];
                         
-const artilleryIcons = ["images/Troops/Germany/Artillery.png",
-                      "images/Troops/SovietUnion/Artillery.png",
-                      "images/Troops/Japan/Artillery.png",
-                      "images/Troops/UnitedStates/Artillery.png",
-                      "images/Troops/UnitedStates/Artillery.png",
-                      "images/Troops/UnitedKingdom/Artillery.png",
-                      "images/Troops/UnitedKingdom/Artillery.png",
-                      "images/Troops/Italy/Artillery.png",
-                      "images/Troops/ANZAC/Artillery.png",
-                      "images/Troops/France/Artillery.png"];
+const artilleryIcons = ["images/Troops/germany/artillery.png",
+                      "images/Troops/sovietunion/artillery.png",
+                      "images/Troops/japan/artillery.png",
+                      "images/Troops/usa/artillery.png",
+                      "images/Troops/usa/artillery.png",
+                      "images/Troops/uk/artillery.png",
+                      "images/Troops/uk/artillery.png",
+                      "images/Troops/italy/artillery.png",
+                      "images/Troops/anzac/artillery.png",
+                      "images/Troops/france/artillery.png"];
 
-const mechIcons = ["images/Troops/Germany/Mech.png",
-                  "images/Troops/SovietUnion/Mech.png",
-                  "images/Troops/Japan/Mech.png",
-                  "images/Troops/UnitedStates/Mech.png",
-                  "images/Troops/China/Mech.png",
-                  "images/Troops/UnitedKingdom/Mech.png",
-                  "images/Troops/UnitedKingdom/Mech.png",
-                  "images/Troops/Italy/Mech.png",
-                  "images/Troops/ANZAC/Mech.png",
-                  "images/Troops/France/Mech.png"];
+const mechIcons = ["images/Troops/germany/mech.png",
+                  "images/Troops/sovietunion/mech.png",
+                  "images/Troops/japan/mech.png",
+                  "images/Troops/usa/mech.png",
+                  "images/Troops/china/mech.png",
+                  "images/Troops/uk/mech.png",
+                  "images/Troops/uk/mech.png",
+                  "images/Troops/italy/mech.png",
+                  "images/Troops/anzac/mech.png",
+                  "images/Troops/france/mech.png"];
 
-const tankIcons = ["images/Troops/Germany/Tank.png",
-                  "images/Troops/SovietUnion/Tank.png",
-                  "images/Troops/Japan/Tank.png",
-                  "images/Troops/UnitedStates/Tank.png",
-                  "images/Troops/China/Tank.png",
-                  "images/Troops/UnitedKingdom/Tank.png",
-                  "images/Troops/UnitedKingdom/Tank.png",
-                  "images/Troops/Italy/Tank.png",
-                  "images/Troops/ANZAC/Tank.png",
-                  "images/Troops/France/Tank.png"];
+const tankIcons = ["images/Troops/germany/tank.png",
+                  "images/Troops/sovietunion/tank.png",
+                  "images/Troops/japan/tank.png",
+                  "images/Troops/usa/tank.png",
+                  "images/Troops/china/tank.png",
+                  "images/Troops/uk/tank.png",
+                  "images/Troops/uk/tank.png",
+                  "images/Troops/italy/tank.png",
+                  "images/Troops/anzac/tank.png",
+                  "images/Troops/france/tank.png"];
 
-const aaaIcons = ["images/Troops/Germany/AAA.png",
-                  "images/Troops/SovietUnion/AAA.png",
-                  "images/Troops/Japan/AAA.png",
-                  "images/Troops/UnitedStates/AAA.png",
-                  "images/Troops/China/AAA.png",
-                  "images/Troops/UnitedKingdom/AAA.png",
-                  "images/Troops/UnitedKingdom/AAA.png",
-                  "images/Troops/Italy/AAA.png",
-                  "images/Troops/ANZAC/AAA.png",
-                  "images/Troops/France/AAA.png"];
+const aaaIcons = ["images/Troops/germany/aaa.png",
+                  "images/Troops/sovietunion/aaa.png",
+                  "images/Troops/japan/aaa.png",
+                  "images/Troops/usa/aaa.png",
+                  "images/Troops/china/aaa.png",
+                  "images/Troops/uk/aaa.png",
+                  "images/Troops/uk/aaa.png",
+                  "images/Troops/italy/aaa.png",
+                  "images/Troops/anzac/aaa.png",
+                  "images/Troops/france/aaa.png"];
 
-const fighterIcons = ["images/Troops/Germany/Fighter.png",
-                    "images/Troops/SovietUnion/Fighter.png",
-                    "images/Troops/Japan/Fighter.png",
-                    "images/Troops/UnitedStates/Fighter.png",
-                    "images/Troops/China/Fighter.png",
-                    "images/Troops/UnitedKingdom/Fighter.png",
-                    "images/Troops/UnitedKingdom/Fighter.png",
-                    "images/Troops/Italy/Fighter.png",
-                    "images/Troops/ANZAC/Fighter.png",
-                    "images/Troops/France/Fighter.png"];
+const fighterIcons = ["images/Troops/germany/fighter.png",
+                    "images/Troops/sovietunion/fighter.png",
+                    "images/Troops/japan/fighter.png",
+                    "images/Troops/usa/fighter.png",
+                    "images/Troops/china/fighter.png",
+                    "images/Troops/uk/fighter.png",
+                    "images/Troops/uk/fighter.png",
+                    "images/Troops/italy/fighter.png",
+                    "images/Troops/anzac/fighter.png",
+                    "images/Troops/france/fighter.png"];
 
-const tacBomberIcons = ["images/Troops/Germany/TacBomber.png",
-                      "images/Troops/SovietUnion/TacBomber.png",
-                      "images/Troops/Japan/TacBomber.png",
-                      "images/Troops/UnitedStates/TacBomber.png",
-                      "images/Troops/China/TacBomber.png",
-                      "images/Troops/UnitedKingdom/TacBomber.png",
-                      "images/Troops/UnitedKingdom/TacBomber.png",
-                      "images/Troops/Italy/TacBomber.png",
-                      "images/Troops/ANZAC/TacBomber.png",
-                      "images/Troops/France/TacBomber.png"];
+const tacBomberIcons = ["images/Troops/germany/tacbomber.png",
+                      "images/Troops/sovietunion/tacbomber.png",
+                      "images/Troops/japan/tacbomber.png",
+                      "images/Troops/usa/tacbomber.png",
+                      "images/Troops/china/tacbomber.png",
+                      "images/Troops/uk/tacbomber.png",
+                      "images/Troops/uk/tacbomber.png",
+                      "images/Troops/italy/tacbomber.png",
+                      "images/Troops/anzac/tacbomber.png",
+                      "images/Troops/france/tacbomber.png"];
 
-const stratBomberIcons = ["images/Troops/Germany/StratBomber.png",
-                        "images/Troops/SovietUnion/StratBomber.png",
-                        "images/Troops/Japan/StratBomber.png",
-                        "images/Troops/UnitedStates/StratBomber.png",
-                        "images/Troops/China/StratBomber.png",
-                        "images/Troops/UnitedKingdom/StratBomber.png",
-                        "images/Troops/UnitedKingdom/StratBomber.png",
-                        "images/Troops/Italy/StratBomber.png",
-                        "images/Troops/ANZAC/StratBomber.png",
-                        "images/Troops/France/StratBomber.png"];
+const stratBomberIcons = ["images/Troops/germany/stratbomber.png",
+                        "images/Troops/sovietunion/stratbomber.png",
+                        "images/Troops/japan/stratbomber.png",
+                        "images/Troops/usa/stratbomber.png",
+                        "images/Troops/china/stratbomber.png",
+                        "images/Troops/uk/stratbomber.png",
+                        "images/Troops/uk/stratbomber.png",
+                        "images/Troops/italy/stratbomber.png",
+                        "images/Troops/anzac/stratbomber.png",
+                        "images/Troops/france/stratbomber.png"];
 
-const battleshipIcons = ["images/Troops/Germany/Battleship.png",
-                        "images/Troops/SovietUnion/Battleship.png",
-                        "images/Troops/Japan/Battleship.png",
-                        "images/Troops/UnitedStates/Battleship.png",
-                        "images/Troops/China/Battleship.png",
-                        "images/Troops/UnitedKingdom/Battleship.png",
-                        "images/Troops/UnitedKingdom/Battleship.png",
-                        "images/Troops/Italy/Battleship.png",
-                        "images/Troops/ANZAC/Battleship.png",
-                        "images/Troops/France/Battleship.png"];
+const battleshipIcons = ["images/Troops/germany/battleship.png",
+                        "images/Troops/sovietunion/battleship.png",
+                        "images/Troops/japan/battleship.png",
+                        "images/Troops/usa/battleship.png",
+                        "images/Troops/china/battleship.png",
+                        "images/Troops/uk/battleship.png",
+                        "images/Troops/uk/battleship.png",
+                        "images/Troops/italy/battleship.png",
+                        "images/Troops/anzac/battleship.png",
+                        "images/Troops/france/battleship.png"];
 
-const carrierIcons = ["images/Troops/Germany/Carrier.png",
-                    "images/Troops/SovietUnion/Carrier.png",
-                    "images/Troops/Japan/Carrier.png",
-                    "images/Troops/UnitedStates/Carrier.png",
-                    "images/Troops/China/Carrier.png",
-                    "images/Troops/UnitedKingdom/Carrier.png",
-                    "images/Troops/UnitedKingdom/Carrier.png",
-                    "images/Troops/Italy/Carrier.png",
-                    "images/Troops/ANZAC/Carrier.png",
-                    "images/Troops/France/Carrier.png"];
+const carrierIcons = ["images/Troops/germany/carrier.png",
+                    "images/Troops/sovietunion/carrier.png",
+                    "images/Troops/japan/carrier.png",
+                    "images/Troops/usa/carrier.png",
+                    "images/Troops/china/carrier.png",
+                    "images/Troops/uk/carrier.png",
+                    "images/Troops/uk/carrier.png",
+                    "images/Troops/italy/carrier.png",
+                    "images/Troops/anzac/carrier.png",
+                    "images/Troops/france/carrier.png"];
 
-const cruiserIcons = ["images/Troops/Germany/Cruiser.png",
-                    "images/Troops/SovietUnion/Cruiser.png",
-                    "images/Troops/Japan/Cruiser.png",
-                    "images/Troops/UnitedStates/Cruiser.png",
-                    "images/Troops/China/Cruiser.png",
-                    "images/Troops/UnitedKingdom/Cruiser.png",
-                    "images/Troops/UnitedKingdom/Cruiser.png",
-                    "images/Troops/Italy/Cruiser.png",
-                    "images/Troops/ANZAC/Cruiser.png",
-                    "images/Troops/France/Cruiser.png"];
+const cruiserIcons = ["images/Troops/germany/cruiser.png",
+                    "images/Troops/sovietunion/cruiser.png",
+                    "images/Troops/japan/cruiser.png",
+                    "images/Troops/usa/cruiser.png",
+                    "images/Troops/china/cruiser.png",
+                    "images/Troops/uk/cruiser.png",
+                    "images/Troops/uk/cruiser.png",
+                    "images/Troops/italy/cruiser.png",
+                    "images/Troops/anzac/cruiser.png",
+                    "images/Troops/france/cruiser.png"];
 
-const destroyerIcons = ["images/Troops/Germany/Destroyer.png",
-                      "images/Troops/SovietUnion/Destroyer.png",
-                      "images/Troops/Japan/Destroyer.png",
-                      "images/Troops/UnitedStates/Destroyer.png",
-                      "images/Troops/China/Destroyer.png",
-                      "images/Troops/UnitedKingdom/Destroyer.png",
-                      "images/Troops/UnitedKingdom/Destroyer.png",
-                      "images/Troops/Italy/Destroyer.png",
-                      "images/Troops/ANZAC/Destroyer.png",
-                      "images/Troops/France/Destroyer.png"];
+const destroyerIcons = ["images/Troops/germany/destroyer.png",
+                      "images/Troops/sovietunion/destroyer.png",
+                      "images/Troops/japan/destroyer.png",
+                      "images/Troops/usa/destroyer.png",
+                      "images/Troops/china/destroyer.png",
+                      "images/Troops/uk/destroyer.png",
+                      "images/Troops/uk/destroyer.png",
+                      "images/Troops/italy/destroyer.png",
+                      "images/Troops/anzac/destroyer.png",
+                      "images/Troops/france/destroyer.png"];
 
-const subIcons = ["images/Troops/Germany/Sub.png",
-                "images/Troops/SovietUnion/Sub.png",
-                "images/Troops/Japan/Sub.png",
-                "images/Troops/UnitedStates/Sub.png",
-                "images/Troops/China/Sub.png",
-                "images/Troops/UnitedKingdom/Sub.png",
-                "images/Troops/UnitedKingdom/Sub.png",
-                "images/Troops/Italy/Sub.png",
-                "images/Troops/ANZAC/Sub.png",
-                "images/Troops/France/Sub.png"];
+const subIcons = ["images/Troops/germany/sub.png",
+                "images/Troops/sovietunion/sub.png",
+                "images/Troops/japan/sub.png",
+                "images/Troops/usa/sub.png",
+                "images/Troops/china/sub.png",
+                "images/Troops/uk/sub.png",
+                "images/Troops/uk/sub.png",
+                "images/Troops/italy/sub.png",
+                "images/Troops/anzac/sub.png",
+                "images/Troops/france/sub.png"];
 
-const transportIcons = ["images/Troops/Germany/Transport.png",
-                      "images/Troops/SovietUnion/Transport.png",
-                      "images/Troops/Japan/Transport.png",
-                      "images/Troops/UnitedStates/Transport.png",
-                      "images/Troops/China/Transport.png",
-                      "images/Troops/UnitedKingdom/Transport.png",
-                      "images/Troops/UnitedKingdom/Transport.png",
-                      "images/Troops/Italy/Transport.png",
-                      "images/Troops/ANZAC/Transport.png",
-                      "images/Troops/France/Transport.png"];
+const transportIcons = ["images/Troops/germany/transport.png",
+                      "images/Troops/sovietunion/transport.png",
+                      "images/Troops/japan/transport.png",
+                      "images/Troops/usa/transport.png",
+                      "images/Troops/china/transport.png",
+                      "images/Troops/uk/transport.png",
+                      "images/Troops/uk/transport.png",
+                      "images/Troops/italy/transport.png",
+                      "images/Troops/anzac/transport.png",
+                      "images/Troops/france/transport.png"];
 
-const background = ["images/Background/Germany.png",
-                  "images/Background/SovietUnion.png",
-                  "images/Background/Japan.png",
-                  "images/Background/UnitedStates.png",
-                  "images/Background/",
-                  "images/Background/",
-                  "images/Background/",
-                  "images/Background/",
-                  "images/Background/",
-                  "images/Background/France.png"];
+const background = ["images/Background/germany.png",
+                  "images/Background/sovietunion.png",
+                  "images/Background/japan.png",
+                  "images/Background/unitedstates.png",
+                  "images/Background/china.png",
+                  "images/Background/ukeurope.png",
+                  "images/Background/ukpacific.png",
+                  "images/Background/italy.png",
+                  "images/Background/anzac.png",
+                  "images/Background/france.png"];
 
 const backgroundId = ["backgroundGermany",
                     "backgroundSovietUnion",
@@ -262,11 +262,11 @@ export function Body(props) {
               <td><p>Battleship</p><p>Cost: 20</p></td>
               <td><button type="button" onClick={orders => addOrder({name: "Battleship", amount: 1}, 20)}>Order</button></td>
 
-              <td><img src="images/Facilities/MajorIC.png" alt="Major IC icon"/></td>
+              <td><img src="images/Facilities/major.png" alt="Major IC icon"/></td>
               <td><p>Major Industrial Complex</p><p>Cost: 30</p></td>
               <td><button type="button" onClick={orders => addOrder({name: "Major IC", amount: 1}, 30)}>Order</button></td>
 
-              <td><img className="utilities" src="images/Utilities/Research.png" alt="Research icon"/></td>
+              <td><img className="utilities" src="images/Utilities/research.png" alt="Research icon"/></td>
               <td><p>Research</p><p>Cost: 5</p></td>
               <td><button type="button" id="research" onClick={orders => addOrder({name: "Research", amount: 1}, 5)}>Order</button></td>
             </tr>
@@ -284,11 +284,11 @@ export function Body(props) {
               <td><p>Aircraft Carrier</p><p>Cost: 16</p></td>
               <td><button type="button" id="carrier" onClick={orders => addOrder({name: "Aircraft Carrier", amount: 1}, 16)}>Order</button></td>
 
-              <td><img src="images/Facilities/MinorIC.png" alt="Minor IC icon"/></td>
+              <td><img src="images/Facilities/minor.png" alt="Minor IC icon"/></td>
               <td>Minor Industrial Complex<p></p><p>Cost: 12</p></td>
               <td><button type="button" id="minorIC" onClick={orders => addOrder({name: "Minor IC", amount: 1}, 12)}>Order</button></td>
 
-              <td><img className="utilities" src="images/Utilities/Wrench.jpg" alt="Repair icon"/></td>
+              <td><img className="utilities" src="images/Utilities/wrench.jpg" alt="Repair icon"/></td>
               <td><p>Repair</p><p>Cost: 1</p></td>
               <td><button type="button" id="repair" onClick={orders => addOrder({name: "Repair", amount: 1}, 1)}>Order</button></td>
             </tr>
@@ -306,7 +306,7 @@ export function Body(props) {
               <td><p>Cruiser</p><p>Cost: 12</p></td>
               <td><button type="button" id="cruiser" onClick={orders => addOrder({name: "Cruiser", amount: 1}, 12)}>Order</button></td>
 
-              <td><img src="images/Facilities/UpgradeIC.png" alt="Upgrade IC icon"/></td>
+              <td><img src="images/Facilities/upgrade.png" alt="Upgrade IC icon"/></td>
               <td><p>Upgrade Minor Industrial Complex</p><p>Cost: 20</p></td>
               <td><button type="button" id="upgradeIC" onClick={orders => addOrder({name: "Upgraded Minor IC", amount: 1}, 20)}>Order</button></td>
 
@@ -328,7 +328,7 @@ export function Body(props) {
               <td><p>Destroyer</p><p>Cost: 8</p></td>
               <td><button type="button" id="destroyer" onClick={orders => addOrder({name: "Destroyer", amount: 1}, 8)}>Order</button></td>
 
-              <td><img src="images/Facilities/AirBase.png" alt="Airbase icon"/></td>
+              <td><img src="images/Facilities/airbase.png" alt="Airbase icon"/></td>
               <td><p>Air Base</p><p>Cost: 15</p></td>
               <td><button type="button" id="airBase" onClick={orders => addOrder({name: "Air Base", amount: 1}, 15)}>Order</button></td>
 
@@ -350,7 +350,7 @@ export function Body(props) {
               <td><p>Submarine</p><p>Cost: 6</p></td>
               <td><button type="button" id="sub" onClick={orders => addOrder({name: "Submarine", amount: 1}, 6)}>Order</button></td>
 
-              <td><img src="images/Facilities/NavalBase.png" alt="Navalbase icon"/></td>
+              <td><img src="images/Facilities/navalbase.png" alt="Navalbase icon"/></td>
               <td><p>Naval Base</p><p>Cost: 15</p></td>
               <td><button type="button" id="navalBase" onClick={orders => addOrder({name: "Naval Base", amount: 1}, 15)}>Order</button></td>
 
