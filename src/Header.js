@@ -3,16 +3,16 @@ import React, {useState} from 'react';
 export function Header(props) {
   const [pressed, setPressed] = useState(false);
   const country = props.country;
-  const flags = ["/images/Flags/germany.png", 
-                 "/images/Flags/sovietunion.jpg",
-                 "/images/Flags/japan.png",
-                 "/images/Flags/usa.jpg",
-                 "/images/Flags/china.png",
-                 "/images/Flags/ukeurope.png",
-                 "/images/Flags/ukpacific.png",
-                 "/images/Flags/italy.png",
-                 "/images/Flags/anzac.jpg",
-                 "/images/Flags/france.jpg"
+  const flags = ["/images/flags/germany.png", 
+                 "/images/flags/sovietunion.jpg",
+                 "/images/flags/japan.png",
+                 "/images/flags/usa.jpg",
+                 "/images/flags/china.png",
+                 "/images/flags/ukeurope.png",
+                 "/images/flags/ukpacific.png",
+                 "/images/flags/italy.png",
+                 "/images/flags/anzac.jpg",
+                 "/images/flags/france.jpg"
   ];
 
   return (
@@ -35,9 +35,9 @@ export function Header(props) {
       
       <nav className="row">        
         <ul>
-          <li><a href="rules/Globalrules.pdf" target="_blank">Global rules</a></li>
-          <li><a href="rules/Europerules.pdf" target="_blank">Europe rules</a></li>
-          <li><a href="rules/Pacificrules.pdf" target="_blank">Pacific rules</a></li>
+          <li><a href="rules/global.pdf" target="_blank">Global Rules</a></li>
+          <li><a href="rules/europe.pdf" target="_blank">Europe Rules</a></li>
+          <li><a href="rules/pacific.pdf" target="_blank">Pacific Rules</a></li>
         </ul>
       </nav>
 
