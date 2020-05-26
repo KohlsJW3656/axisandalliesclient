@@ -123,4 +123,3 @@ export function deletePurchase() {
     .catch(e => console.error(e));
   };
 }
-
