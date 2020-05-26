@@ -21,22 +21,17 @@ function App() {
   useEffect(() => {
     dispatch(getCountry(i));
   }, [dispatch, i]);
-  
-  const displayCountry = () => {
-    dispatch(getCountry(i));
-  };
 
   function leftArrow() {
     if (turn !== 1 || i !== 0) {
       if (i - 1 === -1) {
-        setI(i => 9);
+        setI(9);
         setTurn(turn => turn - 1);
         setDateBackward();
       }
       else {
         setI(i => i - 1);
       }
-      displayCountry();
     }
   }
   
@@ -49,31 +44,31 @@ function App() {
     else {
       setI(i => i + 1);
     }
-    displayCountry();
   }
 
   function setDateBackward() {
-    if (turn % 2 === 0) {
+    let tempTurn = turn - 1;
+    if (tempTurn % 2 === 0) {
       setDateYear(dateYear => dateYear - 1);
-      setDateString(dateString => seasons[1] + " " + dateYear);
+      setDateString(seasons[1] + " " + (dateYear - 1));
     }
     else {    
-      setDateString(dateString => seasons[0] + " " + dateYear);
+      setDateString(seasons[0] + " " + dateYear);
     }  
   }
 
   function setDateForward() {
-    if (turn === 1) {
-      setDateString(dateString => seasons[0] + " " + dateYear);
+    let tempTurn = turn + 1;
+    if (tempTurn === 1) {
+      setDateString(seasons[0] + " " + dateYear);
     }
     else {
-      //If Spring/Summer set to Fall/Winter
-      if (turn % 2 === 0) {
-        setDateString(dateString => seasons[1] + " " + dateYear);
+      if (tempTurn % 2 === 1) {
+        setDateYear(dateYear => dateYear + 1);
+        setDateString(seasons[0] + " " + (dateYear + 1));
       }
       else {
-        setDateYear(dateYear => dateYear + 1);
-        setDateString(dateString => seasons[0] + " " + dateYear);
+        setDateString(seasons[1] + " " + dateYear);
       }
     }
   }
@@ -98,7 +93,10 @@ function App() {
       <div id="reportRoot">
         {purchases.map(purchase => <Report key={Math.random()  * (+1000 - +1) + +1000} purchase={purchase}/>)}
       </div>
-    </div> 
+      <div>
+        <p className="center">&copy; 2020</p>
+      </div>
+    </div>
   );
 }
 
