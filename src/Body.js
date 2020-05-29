@@ -227,158 +227,282 @@ export function Body(props) {
         <div id="backgroundContainer"><img className="backgroundImage" id={backgroundId[country.c_id]} src={background[country.c_id]} alt=""/></div>
 
         {country.c_id !== 4 &&
+        <div className="Rtable Rtable--5cols Rtable--collapse js-RtableTabs center">
+          <div className="Tablist" role="tablist"> 
+            <button className="Tab" role="tab" aria-selected="true">Land</button>
+            <button className="Tab" role="tab" aria-selected="false">Air</button>
+            <button className="Tab" role="tab" aria-selected="false">Navy</button>
+            <button className="Tab" role="tab" aria-selected="false">Facilities</button>
+            <button className="Tab" role="tab" aria-selected="false">Utilities</button>
+          </div>
 
-        <table id="unitTable" className="center">
-          <thead>
-            <tr>
-              <th></th>
-              <th>Land Units</th>
-              <th>Order</th>
-              <th></th>
-              <th>Air Units</th>
-              <th>Order</th>
-              <th></th>
-              <th>Sea Units</th>
-              <th>Order</th>
-              <th></th>
-              <th>Facilities</th>
-              <th>Order</th>
-              <th></th>
-              <th>Utilities</th>
-              <th>Order</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><img src={infantryIcons[country.c_id]} alt="Infantry icon"/></td>
-              <td><p>Infantry</p><p>Cost: 3</p></td>
-              <td><button type="button" onClick={orders => addOrder({name: "Infantry", amount: 1}, 3)}>Order</button></td>
+          <div style={{order:0}} className="Rtable-cell Rtable-cell--head"><h3>Land Units</h3></div>
+          <div style={{order:1}} className="Rtable-cell">
+            <table className="rowTable">
+              <tbody>
+                <tr>
+                  <td className="col-xs-4 col-lg-2"><img src={infantryIcons[country.c_id]} alt="Infantry icon"/></td>
+                  <td className="col-xs-4 col-lg-6"><p>Infantry</p><p>Cost: 3</p></td>
+                  <td className="col-xs-4 col-lg-4"><button type="button" onClick={orders => addOrder({name: "Infantry", amount: 1}, 3)}>Order</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div style={{order:2}} className="Rtable-cell">
+            <table className="rowTable">
+              <tbody>
+                <tr>
+                  <td className="col-xs-4"><img src={artilleryIcons[country.c_id]} alt="Artillery icon"/></td>
+                  <td className="col-xs-4"><p>Artillery</p><p>Cost: 4</p></td>
+                  <td className="col-xs-4"><button type="button" id="artillery" onClick={orders => addOrder({name: "Artillery", amount: 1}, 4)}>Order</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div style={{order:3}} className="Rtable-cell">
+            <table className="rowTable">
+              <tbody>
+                <tr>
+                  <td className="col-xs-4"><img src={mechIcons[country.c_id]} alt="Mechanized Infantry icon"/></td>
+                  <td className="col-xs-4"><p>Mechanized Infantry</p><p>Cost: 4</p></td>
+                  <td className="col-xs-4"><button type="button" id="mecInfantry" onClick={orders => addOrder({name: "Mechanized Infantry", amount: 1}, 4)}>Order</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div style={{order:4}} className="Rtable-cell">
+            <table className="rowTable">
+              <tbody>
+                <tr>
+                  <td className="col-xs-4"><img src={tankIcons[country.c_id]} alt="Tank icon"/></td>
+                  <td className="col-xs-4"><p>Tank</p><p>Cost: 6</p></td>
+                  <td className="col-xs-4"><button type="button" id="tank" onClick={orders => addOrder({name: "Tank", amount: 1}, 6)}>Order</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div style={{order:5}} className="Rtable-cell">
+            <table className="rowTable">
+              <tbody>
+                <tr>
+                  <td className="col-xs-4"><img src={aaaIcons[country.c_id]} alt="Anti Aircraft Artillery icon"/></td>
+                  <td className="col-xs-4"><p>AAA</p><p>Cost: 5</p></td>
+                  <td className="col-xs-4"><button type="button" id="aaa" onClick={orders => addOrder({name: "AAA", amount: 1}, 5)}>Order</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div style={{order:6}} className="Rtable-cell"><table className="rowTable"><tbody><tr><td className="col-xs-12"><br/></td></tr></tbody></table></div>
+          <div style={{order:7}} className="Rtable-cell Rtable-cell--foot"></div>
 
-              <td><img src={fighterIcons[country.c_id]} alt="Fighter icon"/></td>
-              <td><p>Fighter</p><p>Cost: 10</p></td>
-              <td><button type="button" onClick={orders => addOrder({name: "Fighter", amount: 1}, 10)}>Order</button></td>
+          <div style={{order:0}} className="Rtable-cell Rtable-cell--head"><h3>Aerial Units</h3></div>
+          <div style={{order:1}} className="Rtable-cell">
+            <table className="rowTable">
+              <tbody>
+                <tr>
+                  <td className="col-xs-4"><img src={fighterIcons[country.c_id]} alt="Fighter icon"/></td>
+                  <td className="col-xs-4"><p>Fighter</p><p>Cost: 10</p></td>
+                  <td className="col-xs-4"><button type="button" onClick={orders => addOrder({name: "Fighter", amount: 1}, 10)}>Order</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div style={{order:2}} className="Rtable-cell">
+            <table className="rowTable">
+              <tbody>
+                <tr>
+                  <td><img src={tacBomberIcons[country.c_id]} alt="Tactical Bomber icon"/></td>
+                  <td><p>Tactical Bomber</p><p>Cost: 11</p></td>
+                  <td><button type="button" id="tacBomber" onClick={orders => addOrder({name: "Tactical Bomber", amount: 1}, 11)}>Order</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div style={{order:3}} className="Rtable-cell">
+            <table className="rowTable">
+              <tbody>
+                <tr>
+                  <td><img src={stratBomberIcons[country.c_id]} alt="Stategic Bomber icon"/></td>
+                  <td><p>Strategic Bomber</p><p>Cost: 12</p></td>
+                  <td><button type="button" id="stratBomber" onClick={orders => addOrder({name: "Strategic Bomber", amount: 1}, 12)}>Order</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div style={{order:4}} className="Rtable-cell"><table className="rowTable"><tbody><tr><td className="col-xs-12"><br/></td></tr></tbody></table></div>
+          <div style={{order:5}} className="Rtable-cell"><table className="rowTable"><tbody><tr><td className="col-xs-12"><br/></td></tr></tbody></table></div>
+          <div style={{order:6}} className="Rtable-cell"><table className="rowTable"><tbody><tr><td className="col-xs-12"><br/></td></tr></tbody></table></div>
+          <div style={{order:7}} className="Rtable-cell Rtable-cell--foot"></div>
 
-              <td><img src={battleshipIcons[country.c_id]} alt="Battleship icon"/></td>
-              <td><p>Battleship</p><p>Cost: 20</p></td>
-              <td><button type="button" onClick={orders => addOrder({name: "Battleship", amount: 1}, 20)}>Order</button></td>
+          <div style={{order:0}} className="Rtable-cell Rtable-cell--head"><h3>Naval Units</h3></div>
+          <div style={{order:1}} className="Rtable-cell">
+            <table className="rowTable">
+              <tbody>
+                <tr>
+                  <td><img src={battleshipIcons[country.c_id]} alt="Battleship icon"/></td>
+                  <td><p>Battleship</p><p>Cost: 20</p></td>
+                  <td><button type="button" onClick={orders => addOrder({name: "Battleship", amount: 1}, 20)}>Order</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div style={{order:2}} className="Rtable-cell">
+            <table className="rowTable">
+              <tbody>
+                <tr>
+                  <td><img src={carrierIcons[country.c_id]} alt="Aircraft Carrier icon"/></td>
+                  <td><p>Aircraft Carrier</p><p>Cost: 16</p></td>
+                  <td><button type="button" id="carrier" onClick={orders => addOrder({name: "Aircraft Carrier", amount: 1}, 16)}>Order</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div style={{order:3}} className="Rtable-cell">
+            <table className="rowTable">
+              <tbody>
+                <tr>
+                <td><img src={cruiserIcons[country.c_id]} alt="Cruiser icon"/></td>
+                  <td><p>Cruiser</p><p>Cost: 12</p></td>
+                  <td><button type="button" id="cruiser" onClick={orders => addOrder({name: "Cruiser", amount: 1}, 12)}>Order</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div style={{order:4}} className="Rtable-cell">
+            <table className="rowTable">
+              <tbody>
+                <tr>
+                  <td><img src={destroyerIcons[country.c_id]} alt="Destroyer icon"/></td>
+                  <td><p>Destroyer</p><p>Cost: 8</p></td>
+                  <td><button type="button" id="destroyer" onClick={orders => addOrder({name: "Destroyer", amount: 1}, 8)}>Order</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div style={{order:5}} className="Rtable-cell">
+            <table className="rowTable">
+              <tbody>
+                <tr>
+                  <td><img src={subIcons[country.c_id]} alt="Submarine icon"/></td>
+                  <td><p>Submarine</p><p>Cost: 6</p></td>
+                  <td><button type="button" id="sub" onClick={orders => addOrder({name: "Submarine", amount: 1}, 6)}>Order</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div style={{order:6}} className="Rtable-cell">
+            <table className="rowTable">
+              <tbody>
+                <tr>
+                  <td><img src={transportIcons[country.c_id]} alt="Transport icon"/></td>
+                  <td><p>Transport</p><p>Cost: 7</p></td>
+                  <td><button type="button" id="transport" onClick={orders => addOrder({name: "Transport", amount: 1}, 7)}>Order</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div style={{order:7}} className="Rtable-cell Rtable-cell--foot"></div>
 
-              <td><img src="images/facilities/major.png" alt="Major IC icon"/></td>
-              <td><p>Major Industrial Complex</p><p>Cost: 30</p></td>
-              <td><button type="button" onClick={orders => addOrder({name: "Major IC", amount: 1}, 30)}>Order</button></td>
+          <div style={{order:0}} className="Rtable-cell Rtable-cell--head"><h3>Facilities</h3></div>
+          <div style={{order:1}} className="Rtable-cell">
+            <table className="rowTable">
+              <tbody>
+                <tr>
+                  <td><img src="images/facilities/major.png" alt="Major IC icon"/></td>
+                  <td><p>Major Industrial Complex</p><p>Cost: 30</p></td>
+                  <td><button type="button" onClick={orders => addOrder({name: "Major IC", amount: 1}, 30)}>Order</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div style={{order:2}} className="Rtable-cell">
+            <table className="rowTable">
+              <tbody>
+                <tr>
+                  <td><img src="images/facilities/minor.png" alt="Minor IC icon"/></td>
+                  <td>Minor Industrial Complex<p></p><p>Cost: 12</p></td>
+                  <td><button type="button" id="minorIC" onClick={orders => addOrder({name: "Minor IC", amount: 1}, 12)}>Order</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div style={{order:3}} className="Rtable-cell">
+            <table className="rowTable">
+              <tbody>
+                <tr>
+                  <td><img src="images/facilities/upgrade.png" alt="Upgrade IC icon"/></td>
+                  <td><p>Upgrade Minor Industrial Complex</p><p>Cost: 20</p></td>
+                  <td><button type="button" id="upgradeIC" onClick={orders => addOrder({name: "Upgraded Minor IC", amount: 1}, 20)}>Order</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div style={{order:4}} className="Rtable-cell">
+            <table className="rowTable">
+              <tbody>
+                <tr>
+                  <td><img src="images/facilities/airbase.png" alt="Airbase icon"/></td>
+                  <td><p>Air Base</p><p>Cost: 15</p></td>
+                  <td><button type="button" id="airBase" onClick={orders => addOrder({name: "Air Base", amount: 1}, 15)}>Order</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div style={{order:5}} className="Rtable-cell">
+            <table className="rowTable">
+              <tbody>
+                <tr>
+                  <td><img src="images/facilities/navalbase.png" alt="Navalbase icon"/></td>
+                  <td><p>Naval Base</p><p>Cost: 15</p></td>
+                  <td><button type="button" id="navalBase" onClick={orders => addOrder({name: "Naval Base", amount: 1}, 15)}>Order</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div style={{order:6}} className="Rtable-cell"><table className="rowTable"><tbody><tr><td className="col-xs-12"><br/></td></tr></tbody></table></div>
+          <div style={{order:7}} className="Rtable-cell Rtable-cell--foot"></div>
 
-              <td><img className="utilities" src="images/utilities/research.png" alt="Research icon"/></td>
-              <td><p>Research</p><p>Cost: 5</p></td>
-              <td><button type="button" id="research" onClick={orders => addOrder({name: "Research", amount: 1}, 5)}>Order</button></td>
-            </tr>
+          <div style={{order:0}} className="Rtable-cell Rtable-cell--head"><h3>Utilities</h3></div>
+          <div style={{order:1}} className="Rtable-cell">
+            <table className="rowTable">
+              <tbody>
+                <tr>
+                  <td><img className="utilities" src="images/utilities/research.png" alt="Research icon"/></td>
+                  <td><p>Research</p><p>Cost: 5</p></td>
+                  <td><button type="button" id="research" onClick={orders => addOrder({name: "Research", amount: 1}, 5)}>Order</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div style={{order:2}} className="Rtable-cell">
+            <table className="rowTable">
+              <tbody>
+                <tr>
+                  <td><img className="utilities" src="images/utilities/repair.jpg" alt="Repair icon"/></td>
+                  <td><p>Repair</p><p>Cost: 1</p></td>
+                  <td><button type="button" id="repair" onClick={orders => addOrder({name: "Repair", amount: 1}, 1)}>Order</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div style={{order:3}} className="Rtable-cell">
+            <table className="rowTable">
+              <tbody>
+                <tr>
+                  <td><img className="utilities" src="images/utilities/airlift.png" alt="Airlift icon"/></td>
+                  <td><p>Airlift</p><p>Cost: 5</p></td>
+                  <td><button type="button" id="airlift" onClick={orders => addOrder({name: "Airlift", amount: 1}, 5)}>Order</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div style={{order:4}} className="Rtable-cell"><table className="rowTable"><tbody><tr><td className="col-xs-12"><br/></td></tr></tbody></table></div>
+          <div style={{order:5}} className="Rtable-cell"><table className="rowTable"><tbody><tr><td className="col-xs-12"><br/></td></tr></tbody></table></div>
+          <div style={{order:6}} className="Rtable-cell"><table className="rowTable"><tbody><tr><td className="col-xs-12"><br/></td></tr></tbody></table></div>
+          <div style={{order:7}} className="Rtable-cell Rtable-cell--foot"></div>
 
-            <tr>
-              <td><img src={artilleryIcons[country.c_id]} alt="Artillery icon"/></td>
-              <td><p>Artillery</p><p>Cost: 4</p></td>
-              <td><button type="button" id="artillery" onClick={orders => addOrder({name: "Artillery", amount: 1}, 4)}>Order</button></td>
-
-              <td><img src={tacBomberIcons[country.c_id]} alt="Tactical Bomber icon"/></td>
-              <td><p>Tactical Bomber</p><p>Cost: 11</p></td>
-              <td><button type="button" id="tacBomber" onClick={orders => addOrder({name: "Tactical Bomber", amount: 1}, 11)}>Order</button></td>
-
-              <td><img src={carrierIcons[country.c_id]} alt="Aircraft Carrier icon"/></td>
-              <td><p>Aircraft Carrier</p><p>Cost: 16</p></td>
-              <td><button type="button" id="carrier" onClick={orders => addOrder({name: "Aircraft Carrier", amount: 1}, 16)}>Order</button></td>
-
-              <td><img src="images/facilities/minor.png" alt="Minor IC icon"/></td>
-              <td>Minor Industrial Complex<p></p><p>Cost: 12</p></td>
-              <td><button type="button" id="minorIC" onClick={orders => addOrder({name: "Minor IC", amount: 1}, 12)}>Order</button></td>
-
-              <td><img className="utilities" src="images/utilities/repair.jpg" alt="Repair icon"/></td>
-              <td><p>Repair</p><p>Cost: 1</p></td>
-              <td><button type="button" id="repair" onClick={orders => addOrder({name: "Repair", amount: 1}, 1)}>Order</button></td>
-            </tr>
-
-            <tr>
-              <td><img src={mechIcons[country.c_id]} alt="Mechanized Infantry icon"/></td>
-              <td><p>Mechanized Infantry</p><p>Cost: 4</p></td>
-              <td><button type="button" id="mecInfantry" onClick={orders => addOrder({name: "Mechanized Infantry", amount: 1}, 4)}>Order</button></td>
-
-              <td><img src={stratBomberIcons[country.c_id]} alt="Stategic Bomber icon"/></td>
-              <td><p>Strategic Bomber</p><p>Cost: 12</p></td>
-              <td><button type="button" id="stratBomber" onClick={orders => addOrder({name: "Strategic Bomber", amount: 1}, 12)}>Order</button></td>
-
-              <td><img src={cruiserIcons[country.c_id]} alt="Cruiser icon"/></td>
-              <td><p>Cruiser</p><p>Cost: 12</p></td>
-              <td><button type="button" id="cruiser" onClick={orders => addOrder({name: "Cruiser", amount: 1}, 12)}>Order</button></td>
-
-              <td><img src="images/facilities/upgrade.png" alt="Upgrade IC icon"/></td>
-              <td><p>Upgrade Minor Industrial Complex</p><p>Cost: 20</p></td>
-              <td><button type="button" id="upgradeIC" onClick={orders => addOrder({name: "Upgraded Minor IC", amount: 1}, 20)}>Order</button></td>
-
-              <td><img className="utilities" src="images/utilities/airlift.png" alt="Airlift icon"/></td>
-              <td><p>Airlift</p><p>Cost: 5</p></td>
-              <td><button type="button" id="airlift" onClick={orders => addOrder({name: "Airlift", amount: 1}, 5)}>Order</button></td>
-            </tr>
-
-            <tr>
-            <td><img src={tankIcons[country.c_id]} alt="Tank icon"/></td>
-              <td><p>Tank</p><p>Cost: 6</p></td>
-              <td><button type="button" id="tank" onClick={orders => addOrder({name: "Tank", amount: 1}, 6)}>Order</button></td>
-
-              <td></td>
-              <td></td>
-              <td></td>
-
-              <td><img src={destroyerIcons[country.c_id]} alt="Destroyer icon"/></td>
-              <td><p>Destroyer</p><p>Cost: 8</p></td>
-              <td><button type="button" id="destroyer" onClick={orders => addOrder({name: "Destroyer", amount: 1}, 8)}>Order</button></td>
-
-              <td><img src="images/facilities/airbase.png" alt="Airbase icon"/></td>
-              <td><p>Air Base</p><p>Cost: 15</p></td>
-              <td><button type="button" id="airBase" onClick={orders => addOrder({name: "Air Base", amount: 1}, 15)}>Order</button></td>
-
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-
-            <tr>
-              <td><img src={aaaIcons[country.c_id]} alt="Anti Aircraft Artillery icon"/></td>
-              <td><p>AAA</p><p>Cost: 5</p></td>
-              <td><button type="button" id="aaa" onClick={orders => addOrder({name: "AAA", amount: 1}, 5)}>Order</button></td>
-
-              <td></td>
-              <td></td>
-              <td></td>
-
-              <td><img src={subIcons[country.c_id]} alt="Submarine icon"/></td>
-              <td><p>Submarine</p><p>Cost: 6</p></td>
-              <td><button type="button" id="sub" onClick={orders => addOrder({name: "Submarine", amount: 1}, 6)}>Order</button></td>
-
-              <td><img src="images/facilities/navalbase.png" alt="Navalbase icon"/></td>
-              <td><p>Naval Base</p><p>Cost: 15</p></td>
-              <td><button type="button" id="navalBase" onClick={orders => addOrder({name: "Naval Base", amount: 1}, 15)}>Order</button></td>
-
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td><img src={transportIcons[country.c_id]} alt="Transport icon"/></td>
-              <td><p>Transport</p><p>Cost: 7</p></td>
-              <td><button type="button" id="transport" onClick={orders => addOrder({name: "Transport", amount: 1}, 7)}>Order</button></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-          </tbody>
-        </table>}
-
+        </div>}
+        
         {country.c_id === 4 && 
         
         <table id="unitTable" className="center">
@@ -392,15 +516,15 @@ export function Body(props) {
 
           <tbody>
             <tr>
-              <td><img src={infantryIcons[country.c_id]} alt="Infantry icon"/></td>
-              <td><p>Infantry</p><p>Cost: 3</p></td>
-              <td><button type="button" onClick={orders => addOrder({name: "Infantry", amount: 1}, 3)}>Order</button></td>
+             <td><img src={infantryIcons[country.c_id]} alt="Infantry icon"/></td>
+             <td><p>Infantry</p><p>Cost: 3</p></td>
+             <td><button type="button" onClick={orders => addOrder({name: "Infantry", amount: 1}, 3)}>Order</button></td>
             </tr>
 
             <tr>
-              <td><img src={artilleryIcons[country.c_id]} alt="Artillery icon"/></td>
-              <td><p>Artillery</p><p>Cost: 4</p></td>
-              <td><button type="button" id="artillery" onClick={orders => addOrder({name: "Artillery", amount: 1}, 4)}>Order</button></td>
+             <td><img src={artilleryIcons[country.c_id]} alt="Artillery icon"/></td>
+             <td><p>Artillery</p><p>Cost: 4</p></td>
+             <td><button type="button" id="artillery" onClick={orders => addOrder({name: "Artillery", amount: 1}, 4)}>Order</button></td>
             </tr>
 
           </tbody>
