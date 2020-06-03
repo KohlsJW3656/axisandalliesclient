@@ -58,18 +58,13 @@ function App() {
   }
 
   function setDateForward() {
-    let tempTurn = turn + 1;
-    if (tempTurn === 1) {
-      setDateString(seasons[0] + " " + dateYear);
+    let tempTurn = turn - 1;
+    if (tempTurn % 2 === 1) {
+      setDateYear(dateYear => dateYear + 1);
+      setDateString(seasons[0] + " " + (dateYear + 1));
     }
     else {
-      if (tempTurn % 2 === 1) {
-        setDateYear(dateYear => dateYear + 1);
-        setDateString(seasons[0] + " " + (dateYear + 1));
-      }
-      else {
-        setDateString(seasons[1] + " " + dateYear);
-      }
+      setDateString(seasons[1] + " " + dateYear);
     }
   }
 
@@ -80,6 +75,7 @@ function App() {
   const viewPurchases = () => {
     dispatch(getPurchase());
   }
+  /*https://medium.com/poka-techblog/simplify-your-javascript-use-map-reduce-and-filter-bd02c593cc2d*/
 
   return (
     <div>
