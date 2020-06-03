@@ -55,7 +55,6 @@ export function Body(props) {
     setOrders(orders => orders.filter(order => order.name !== name));
   }
   
-  //Change this to set amount
   const addOrder = (newOrder) => {
     if (country.ipcs >= totalCost + newOrder.cost) {
       if (orders.filter(order => order.name === newOrder.name).length < 1) {
