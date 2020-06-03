@@ -54,7 +54,7 @@ function App() {
     }
     else {    
       setDateString(seasons[0] + " " + dateYear);
-    }  
+    }
   }
 
   function setDateForward() {
