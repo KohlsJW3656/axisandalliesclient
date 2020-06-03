@@ -50,7 +50,7 @@ export function Body(props) {
   const carrierIcon     = "images/troops/" + countrySrc[country.c_id] + "/carrier.png";
   const battleshipIcon  = "images/troops/" + countrySrc[country.c_id] + "/battleship.png";
 
-  //Change this to pass up the order that was pressed. Then we can filter out the order and also update the total cost
+  //Change this to pass up the order that was pressed. Then we can filter out the order and also update the total cost 
   const removeOrder = name => {
     setOrders(orders => orders.filter(order => order.name !== name));
   }
