@@ -87,7 +87,7 @@ function App() {
         <Body country={country} dateString={dateString} turn={turn}/>
       </div>
       <div id="reportRoot">
-        {purchases.map(purchase => <Report key={Math.random()  * (+1000 - +1) + +1000} purchase={purchase}/>)}
+        {([...new Set(purchases.map(purchase => ({c_id: purchase.c_id, turn: purchase.turn, season_year: purchase.season_year})).map(countryTurn => JSON.stringify(countryTurn)))].map(s => JSON.parse(s))).map(uniquePurchase => <Report key={uniquePurchase.c_id + "" + uniquePurchase.turn} uniquePurchase={uniquePurchase} purchases={purchases}/>)}
       </div>
       <div>
         <p className="center">&copy; 2020</p>
