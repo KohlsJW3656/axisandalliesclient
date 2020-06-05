@@ -27,7 +27,7 @@ const backgroundId = ["backgroundGermany",
 
 export function Body(props) {
   const turn = props.turn;
-  const dateString = props.dateString;
+  const seasonYear = props.seasonYear;
 
   const dispatch = useDispatch();
   const country = props.country;
@@ -90,8 +90,8 @@ export function Body(props) {
     setTotalCost(totalCost => 0);
   }
 
-  const addPurchase = (orders, country, dateString, turn) => {
-    orders.map(order => dispatch(startAddingPurchase(order.name, order.amount, country.c_id, dateString, turn)));
+  const addPurchase = (orders, country, seasonYear, turn) => {
+    orders.map(order => dispatch(startAddingPurchase(order.name, order.amount, country.c_id, seasonYear, turn)));
     clearOrders();
   }
   
@@ -120,7 +120,7 @@ export function Body(props) {
     <div>
       <div className="col-xs-12 col-md-2" id="unitColumn">
         <h2>Total Cost: {totalCost}</h2>
-        <button type="button" className="closeButtons" onClick={() => addPurchase(orders, country, dateString, turn)}>Purchase</button>
+        <button type="button" className="closeButtons" onClick={() => addPurchase(orders, country, seasonYear, turn)}>Purchase</button>
         <button type="button" className="closeButtons" onClick={() => clearOrders()}>Clear Orders</button>
 
         <h3>Ordered:</h3>
