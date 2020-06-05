@@ -9,9 +9,9 @@ import {Report} from './Report';
 function App() {
   const dispatch = useDispatch();
   let [turn, setTurn] = useState(1);
-  const seasons = ["Spring/Summer", "Fall/Winter"];
-  let [dateYear, setDateYear] = useState(1940);
-  let [dateString, setDateString] = useState(seasons[0] + " " + dateYear);
+  const seasons = ["Spring/Summer, ", "Fall/Winter, "];
+  let [year, setYear] = useState(1940);
+  let [seasonYear, setSeasonYear] = useState(seasons[0] + year);
   let [i, setI] = useState(0);
 
   const country = useSelector(state => state.country);
@@ -49,22 +49,22 @@ function App() {
   function setDateBackward() {
     let tempTurn = turn - 1;
     if (tempTurn % 2 === 0) {
-      setDateYear(dateYear => dateYear - 1);
-      setDateString(seasons[1] + " " + (dateYear - 1));
+      setYear(year => year - 1);
+      setSeasonYear(seasons[1] + (year - 1));
     }
     else {    
-      setDateString(seasons[0] + " " + dateYear);
+      setSeasonYear(seasons[0] + year);
     }
   }
 
   function setDateForward() {
     let tempTurn = turn - 1;
     if (tempTurn % 2 === 1) {
-      setDateYear(dateYear => dateYear + 1);
-      setDateString(seasons[0] + " " + (dateYear + 1));
+      setYear(year => year + 1);
+      setSeasonYear(seasons[0] + (year + 1));
     }
     else {
-      setDateString(seasons[1] + " " + dateYear);
+      setSeasonYear(seasons[1] + year);
     }
   }
 
@@ -75,16 +75,15 @@ function App() {
   const viewPurchases = () => {
     dispatch(getPurchase());
   }
-  /*https://medium.com/poka-techblog/simplify-your-javascript-use-map-reduce-and-filter-bd02c593cc2d*/
 
   return (
     <div>
       <div id="headerRoot">
-        <Header turn={turn} dateString={dateString} country={country} leftArrow={leftArrow} rightArrow={rightArrow} resetPurchases={resetPurchases} viewPurchases={viewPurchases}/>
+        <Header turn={turn} seasonYear={seasonYear} country={country} leftArrow={leftArrow} rightArrow={rightArrow} resetPurchases={resetPurchases} viewPurchases={viewPurchases}/>
       </div>
       {isWaiting && <div className="spinner" />}
       <div id="middleRoot" className="row">
-        <Body country={country} dateString={dateString} turn={turn}/>
+        <Body country={country} seasonYear={seasonYear} turn={turn}/>
       </div>
       <div id="reportRoot">
         {([...new Set(purchases.map(purchase => ({c_id: purchase.c_id, turn: purchase.turn, season_year: purchase.season_year})).map(countryTurn => JSON.stringify(countryTurn)))].map(s => JSON.parse(s))).map(uniquePurchase => <Report key={uniquePurchase.c_id + "" + uniquePurchase.turn} uniquePurchase={uniquePurchase} purchases={purchases}/>)}

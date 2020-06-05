@@ -3,24 +3,15 @@ import React, {useState} from 'react';
 export function Header(props) {
   const [pressed, setPressed] = useState(false);
   const country = props.country;
-  const flags = ["/images/flags/germany.png", 
-                 "/images/flags/sovietunion.jpg",
-                 "/images/flags/japan.png",
-                 "/images/flags/usa.jpg",
-                 "/images/flags/china.png",
-                 "/images/flags/ukeurope.png",
-                 "/images/flags/ukpacific.png",
-                 "/images/flags/italy.png",
-                 "/images/flags/anzac.jpg",
-                 "/images/flags/france.jpg"
-  ];
+  const flagSrc = ["germany.png", "sovietunion.jpg", "japan.png", "usa.jpg", "china.png", "ukeurope.png", "ukpacific.png", "italy.png", "anzac.jpg", "france.jpg"];
+  const flags = "images/flags/" + flagSrc[country.c_id];
 
   return (
     <div className="header">
       <div className="row">
         <div className="col-xs-12 col-md-3">
           <div className="row"><h2>Turn: {props.turn}</h2></div>
-          <div className="row"><h2>{props.dateString}</h2></div>
+          <div className="row"><h2>{props.seasonYear}</h2></div>
         </div>
         <div className="col-xs-12 col-md-6">
           <br/>
@@ -44,7 +35,7 @@ export function Header(props) {
       <div className="row">
         <div id="infoRow1">
           <div className="col-xs-12 col-md-3 col-lg-2">
-            <img src={flags[country.c_id]} alt="Country Flag"/>
+            <img src={flags} alt="Country Flag"/>
           </div>
           <div className="col-xs-12 col-md-4">
             <h2 id="country1">Country: {country.c_name}</h2>

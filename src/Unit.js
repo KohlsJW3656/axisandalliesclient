@@ -68,8 +68,72 @@ export function Unit(props) {
   else {
     srcString = imageFolder + countrySRC[purchase.c_id] + "/" + unitName;
   }
-  
+
   return (
-    <img src={srcString.toLowerCase()} alt={purchase.p_name + " icon"} className="unit"/>
+    <span>
+      <img src={srcString.toLowerCase()} alt={purchase.p_name + ' icon'} className='unit'/>
+      <span className="unitAmount">{purchase.amount}</span>
+    </span>
+    
+    /*
+    <span>
+      {purchase.amount === 1 &&
+        <span>
+          <img src={srcString.toLowerCase()} alt={purchase.p_name + ' icon'} className='unit'/>
+        </span>
+      }
+      {purchase.amount === 2 &&
+        <span>
+          <img src={srcString.toLowerCase()} alt={purchase.p_name + ' icon'} className='unit'/>
+          <img src={srcString.toLowerCase()} alt={purchase.p_name + ' icon'} className='unit'/>
+        </span>
+      }
+      {purchase.amount === 3 &&
+        <span>
+          <img src={srcString.toLowerCase()} alt={purchase.p_name + ' icon'} className='unit'/>
+          <img src={srcString.toLowerCase()} alt={purchase.p_name + ' icon'} className='unit'/>
+          <img src={srcString.toLowerCase()} alt={purchase.p_name + ' icon'} className='unit'/>
+        </span>
+      }
+      {purchase.amount === 4 &&
+        <span>
+          <img src={srcString.toLowerCase()} alt={purchase.p_name + ' icon'} className='unit'/>
+          <img src={srcString.toLowerCase()} alt={purchase.p_name + ' icon'} className='unit'/>
+          <img src={srcString.toLowerCase()} alt={purchase.p_name + ' icon'} className='unit'/>
+          <img src={srcString.toLowerCase()} alt={purchase.p_name + ' icon'} className='unit'/>
+        </span>
+      }
+      {purchase.amount === 5 &&
+        <span>
+          <img src={srcString.toLowerCase()} alt={purchase.p_name + ' icon'} className='unit'/>
+          <img src={srcString.toLowerCase()} alt={purchase.p_name + ' icon'} className='unit'/>
+          <img src={srcString.toLowerCase()} alt={purchase.p_name + ' icon'} className='unit'/>
+          <img src={srcString.toLowerCase()} alt={purchase.p_name + ' icon'} className='unit'/>
+          <img src={srcString.toLowerCase()} alt={purchase.p_name + ' icon'} className='unit'/>
+        </span>
+      }
+      {purchase.amount === 6 &&
+        <span>
+          <img src={srcString.toLowerCase()} alt={purchase.p_name + ' icon'} className='unit'/>
+          <img src={srcString.toLowerCase()} alt={purchase.p_name + ' icon'} className='unit'/>
+          <img src={srcString.toLowerCase()} alt={purchase.p_name + ' icon'} className='unit'/>
+          <img src={srcString.toLowerCase()} alt={purchase.p_name + ' icon'} className='unit'/>
+          <img src={srcString.toLowerCase()} alt={purchase.p_name + ' icon'} className='unit'/>
+          <img src={srcString.toLowerCase()} alt={purchase.p_name + ' icon'} className='unit'/>
+        </span>
+      }
+      {purchase.amount === 7 &&
+        <span>
+          <img src={srcString.toLowerCase()} alt={purchase.p_name + ' icon'} className='unit'/>
+          <img src={srcString.toLowerCase()} alt={purchase.p_name + ' icon'} className='unit'/>
+          <img src={srcString.toLowerCase()} alt={purchase.p_name + ' icon'} className='unit'/>
+          <img src={srcString.toLowerCase()} alt={purchase.p_name + ' icon'} className='unit'/>
+          <img src={srcString.toLowerCase()} alt={purchase.p_name + ' icon'} className='unit'/>
+          <img src={srcString.toLowerCase()} alt={purchase.p_name + ' icon'} className='unit'/>
+          <img src={srcString.toLowerCase()} alt={purchase.p_name + ' icon'} className='unit'/>
+        </span>
+      }
+    </span>
+    */
   );
 }

@@ -35,21 +35,37 @@ export function Body(props) {
   const [totalCost, setTotalCost] = useState(0);
 
   const countrySrc = ["germany", "sovietunion", "japan", "usa", "china", "uk", "uk", "italy", "anzac", "france"];
-  const infantryIcon    = "images/troops/" + countrySrc[country.c_id] + "/infantry.png";
-  const artilleryIcon   = "images/troops/" + countrySrc[country.c_id] + "/artillery.png";
-  const mechIcon        = "images/troops/" + countrySrc[country.c_id] + "/mech.png";
-  const tankIcon        = "images/troops/" + countrySrc[country.c_id] + "/tank.png";
-  const aaaIcon         = "images/troops/" + countrySrc[country.c_id] + "/aaa.png";
-  const fighterIcon     = "images/troops/" + countrySrc[country.c_id] + "/fighter.png";
-  const tacBomberIcon   = "images/troops/" + countrySrc[country.c_id] + "/tacbomber.png";
-  const stratBomberIcon = "images/troops/" + countrySrc[country.c_id] + "/stratbomber.png";
-  const subIcon         = "images/troops/" + countrySrc[country.c_id] + "/submarine.png";
-  const transportIcon   = "images/troops/" + countrySrc[country.c_id] + "/transport.png";
-  const destroyerIcon   = "images/troops/" + countrySrc[country.c_id] + "/destroyer.png";
-  const cruiserIcon     = "images/troops/" + countrySrc[country.c_id] + "/cruiser.png";
-  const carrierIcon     = "images/troops/" + countrySrc[country.c_id] + "/carrier.png";
-  const battleshipIcon  = "images/troops/" + countrySrc[country.c_id] + "/battleship.png";
+  let infantryIcon, artilleryIcon, mechIcon, tankIcon, aaaIcon, fighterIcon, tacBomberIcon, stratBomberIcon, subIcon, transportIcon, destroyerIcon, cruiserIcon, carrierIcon, battleshipIcon, minorIcon, airbaseIcon, navalbaseIcon, upgradeIcon, majorIcon, repairIcon, researchIcon, airliftIcon;
 
+  //Prevent errors on startup
+  if(country.c_id !== undefined) {
+    infantryIcon  = "images/troops/" + countrySrc[country.c_id] + "/infantry.png";
+    artilleryIcon = "images/troops/" + countrySrc[country.c_id] + "/artillery.png";
+    
+    //Prevent errors on china turn
+    if(country.c_id !== 4) {
+      mechIcon        = "images/troops/" + countrySrc[country.c_id] + "/mech.png";
+      tankIcon        = "images/troops/" + countrySrc[country.c_id] + "/tank.png";
+      aaaIcon         = "images/troops/" + countrySrc[country.c_id] + "/aaa.png";
+      fighterIcon     = "images/troops/" + countrySrc[country.c_id] + "/fighter.png";
+      tacBomberIcon   = "images/troops/" + countrySrc[country.c_id] + "/tacbomber.png";
+      stratBomberIcon = "images/troops/" + countrySrc[country.c_id] + "/stratbomber.png";
+      subIcon         = "images/troops/" + countrySrc[country.c_id] + "/submarine.png";
+      transportIcon   = "images/troops/" + countrySrc[country.c_id] + "/transport.png";
+      destroyerIcon   = "images/troops/" + countrySrc[country.c_id] + "/destroyer.png";
+      cruiserIcon     = "images/troops/" + countrySrc[country.c_id] + "/cruiser.png";
+      carrierIcon     = "images/troops/" + countrySrc[country.c_id] + "/carrier.png";
+      battleshipIcon  = "images/troops/" + countrySrc[country.c_id] + "/battleship.png";
+      minorIcon       = "images/facilities/minor.png";
+      airbaseIcon     = "images/facilities/airbase.png";
+      navalbaseIcon   = "images/facilities/navalbase.png";
+      upgradeIcon     = "images/facilities/upgrade.png";
+      majorIcon       = "images/facilities/major.png";
+      repairIcon      = "images/utilities/repair.jpg";
+      researchIcon    = "images/utilities/research.png";
+      airliftIcon     = "images/utilities/airlift.png";
+    }
+  }
   //Change this to pass up the order that was pressed. Then we can filter out the order and also update the total cost 
   const removeOrder = name => {
     setOrders(orders => orders.filter(order => order.name !== name));
@@ -227,31 +243,31 @@ export function Body(props) {
           {/*Facilities Column*/}
           <div style={{order:0}} className="Rtable-cell Rtable-cell--head facilities hiddenSmall"><h3>Facilities</h3></div>
           <div style={{order:1}} className="Rtable-cell table-item facilities hiddenSmall" onClick={orders => addOrder({name: "Minor IC", amount: 1, cost: 12})}>
-            <img className="facilities" src="images/facilities/minor.png" alt="Minor IC icon"/>
+            <img className="facilities" src={minorIcon} alt="Minor IC icon"/>
             <h3>Minor Industrial Complex</h3>
             <p>12</p>
           </div>
 
           <div style={{order:2}} className="Rtable-cell table-item facilities hiddenSmall" onClick={orders => addOrder({name: "Air Base", amount: 1, cost: 15})}>
-            <img className="facilities" src="images/facilities/airbase.png" alt="Air Base icon"/>
+            <img className="facilities" src={airbaseIcon} alt="Air Base icon"/>
             <h3>Air Base</h3>
             <p>15</p>
           </div>
 
           <div style={{order:3}} className="Rtable-cell table-item facilities hiddenSmall" onClick={orders => addOrder({name: "Naval Base", amount: 1, cost: 15})}>
-            <img className="facilities" src="images/facilities/navalbase.png" alt="Naval Base icon"/>
+            <img className="facilities" src={navalbaseIcon} alt="Naval Base icon"/>
             <h3>Naval Base</h3>
             <p>15</p>
           </div>
 
           <div style={{order:4}} className="Rtable-cell table-item facilities hiddenSmall" onClick={orders => addOrder({name: "Upgraded Minor IC", amount: 1, cost: 20})}>
-            <img className="facilities" src="images/facilities/upgrade.png" alt="Upgrade IC icon"/>
+            <img className="facilities" src={upgradeIcon} alt="Upgrade IC icon"/>
             <h3>Upgrade Minor IC</h3>
             <p>20</p>
           </div>
           
           <div style={{order:5}} className="Rtable-cell table-item facilities hiddenSmall" onClick={orders => addOrder({name: "Major IC", amount: 1, cost: 30})}>
-            <img className="facilities" src="images/facilities/major.png" alt="Major IC icon"/>
+            <img className="facilities" src={majorIcon} alt="Major IC icon"/>
             <h3>Major Industrial Complex</h3>
             <p>30</p>
           </div>
@@ -262,19 +278,19 @@ export function Body(props) {
           {/*Utilities Column*/}
           <div style={{order:0}} className="Rtable-cell Rtable-cell--head utilities hiddenSmall"><h3>Utilities</h3></div>
           <div style={{order:1}} className="Rtable-cell table-item utilities hiddenSmall" onClick={orders => addOrder({name: "Repair", amount: 1, cost: 1})}>
-            <img className="utilities" src="images/utilities/repair.jpg" alt="Repair icon"/>
+            <img className="utilities" src={repairIcon} alt="Repair icon"/>
             <h3>Repair</h3>
             <p>1</p>
           </div>
             
           <div style={{order:2}} className="Rtable-cell table-item utilities hiddenSmall" onClick={orders => addOrder({name: "Research", amount: 1, cost: 5})}>
-            <img className="utilities" src="images/utilities/research.png" alt="Research icon"/>
+            <img className="utilities" src={researchIcon} alt="Research icon"/>
             <h3>Research</h3>
             <p>5</p>
           </div>
 
           <div style={{order:3}} className="Rtable-cell table-item utilities hiddenSmall" onClick={orders => addOrder({name: "Airlift", amount: 1, cost: 5})}>
-            <img className="utilities" src="images/utilities/airlift.png" alt="Airlift icon"/>
+            <img className="utilities" src={airliftIcon} alt="Airlift icon"/>
             <h3>Airlift</h3>
             <p>5</p>
           </div>

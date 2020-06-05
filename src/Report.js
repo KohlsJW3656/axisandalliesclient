@@ -9,9 +9,9 @@ export function Report(props) {
   return (
     <div className="report">
       <h1>{countries[uniquePurchase.c_id]}</h1>
-      <p>Units: <span>{purchases.filter(purchase => purchase.c_id === uniquePurchase.c_id && purchase.turn === uniquePurchase.turn).map(purchaseTurnCountry => <Unit key={purchaseTurnCountry.p_name} purchase={purchaseTurnCountry}/>)}</span></p>
-      <p>{uniquePurchase.season_year}</p>
-      <p>Turn: {uniquePurchase.turn}</p>
+      <h2>Units: <span>{purchases.filter(purchase => purchase.c_id === uniquePurchase.c_id && purchase.turn === uniquePurchase.turn).map(purchaseTurnCountry => <Unit key={purchaseTurnCountry.p_name} purchase={purchaseTurnCountry}/>)}</span></h2>
+      <h3>{uniquePurchase.season_year}</h3> 
+      <h3>Turn: {uniquePurchase.turn}</h3>
     </div>
   );
 }
