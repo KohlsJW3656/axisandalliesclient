@@ -66,9 +66,10 @@ export function Body(props) {
       airliftIcon     = "images/utilities/airlift.png";
     }
   }
-  //Change this to pass up the order that was pressed. Then we can filter out the order and also update the total cost 
-  const removeOrder = name => {
+
+  const removeOrder = (name, amount, cost) => {
     setOrders(orders => orders.filter(order => order.name !== name));
+    setTotalCost(totalCost => totalCost - (amount * cost));
   }
   
   const addOrder = (newOrder) => {
