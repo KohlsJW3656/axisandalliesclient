@@ -3,7 +3,7 @@ import './App.css';
 import {Header} from './Header';
 import {Body} from './Body';
 import {useSelector, useDispatch} from 'react-redux';
-import {getCountry, getPurchase, deletePurchase, deleteIncome, getIncome} from './actions';
+import {getCountry, getPurchase, deletePurchase, deleteIncome} from './actions';
 import {Report} from './Report';
 import {IPCs} from './IPCs';
 
@@ -18,7 +18,7 @@ function App() {
   const country = useSelector(state => state.country);
   const isWaiting = useSelector(state => state.isWaiting);
   const purchases = useSelector(state => state.purchases);
-  const incomes = useSelector(state => state.incomes);
+  //const incomes = useSelector(state => state.incomes);
 
   useEffect(() => {
     dispatch(getCountry(i));
@@ -93,7 +93,7 @@ function App() {
         <IPCs country={country} turn={turn} seasonYear={seasonYear}/>
       </div>
       <div id="reportRoot">
-        {([...new Set(purchases.map(purchase => ({c_id: purchase.c_id, turn: purchase.turn, season_year: purchase.season_year})).map(countryTurn => JSON.stringify(countryTurn)))].map(s => JSON.parse(s))).map(uniquePurchase => <Report key={uniquePurchase.c_id + "" + uniquePurchase.turn} uniquePurchase={uniquePurchase} incomes={incomes} purchases={purchases}/>)}
+        {([...new Set(purchases.map(purchase => ({c_id: purchase.c_id, turn: purchase.turn, season_year: purchase.season_year})).map(countryTurn => JSON.stringify(countryTurn)))].map(s => JSON.parse(s))).map(uniquePurchase => <Report key={uniquePurchase.c_id + "" + uniquePurchase.turn} uniquePurchase={uniquePurchase} purchases={purchases}/>)}
       </div>
       <div>
         <p className="center">&copy; 2020</p>
