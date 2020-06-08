@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {Order} from './Order';
-import {startAddingPurchase} from './actions';
+import {startAddingPurchase, startEditingCountry} from './actions';
 
 const background = ["images/background/germany.png",
                   "images/background/sovietunion.png",
@@ -91,8 +91,13 @@ export function Body(props) {
     setTotalCost(totalCost => 0);
   }
 
-  const addPurchase = (orders, country, seasonYear, turn) => {
-    orders.map(order => dispatch(startAddingPurchase(order.name, order.amount, country.c_id, seasonYear, turn)));
+  const addPurchase = (orders, country, totalCost, seasonYear, turn) => {
+    orders.map(order => dispatch(startAddingPurchase(order.name, order.amount, country.c_id, totalCost, seasonYear, turn)));
+    dispatch(startEditingCountry({
+      c_id: country.c_id,
+      c_name: country.c_name,
+      ipcs: country.ipcs - totalCost,
+    }));
     clearOrders();
   }
   
@@ -121,7 +126,7 @@ export function Body(props) {
     <div>
       <div className="col-xs-12 col-md-2" id="unitColumn">
         <h2>Total Cost: {totalCost}</h2>
-        <button type="button" className="closeButtons" onClick={() => addPurchase(orders, country, seasonYear, turn)}>Purchase</button>
+        <button type="button" className="closeButtons" onClick={() => addPurchase(orders, country, totalCost, seasonYear, turn)}>Purchase</button>
         <button type="button" className="closeButtons" onClick={() => clearOrders()}>Clear Orders</button>
 
         <h3>Ordered:</h3>

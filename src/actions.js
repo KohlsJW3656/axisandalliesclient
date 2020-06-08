@@ -1,10 +1,16 @@
 export const Action = Object.freeze({
-  LoadCountry: 'LoadCountry', 
+  StartWaiting: 'StartWaiting',
   StartAddingPurchase: 'StartAddingPurchase',
   FinishAddingPurchase: 'FinishAddingPurchase',
-  StartWaiting: 'StartWaiting',
+  StartAddingIncome: 'StartAddingIncome',
+  FinishAddingIncome: 'FinishAddingIncome',
+  startEditingCountry: 'StartEditingCountry',
+  FinishEditingCountry: 'FinishEditingCountry',
+  LoadCountry: 'LoadCountry', 
   LoadPurchase: 'LoadPurchase',
-  StartDeleting: 'StartDeleting',
+  LoadIncome: 'LoadIncome',
+  StartDeletingPurchase: 'StartDeletingPurchase',
+  StartDeletingIncome: 'StartDeletingIncome',
 });
 
 const host = 'https://axisandallies-server.duckdns.org:8442';
@@ -29,10 +35,10 @@ export function finishAddingPurchase(purchase) {
   };
 }
 
-export function startAddingPurchase(p_name, amount, c_id, season_year, turn) {
-  const purchase = {p_name, amount, c_id, season_year, turn};
+export function startAddingPurchase(p_name, amount, c_id, cost, season_year, turn) {
+  const purchase = {p_name, amount, c_id, cost, season_year, turn};
   const options = {
-    method: 'POST',
+    method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
     },
@@ -53,7 +59,6 @@ export function startAddingPurchase(p_name, amount, c_id, season_year, turn) {
     .catch(e => console.error(e));
   };
 }
-
 
 export function loadPurchase(purchase) {
   return {
@@ -99,9 +104,38 @@ export function getCountry(c_id) {
   };
 }
 
-export function startDeleting(purchase) {
+export function finishEditingCountry(country) {
   return {
-    type: Action.StartDeleting,
+    type: Action.FinishEditingCountry,
+    payload: country,
+  };
+}
+
+export function startEditingCountry(country) {
+  const options = {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(country),
+  }
+  return dispatch => {
+    dispatch(startWaiting());
+    fetch(`${host}/country/${country.c_id}`, options)
+    .then(checkForErrors)
+    .then(response => response.json())
+    .then(data => {
+      if (data.ok) {
+        dispatch(finishEditingCountry(country));
+      }
+    })
+    .catch(e => console.error(e));
+  };
+}
+
+export function startDeletingPurchase(purchase) {
+  return {
+    type: Action.StartDeletingPurchase,
     payload: purchase,
   };
 }
@@ -117,7 +151,86 @@ export function deletePurchase() {
     .then(response => response.json())
     .then(data => {
       if (data.ok){
-        dispatch(startDeleting());
+        dispatch(startDeletingPurchase());
+      }
+    })
+    .catch(e => console.error(e));
+  };
+}
+
+export function finishAddingIncome(income) {
+  return {
+    type: Action.FinishAddingIncome,
+    payload: income,
+  };
+}
+
+export function startAddingIncome(c_id, revenue, lost, season_year, turn) {
+  const income = {c_id, revenue, lost, season_year, turn};
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(income),
+  }
+  return dispatch => {
+    dispatch(startWaiting());
+    fetch(`${host}/income`, options)
+    .then(checkForErrors)
+    .then(response => response.json())
+    .then(data => {
+      if (data.ok) {
+        income.c_id = data.c_id;
+        income.turn = data.turn;
+        dispatch(finishAddingIncome(income));
+      }
+    })
+    .catch(e => console.error(e));
+  };
+}
+
+export function loadIncome(income) {
+  return {
+    type: Action.LoadIncome,
+    payload: income,
+  }
+}
+
+export function getIncome() {
+  return dispatch => {
+  dispatch(startWaiting());
+  fetch(`${host}/income`)
+    .then(checkForErrors)
+    .then(response => response.json())
+    .then(data => {
+      if (data.ok){
+        dispatch(loadPurchase(data.income));
+      }
+    })
+    .catch(e => console.error(e));
+  };
+}
+
+export function startDeletingIncome(income) {
+  return {
+    type: Action.StartDeletingIncome,
+    payload: income,
+  };
+}
+
+export function deleteIncome() {
+  const requestDelete = {
+    method: 'DELETE'
+  };
+  return dispatch => {
+    dispatch(startWaiting());
+    fetch(`${host}/income`, requestDelete)
+    .then(checkForErrors)
+    .then(response => response.json())
+    .then(data => {
+      if (data.ok){
+        dispatch(startDeletingIncome());
       }
     })
     .catch(e => console.error(e));

@@ -3,8 +3,9 @@ import './App.css';
 import {Header} from './Header';
 import {Body} from './Body';
 import {useSelector, useDispatch} from 'react-redux';
-import {getCountry, getPurchase, deletePurchase} from './actions';
+import {getCountry, getPurchase, deletePurchase, deleteIncome, getIncome} from './actions';
 import {Report} from './Report';
+import {IPCs} from './IPCs';
 
 function App() {
   const dispatch = useDispatch();
@@ -17,6 +18,7 @@ function App() {
   const country = useSelector(state => state.country);
   const isWaiting = useSelector(state => state.isWaiting);
   const purchases = useSelector(state => state.purchases);
+  const incomes = useSelector(state => state.incomes);
 
   useEffect(() => {
     dispatch(getCountry(i));
@@ -68,25 +70,30 @@ function App() {
     }
   }
 
-  const resetPurchases = () => {
+  const resetDatabase = () => {
     dispatch(deletePurchase());
+    dispatch(deleteIncome());
   }
 
-  const viewPurchases = () => {
+  const viewReport = () => {
     dispatch(getPurchase());
+    //dispatch(getIncome());
   }
 
   return (
     <div>
       <div id="headerRoot">
-        <Header turn={turn} seasonYear={seasonYear} country={country} leftArrow={leftArrow} rightArrow={rightArrow} resetPurchases={resetPurchases} viewPurchases={viewPurchases}/>
+        <Header turn={turn} seasonYear={seasonYear} country={country} leftArrow={leftArrow} rightArrow={rightArrow} resetDatabase={resetDatabase} viewReport={viewReport}/>
       </div>
       {isWaiting && <div className="spinner" />}
       <div id="middleRoot" className="row">
         <Body country={country} seasonYear={seasonYear} turn={turn}/>
       </div>
+      <div id="ipcRoot" className="row">
+        <IPCs country={country} turn={turn} seasonYear={seasonYear}/>
+      </div>
       <div id="reportRoot">
-        {([...new Set(purchases.map(purchase => ({c_id: purchase.c_id, turn: purchase.turn, season_year: purchase.season_year})).map(countryTurn => JSON.stringify(countryTurn)))].map(s => JSON.parse(s))).map(uniquePurchase => <Report key={uniquePurchase.c_id + "" + uniquePurchase.turn} uniquePurchase={uniquePurchase} purchases={purchases}/>)}
+        {([...new Set(purchases.map(purchase => ({c_id: purchase.c_id, turn: purchase.turn, season_year: purchase.season_year})).map(countryTurn => JSON.stringify(countryTurn)))].map(s => JSON.parse(s))).map(uniquePurchase => <Report key={uniquePurchase.c_id + "" + uniquePurchase.turn} uniquePurchase={uniquePurchase} incomes={incomes} purchases={purchases}/>)}
       </div>
       <div>
         <p className="center">&copy; 2020</p>

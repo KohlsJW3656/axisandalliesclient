@@ -47,8 +47,8 @@ export function Header(props) {
           <div className="col-xs-12 col-md-2 col-lg-4">
             <br/>
             <button type="button" className="closeButtons" onClick={() => {setPressed(pressed => !pressed)}}>Instructions</button>
-            <button type="button" className="closeButtons" onClick={() => props.viewPurchases()}>View Purchases</button>
-            <button type="button" className="closeButtons" onClick={() => props.resetPurchases()}>Clear Purchase Database</button>
+            <button type="button" className="closeButtons" onClick={() => props.viewReport()}>View Report</button>
+            <button type="button" className="closeButtons" onClick={() => props.resetDatabase()}>Reset Database</button>
           </div>
           <div className="col-xs-12 col-md-3 col-lg-2">
             <br/>
@@ -64,8 +64,8 @@ export function Header(props) {
           <p><b>Order:</b> Adds troops to a cart.</p>   
           <p><b>Clear Orders:</b> Resets cart and total cost.</p>
           <p><b>Purchase:</b> Sends troops to a database. Make sure country, turn, and troop are different from other entries.</p>
-          <p><b>View Purchases:</b> View all purchase history.</p>
-          <p><b>Clear Purchase Database:</b> Clears purchase history.</p>
+          <p><b>View Report:</b> View all history.</p>
+          <p><b>Reset Database:</b> Clears purchase history and income history.</p>
           <p><b>Select Country Arrows:</b> Change country. When all countries cycle, turn changes.</p>
         </div>
       </div>
