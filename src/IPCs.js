@@ -21,6 +21,8 @@ export function IPCs(props) {
     income = revenue - convoy;
     editCountry(income);
     addIncome(country, revenue, convoy, seasonYear, turn);
+    document.getElementById("revenue").value = "";
+    document.getElementById("convoy").value = "";
   }
 
   const editCountry = (income) => {

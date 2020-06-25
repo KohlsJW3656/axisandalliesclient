@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {useDispatch} from 'react-redux';
 import {Order} from './Order';
 import {startAddingPurchase, startEditingCountry} from './actions';
@@ -33,6 +33,7 @@ export function Body(props) {
   const country = props.country;
   const [orders, setOrders] =  useState([]);
   const [totalCost, setTotalCost] = useState(0);
+  const [purchasingPower, setPurchasingPower] = useState(country.ipcs);
 
   const countrySrc = ["germany", "sovietunion", "japan", "usa", "china", "uk", "uk", "italy", "anzac", "france"];
   let infantryIcon, artilleryIcon, mechIcon, tankIcon, aaaIcon, fighterIcon, tacBomberIcon, stratBomberIcon, subIcon, transportIcon, destroyerIcon, cruiserIcon, carrierIcon, battleshipIcon, minorIcon, airbaseIcon, navalbaseIcon, upgradeIcon, majorIcon, repairIcon, researchIcon, airliftIcon;
@@ -67,9 +68,14 @@ export function Body(props) {
     }
   }
 
+  useEffect(() => {
+    setPurchasingPower(country.ipcs);
+  }, [country.ipcs]);
+
   const removeOrder = (name, amount, cost) => {
     setOrders(orders => orders.filter(order => order.name !== name));
     setTotalCost(totalCost => totalCost - (amount * cost));
+    setPurchasingPower(purchasingPower => purchasingPower + (amount * cost))
   }
   
   const addOrder = (newOrder) => {
@@ -83,12 +89,14 @@ export function Body(props) {
         setOrders(orders => [oldOrder, ...orders.filter(order => order.name !== newOrder.name)])
       }
       setTotalCost(totalCost => totalCost + newOrder.cost);
+      setPurchasingPower(purchasingPower => purchasingPower - newOrder.cost);
     }
   }
 
   const clearOrders = () => {
-    setOrders(orders => []);
-    setTotalCost(totalCost => 0);
+    setOrders([]);
+    setTotalCost(0);
+    setPurchasingPower(country.ipcs);
   }
 
   const addPurchase = (orders, country, totalCost, seasonYear, turn) => {
@@ -126,6 +134,7 @@ export function Body(props) {
     <div>
       <div className="col-xs-12 col-md-2" id="unitColumn">
         <h2>Total Cost: {totalCost}</h2>
+        <h3>Purchasing Power: {purchasingPower}</h3>
         <button type="button" className="closeButtons" onClick={() => addPurchase(orders, country, totalCost, seasonYear, turn)}>Purchase</button>
         <button type="button" className="closeButtons" onClick={() => clearOrders()}>Clear Orders</button>
 

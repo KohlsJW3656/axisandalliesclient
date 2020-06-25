@@ -442,23 +442,23 @@ nav li:hover {
 
 .table-item > p {
 	position: absolute;
-  font-size: 50pt;
-	right: 15px;
-  bottom: -65px;
+  font-size: 40pt;
+	left: 5px;
+  bottom: -60px;
 	opacity: .30;
 	z-index: 2;
 }
 
 .land > img:not(.landAdjustedImg) {
-  height: 50px;
-  left: 3px;
+  height: 60px;
+  right: 3px;
   bottom: -2px;
 }
 
 .landAdjustedImg, #chinaArty {
-  height: 50px;
+  height: 60px;
   bottom: -10px;
-  left: -3px;
+  right: -3px;
 }
 
 #tank {
@@ -466,32 +466,32 @@ nav li:hover {
 }
 
 #chinaInf {
-  height: 42px;
+  height: 52px;
   bottom: 3px;
-  left: 3px;
+  right: 3px;
 }
 
 .aerial > img {
-	height: 55px;
-	left: 2px;
+	height: 65px;
+	right: 2px;
   bottom: -15px;
 }
 
 .naval > img {
-	height: 55px;
-	left: 2px;
+	height: 65px;
+	right: 2px;
   bottom: -5px;
 }
 
 .facilities > img {
-  height: 35px;
-	left: 5px;
+  height: 45px;
+	right: 5px;
   bottom: 5px;
 }
 
 .utilities > img {
-  height: 40px;
-	left: 5px;
+  height: 50px;
+	right: 5px;
   bottom: 5px;
 }
 

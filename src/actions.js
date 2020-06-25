@@ -66,6 +66,54 @@ export function loadPurchase(purchase) {
     payload: purchase,
   }
 }
+/* Offline Testing */
+/*
+export function getPurchase() {
+  return dispatch => {
+  dispatch(startWaiting());
+  dispatch(loadPurchase([
+    {p_name: "Tank", amount: 1, c_id: 0, season_year: "Spring/Summer, 1940", turn: 1},
+    {p_name: "Strategic Bomber", amount: 2, c_id: 0, season_year: "Spring/Summer, 1940", turn: 1}, 
+    {p_name: "Infantry", amount: 3, c_id: 0, season_year: "Spring/Summer, 1940", turn: 1}, 
+
+    {p_name: "Infantry", amount: 3, c_id: 1, season_year: "Spring/Summer, 1940", turn: 1}, 
+
+    {p_name: "Infantry", amount: 3, c_id: 2, season_year: "Spring/Summer, 1940", turn: 1}, 
+    
+    {p_name: "Infantry", amount: 3, c_id: 3, season_year: "Spring/Summer, 1940", turn: 1}, 
+    {p_name: "Research", amount: 3, c_id: 3, season_year: "Spring/Summer, 1940", turn: 1}, 
+    {p_name: "Battleship", amount: 2, c_id: 3, season_year: "Spring/Summer, 1940", turn: 1}, 
+    
+    {p_name: "Infantry", amount: 2, c_id: 0, season_year: "Fall/Winter, 1940", turn: 2},
+    {p_name: "Tank", amount: 3, c_id: 0, season_year: "Fall/Winter, 1940", turn: 2},
+
+    {p_name: "AAA",                 amount: 3, c_id: 1, season_year: "Spring/Summer, 1943", turn: 7},
+    {p_name: "Air Base",            amount: 1, c_id: 1, season_year: "Spring/Summer, 1943", turn: 7},
+    {p_name: "Aircraft Carrier",    amount: 1, c_id: 1, season_year: "Spring/Summer, 1943", turn: 7},
+    {p_name: "Airlift",             amount: 2, c_id: 1, season_year: "Spring/Summer, 1943", turn: 7},
+    {p_name: "Artillery",           amount: 4, c_id: 1, season_year: "Spring/Summer, 1943", turn: 7},
+    {p_name: "Battleship",          amount: 3, c_id: 1, season_year: "Spring/Summer, 1943", turn: 7},
+    {p_name: "Cruiser",             amount: 2, c_id: 1, season_year: "Spring/Summer, 1943", turn: 7},
+    {p_name: "Destroyer",           amount: 1, c_id: 1, season_year: "Spring/Summer, 1943", turn: 7},
+    {p_name: "Fighter",             amount: 7, c_id: 1, season_year: "Spring/Summer, 1943", turn: 7},
+    {p_name: "Infantry",            amount: 3, c_id: 1, season_year: "Spring/Summer, 1943", turn: 7},
+    {p_name: "Major IC",            amount: 1, c_id: 1, season_year: "Spring/Summer, 1943", turn: 7},
+    {p_name: "Mechanized Infantry", amount: 3, c_id: 1, season_year: "Spring/Summer, 1943", turn: 7},
+    {p_name: "Minor IC",            amount: 2, c_id: 1, season_year: "Spring/Summer, 1943", turn: 7},
+    {p_name: "Naval Base",          amount: 2, c_id: 1, season_year: "Spring/Summer, 1943", turn: 7},
+    {p_name: "Repair",              amount: 20, c_id: 1, season_year: "Spring/Summer, 1943", turn: 7},
+    {p_name: "Research",            amount: 10, c_id: 1, season_year: "Spring/Summer, 1943", turn: 7},
+    {p_name: "Strategic Bomber",    amount: 57, c_id: 1, season_year: "Spring/Summer, 1943", turn: 7},
+    {p_name: "Submarine",           amount: 6, c_id: 1, season_year: "Spring/Summer, 1943", turn: 7},
+    {p_name: "Tactical Bomber",     amount: 11, c_id: 1, season_year: "Spring/Summer, 1943", turn: 7},
+    {p_name: "Tank",                amount: 29, c_id: 1, season_year: "Spring/Summer, 1943", turn: 7},
+    {p_name: "Transport",           amount: 1, c_id: 1, season_year: "Spring/Summer, 1943", turn: 7},
+    {p_name: "Upgraded Minor IC",   amount: 1, c_id: 1, season_year: "Spring/Summer, 1943", turn: 7},
+
+    ]));
+  };
+}
+*/
 
 export function getPurchase() {
   return dispatch => {
@@ -82,12 +130,23 @@ export function getPurchase() {
   };
 }
 
+
 export function loadCountry(country) {
   return {
     type: Action.LoadCountry,
     payload: country,
   }
 }
+
+/* Offline Testing */
+/*
+export function getCountry(c_id) {
+  return dispatch => {
+  dispatch(startWaiting());
+  dispatch(loadCountry([{c_id: 0, c_name: "Germany", ipcs: 30}]));
+  };
+}
+*/
 
 export function getCountry(c_id) {
   return dispatch => {
