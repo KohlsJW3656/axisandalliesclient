@@ -259,7 +259,7 @@ export function Body(props) {
           <div style={{order:0}} className="Rtable-cell Rtable-cell--head facilities hiddenSmall"><h3>Facilities</h3></div>
           <div style={{order:1}} className="Rtable-cell table-item facilities hiddenSmall" onClick={orders => addOrder({name: "Minor IC", amount: 1, cost: 12})}>
             <img className="facilities" src={minorIcon} alt="Minor IC icon"/>
-            <h3>Minor Industrial Complex</h3>
+            <h3>Minor IC</h3>
             <p>12</p>
           </div>
 
@@ -283,7 +283,7 @@ export function Body(props) {
           
           <div style={{order:5}} className="Rtable-cell table-item facilities hiddenSmall" onClick={orders => addOrder({name: "Major IC", amount: 1, cost: 30})}>
             <img className="facilities" src={majorIcon} alt="Major IC icon"/>
-            <h3>Major Industrial Complex</h3>
+            <h3>Major IC</h3>
             <p>30</p>
           </div>
 

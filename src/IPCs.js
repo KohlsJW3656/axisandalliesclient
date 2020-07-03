@@ -9,19 +9,31 @@ export function IPCs(props) {
   const turn = props.turn;
 
   const calculateIPCS = () => {
-    let revenue = document.getElementById("revenue").value;
+    let base = document.getElementById("base").value;
+    let checkBoxes = document.getElementsByClassName("checkBox");
+    let research = 0 //document.getElementById("research");
     let convoy = document.getElementById("convoy").value;
+    let bonus = 0;
     let income = 0;
+    if (base === "") {
+      base = 0;
+    }
+    for (let i = 0; i < checkBoxes.length; i++) {
+      if (checkBoxes[i].checked) {
+        bonus+= parseInt(checkBoxes[i].value);
+      }
+    }
+    if (research === "") {
+      research = 0;
+    }
     if (convoy === "") {
       convoy = 0;
     }
-    if (revenue === "") {
-      revenue = 0;
-    }
-    income = revenue - convoy;
+
+    income = parseInt(base) + parseInt(bonus) + parseInt(research)- parseInt(convoy);
     editCountry(income);
-    addIncome(country, revenue, convoy, seasonYear, turn);
-    document.getElementById("revenue").value = "";
+    addIncome(country, base, bonus, research, convoy, seasonYear, turn);
+    document.getElementById("base").value = "";
     document.getElementById("convoy").value = "";
   }
 
@@ -42,19 +54,32 @@ export function IPCs(props) {
     }
   }
 
-  const addIncome = (country, revenue, lost, seasonYear, turn) => {
-    dispatch(startAddingIncome(country.c_id, revenue, lost, seasonYear, turn));
+  const addIncome = (country, base, bonus, research, convoy, seasonYear, turn) => {
+    dispatch(startAddingIncome(country.c_id, base, bonus, research, convoy, seasonYear, turn));
   }
 
   return (
     <div>
-      <div className="col-xs-12 col-sm-9">
-        <p>Bonus IPCs coming soon</p>
-      </div>
+      {country.c_id === 0 &&
+        <div className="col-xs-12 col-sm-9">
+          <input type="checkbox" value="5" className="checkBox"/><span>5 IPCs when Germany is not at war with the Soviet Union.</span>
+          <p>When Germany is at War with the Soviet Union:</p>
+          <input type="checkbox" value="5" className="checkBox"/><span>5 IPCs if Germany controls Leningrad.</span><br/>
+          <input type="checkbox" value="5" className="checkBox"/><span>5 IPCs if Germany controls Stalingrad.</span><br/>
+          <input type="checkbox" value="5" className="checkBox"/><span>5 IPCs if Germany controls Moscow.</span><br/>
+          <input type="checkbox" value="5" className="checkBox"/><span>5 IPCs if an Axis power controls Caucasus.</span>
+          <p>When Germany is at War with the United Kingdom and France:</p>
+          <input type="checkbox" value="5" className="checkBox"/><span>5 IPCs if at least 1 German land unit is in Axis-controlled Egypt.</span><br/>
+          <input type="checkbox" value="5" className="checkBox"/><span>5 IPCs if Germany controls both Denmark and Norway, while Sweden is neither pro-Allies, nor Allied-controlled.</span><br/>
+          <input type="checkbox" value="2" className="checkBox"/><span>2 IPCs if Germany controls Iraq.</span><br/>
+          <input type="checkbox" value="2" className="checkBox"/><span>2 IPCs if Germany controls Persia.</span><br/>
+          <input type="checkbox" value="2" className="checkBox"/><span>2 IPCs if Germany controls Northwest Persia.</span>
+        </div>
+      }
 
       <div className="col-xs-12 col-sm-3">
         <h2>Calculate IPCs</h2>
-        <input type="text" id="revenue" placeholder="Enter IPC Revenue"/>
+        <input type="text" id="base" placeholder="Enter IPC Base Amount"/>
         <br/>
         <br/>
         <input type="text" id="convoy" placeholder="Enter Convoy Disruptions"/>

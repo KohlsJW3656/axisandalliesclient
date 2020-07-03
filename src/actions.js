@@ -224,8 +224,8 @@ export function finishAddingIncome(income) {
   };
 }
 
-export function startAddingIncome(c_id, revenue, lost, season_year, turn) {
-  const income = {c_id, revenue, lost, season_year, turn};
+export function startAddingIncome(c_id, base, bonus, research, convoy, season_year, turn) {
+  const income = {c_id, base, bonus, research, convoy, season_year, turn};
   const options = {
     method: 'POST',
     headers: {
