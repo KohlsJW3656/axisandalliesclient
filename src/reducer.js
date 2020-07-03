@@ -5,6 +5,7 @@ const initialState = {
 	country: [],
 	purchases: [],
 	incomes: [],
+	countryTurns: [],
 };
 
 function reducer(state = initialState, action) {
@@ -13,6 +14,23 @@ function reducer(state = initialState, action) {
 			return {
 				...state,
 				isWaiting: true,
+			};
+		case Action.FinishAddingCountryTurn:
+			return {
+				...state,
+				isWaiting: false,
+			}
+		case Action.LoadCountryTurn:
+			return {
+				...state,
+				isWaiting: false,
+				countryTurns: action.payload,
+			};
+		case Action.StartDeletingCountryTurn:
+			return {
+				...state,
+				isWaiting: false,
+				countryTurns: [],
 			};
 		case Action.FinishEditingCountry:
 			return {

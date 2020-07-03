@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {useDispatch} from 'react-redux';
 import {Order} from './Order';
-import {startAddingPurchase, startEditingCountry} from './actions';
+import {startAddingPurchase, startEditingCountry, startAddingCountryTurn} from './actions';
 
 const background = ["images/background/germany.png",
                   "images/background/sovietunion.png",
@@ -28,7 +28,6 @@ const backgroundId = ["backgroundGermany",
 export function Body(props) {
   const turn = props.turn;
   const seasonYear = props.seasonYear;
-
   const dispatch = useDispatch();
   const country = props.country;
   const [orders, setOrders] =  useState([]);
@@ -99,13 +98,14 @@ export function Body(props) {
     setPurchasingPower(country.ipcs);
   }
 
-  const addPurchase = (orders, country, totalCost, seasonYear, turn) => {
-    orders.map(order => dispatch(startAddingPurchase(order.name, order.amount, country.c_id, totalCost, seasonYear, turn)));
+  const addPurchase = (orders, country, totalCost, turn) => {
+    orders.map(order => dispatch(startAddingPurchase(order.name, order.amount, country.c_id, totalCost, turn)));
     dispatch(startEditingCountry({
       c_id: country.c_id,
       c_name: country.c_name,
       ipcs: country.ipcs - totalCost,
     }));
+    dispatch(startAddingCountryTurn(country.c_id, turn, seasonYear));
     clearOrders();
   }
   
@@ -135,7 +135,7 @@ export function Body(props) {
       <div className="col-xs-12 col-md-2" id="unitColumn">
         <h2>Total Cost: {totalCost}</h2>
         <h3>Purchasing Power: {purchasingPower}</h3>
-        <button type="button" className="closeButtons" onClick={() => addPurchase(orders, country, totalCost, seasonYear, turn)}>Purchase</button>
+        <button type="button" className="closeButtons" onClick={() => addPurchase(orders, country, totalCost, turn)}>Purchase</button>
         <button type="button" className="closeButtons" onClick={() => clearOrders()}>Clear Orders</button>
 
         <h3>Ordered:</h3>

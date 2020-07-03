@@ -1,6 +1,6 @@
 import React from 'react';
 import {useDispatch} from 'react-redux';
-import {startAddingIncome, startEditingCountry} from './actions';
+import {startAddingIncome, startAddingCountryTurn, startEditingCountry} from './actions';
 
 export function IPCs(props) {
   const dispatch = useDispatch();
@@ -30,9 +30,9 @@ export function IPCs(props) {
       convoy = 0;
     }
 
-    income = parseInt(base) + parseInt(bonus) + parseInt(research)- parseInt(convoy);
+    income = parseInt(base) + parseInt(bonus) + parseInt(research) - parseInt(convoy);
     editCountry(income);
-    addIncome(country, base, bonus, research, convoy, seasonYear, turn);
+    addIncome(country, parseInt(base), parseInt(bonus), parseInt(research), parseInt(convoy), turn);
     document.getElementById("base").value = "";
     document.getElementById("convoy").value = "";
   }
@@ -54,8 +54,9 @@ export function IPCs(props) {
     }
   }
 
-  const addIncome = (country, base, bonus, research, convoy, seasonYear, turn) => {
-    dispatch(startAddingIncome(country.c_id, base, bonus, research, convoy, seasonYear, turn));
+  const addIncome = (country, base, bonus, research, convoy, turn) => {
+    dispatch(startAddingIncome(country.c_id, base, bonus, research, convoy, turn));
+    dispatch(startAddingCountryTurn(country.c_id, turn, seasonYear));
   }
 
   return (
