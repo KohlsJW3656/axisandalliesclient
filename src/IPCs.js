@@ -31,8 +31,8 @@ export function IPCs(props) {
     }
 
     income = parseInt(base) + parseInt(bonus) + parseInt(research) - parseInt(convoy);
-    editCountry(income);
     addIncome(country, parseInt(base), parseInt(bonus), parseInt(research), parseInt(convoy), turn);
+    editCountry(income);
     document.getElementById("base").value = "";
     document.getElementById("convoy").value = "";
   }
