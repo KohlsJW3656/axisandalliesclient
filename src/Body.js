@@ -3,28 +3,6 @@ import {useDispatch} from 'react-redux';
 import {Order} from './Order';
 import {startAddingPurchase, startEditingCountry, startAddingCountryTurn} from './actions';
 
-const background = ["images/background/germany.png",
-                  "images/background/sovietunion.png",
-                  "images/background/japan.png",
-                  "images/background/unitedstates.png",
-                  "images/background/china.png",
-                  "images/background/ukeurope.png",
-                  "images/background/ukpacific.png",
-                  "images/background/italy.png",
-                  "images/background/anzac.png",
-                  "images/background/france.png"];
-
-const backgroundId = ["backgroundGermany",
-                    "backgroundSovietUnion",
-                    "backgroundJapan",
-                    "backgroundUnitedStates",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    "backgroundFrance"];
-
 export function Body(props) {
   const turn = props.turn;
   const seasonYear = props.seasonYear;
@@ -143,8 +121,6 @@ export function Body(props) {
       </div>
 
       <div className="col-xs-12 col-md-10"  id="tableColumn">
-        <div id="backgroundContainer"><img className="backgroundImage" id={backgroundId[country.c_id]} src={background[country.c_id]} alt=""/></div>
-
         {country.c_id !== 4 &&
         <div className="Rtable Rtable--5cols Rtable--collapse js-RtableTabs" id="unitTable">
           <div className="Tablist" role="tablist"> 

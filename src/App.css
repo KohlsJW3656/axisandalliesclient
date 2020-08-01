@@ -116,49 +116,40 @@ input[type=text]:focus {
   border: 3px solid #555;
 }
 
-#backgroundContainer { 
-  position: relative;
-}
-
 #tableColumn {
   border-left: 2px solid black;
 }
 
 .backgroundImage {
   position: absolute;
-  display: block;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
   opacity: .15;
   z-index: 1;
 }
 
-#backgroundGermany {
-  left: 8.33%;
-  width: 83.34%;
-  padding-top: 60px;
-}
-
-#backgroundSovietUnion {
+.backgroundGermany {
   width: 60%;
-  left: 20%;
-  top: -40px;
 }
 
-#backgroundUnitedStates {
+.backgroundSovietUnion {
   width: 50%;
-  left: 25%;
+}
+
+.backgroundUnitedStates {
+  width: 50%;
   opacity: .1;
 }
 
-#backgroundJapan {
+.backgroundJapan {
   width: 80%;
-  left: 10%;
-  padding-top: 70px;
 }
 
-#backgroundFrance {
+.backgroundFrance {
   width: 30%;
-  left: 35%;
-  padding-top: 50px;
 }
 
 #countrySelectText {

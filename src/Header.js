@@ -4,10 +4,10 @@ export function Header(props) {
   const [pressed, setPressed] = useState(false);
   const country = props.country;
   const flagSrc = ["germany.png", "sovietunion.jpg", "japan.png", "usa.jpg", "china.png", "ukeurope.png", "ukpacific.png", "italy.png", "anzac.jpg", "france.jpg"];
-  let flags;
+  let flag;
 
   if (country.c_id !== undefined) {
-    flags = "images/flags/" + flagSrc[country.c_id];
+    flag = "images/flags/" + flagSrc[country.c_id];
   }
 
   return (
@@ -39,7 +39,7 @@ export function Header(props) {
       <div className="row">
         <div id="infoRow1">
           <div className="col-xs-12 col-md-3 col-lg-2">
-            <img src={flags} alt="Country Flag"/>
+            <img src={flag} alt="Country Flag"/>
           </div>
           <div className="col-xs-12 col-md-4">
             <h2 id="country1">Country: {country.c_name}</h2>
