@@ -96,7 +96,7 @@ function App() {
         <IPCs country={country} turn={turn} seasonYear={seasonYear}/>
       </div>
       <div id="reportRoot">
-        {countryTurns.map(countryTurn => <Report key={countryTurn.c_id + "" + countryTurn.turn} countryTurn={countryTurn} purchases={purchases} incomes={incomes} />)}
+        {countryTurns.map(countryTurn => <Report key={countryTurn.c_id + "" + countryTurn.turn} countryTurn={countryTurn} purchases={purchases} incomes={incomes}/>)}
         
         {/*([...new Set(purchases.map(purchase => ({c_id: purchase.c_id, cost: purchase.cost, turn: purchase.turn, season_year: purchase.season_year})).map(countryTurn => JSON.stringify(countryTurn)))].map(s => JSON.parse(s))).map(uniquePurchase => <Report key={uniquePurchase.c_id + "" + uniquePurchase.turn} uniquePurchase={uniquePurchase} incomes={incomes} purchases={purchases}/>)*/}
       </div>

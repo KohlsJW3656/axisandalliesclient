@@ -44,23 +44,37 @@ html {
   width: 100%;
   margin: 10px;
   padding-left: 15px;
+  padding-right: 15px;
   padding-top: 1px;
   padding-bottom: 1px;
   border-radius: 5%;
 }
 
-.report > h1 {
+.flag {
+  height: 35px;
+  margin-right: 5px;
+  float: left;
+}
+
+.report h1 {
   font-size: 30pt;
 }
 
-.report > h2 {
+.report p {
   position: relative;
-  font-size: 25pt;
-  top: -30px;
+  left: 20px;
 }
 
-.report > h3 {
-  font-size: 16pt;
+.reportTotal {
+  padding-left: 10px;
+}
+
+.incomeReport h3 {
+  padding-left: 10px;
+}
+
+.right {
+  text-align: right;
 }
 
 .unit {
@@ -139,17 +153,16 @@ input[type=text]:focus {
   width: 50%;
 }
 
-.backgroundUnitedStates {
-  width: 50%;
-  opacity: .1;
-}
-
 .backgroundJapan {
   width: 80%;
 }
+.backgroundUnitedStates {
+  width: 40%;
+  opacity: .1;
+}
 
 .backgroundFrance {
-  width: 30%;
+  width: 25%;
 }
 
 #countrySelectText {
@@ -178,6 +191,10 @@ button:hover {
 
 .row {
   border: 2px solid black;
+}
+
+.rowReport {
+  border-bottom: 1px solid black;
 }
 
 nav ul {
@@ -514,7 +531,7 @@ nav li:hover {
   width: 100%;
 }
 
-.row::after, .rowTable::after {
+.row::after, .rowTable::after, .rowReport::after {
   content: "";
   clear: both;
   display: table;
