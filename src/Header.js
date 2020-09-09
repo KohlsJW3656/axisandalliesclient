@@ -19,7 +19,7 @@ export function Header(props) {
         </div>
         <div className="col-xs-12 col-md-6">
           <br/>
-          <h1 className="center">Axis and Allies Global Second Edition</h1>
+          <h1 className="center">Unofficial Axis and Allies Global 1940 2<sup>nd</sup> Edition Companion App</h1>
         </div>
         <div className="col-xs-1"></div>
         <div className="col-xs-12 col-md-2">
@@ -30,9 +30,12 @@ export function Header(props) {
       
       <nav className="row">        
         <ul>
-          <li><a href="rules/global.pdf" target="_blank">Global Rules</a></li>
-          <li><a href="rules/europe.pdf" target="_blank">Europe Rules</a></li>
-          <li><a href="rules/pacific.pdf" target="_blank">Pacific Rules</a></li>
+          <li><a href="#purchaseRoot">Purchase</a></li>
+          <li><a href="#incomeRoot">Income</a></li>
+          <li><a href="#reportRoot">Report</a></li>
+          <li className="rules"><a href="rules/global.pdf" target="_blank">Global Rules</a></li>
+          <li className="rules"><a href="rules/europe.pdf" target="_blank">Europe Rules</a></li>
+          <li className="rules"><a href="rules/pacific.pdf" target="_blank">Pacific Rules</a></li>
         </ul>
       </nav>
 
@@ -42,7 +45,7 @@ export function Header(props) {
             <img src={flag} alt="Country Flag"/>
           </div>
           <div className="col-xs-12 col-md-4">
-            <h2 id="country1">Country: {country.c_name}</h2>
+            <h2 id="country1">{country.c_name}</h2>
           </div>
           <div className="col-xs-12 col-md-2 col-lg-4">
             <br/>
@@ -53,7 +56,7 @@ export function Header(props) {
           <div className="col-xs-12 col-md-3 col-lg-2">
             <br/>
             <button type="button" id="leftArrow" onClick={() => props.leftArrow()}>&lt;</button>   
-            <p id="countrySelectText">Select Country</p>
+            <p id="countrySelectText">&nbsp; Select Country &nbsp;</p>
             <button type="button" id="rightArrow" onClick={() => props.rightArrow()}>&gt;</button>
           </div>
         </div>

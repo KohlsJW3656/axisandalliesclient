@@ -6,6 +6,10 @@ html {
   background-color: lightgray;
 }
 
+body {
+  margin: 0;
+}
+
 .center {
   text-align: center;
 }
@@ -131,7 +135,7 @@ input[type=text]:focus {
 }
 
 #tableColumn {
-  border-left: 2px solid black;
+  /* border-left: 2px solid black; */
 }
 
 .backgroundImage {
@@ -189,10 +193,6 @@ button:hover {
   background-color: #111;
 }
 
-.row {
-  border: 2px solid black;
-}
-
 .rowReport {
   border-bottom: 1px solid black;
 }
@@ -223,6 +223,10 @@ nav li {
 
 nav li:hover {
   background-color: #111;
+}
+
+.rules {
+  float: right;
 }
 
 /* Tables
