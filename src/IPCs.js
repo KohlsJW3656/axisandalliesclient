@@ -77,6 +77,74 @@ export function IPCs(props) {
           <input type="checkbox" value="2" className="checkBox"/><span>2 IPCs if Germany controls Northwest Persia.</span>
         </div>
       }
+      {country.c_id === 1 &&
+        <div className="col-xs-12 col-sm-9">
+          <p>When the Soviet Union is at War in Europe:</p>
+          <input type="checkbox" value="5" className="checkBox"/><span>5 IPCs if the convoy in sea zone 125 is free of Axis warchips, Archangel is controlled by the Soviet Union, and there are no units belonging to other Allied powers present in any territories originally controlled by the Soviet Union.</span><br/>
+          <input type="checkbox" value="3" className="checkBox"/><input type="checkbox" value="3" className="checkBox"/><input type="checkbox" value="3" className="checkBox"/><input type="checkbox" value="3" className="checkBox"/><input type="checkbox" value="3" className="checkBox"/><span>3 IPCs for each original German, Italian, or pro-Axis neutral territory that the Soviet Union controls</span><br/>
+          <input type="checkbox" value="10" className="checkBox"/><span>10 IPCs the first time the Soviet Union controls Berlin.</span>
+        </div>
+      }
+      {country.c_id === 2 &&
+        <div className="col-xs-12 col-sm-9">
+          <input type="checkbox" value="10" className="checkBox"/><span>10 IPCs if Japan is not at war with the United States, has not attacked French Indo-China, and has not made an unprovoked declaration of war against the United Kingdom or ANZAC.</span>
+          <p>When Japan Is at War with the Western Allies (United States, United Kingdom/ANZAC and/or France):</p>
+          <input type="checkbox" value="5" className="checkBox"/><span>5 IPCs if Axis powers control all of the following territories: Guam, Midway, Wake Island, Gilbert Islands, and Solomon Islands.</span><br/>
+          <input type="checkbox" value="5" className="checkBox"/><span>5 IPCs if Axis powers control Calcutta.</span><br/>
+          <input type="checkbox" value="5" className="checkBox"/><span>5 IPCs if Axis powers control Sydney.</span><br/>
+          <input type="checkbox" value="5" className="checkBox"/><span>5 IPCs if Axis powers control Honolulu.</span><br/>
+          <input type="checkbox" value="5" className="checkBox"/><span>5 IPCs if Axis powers control San Francisco.</span><br/>
+          <input type="checkbox" value="5" className="checkBox"/><span>5 IPCs if Axis powers control all of the following territories: Sumatra, Java, Borneo, and Celebes.</span>
+        </div>
+      }
+      {country.c_id === 3 &&
+        <div className="col-xs-12 col-sm-9">
+          <p>When the United States Is at War:</p>
+          <input type="checkbox" value="10" className="checkBox"/><span>10 IPCs if the United States controls all of the following territories: Eastern United States, Central United States, and Western United States.</span><br/>
+          <input type="checkbox" value="5" className="checkBox"/><span>5 IPCs if the United States controls all of the following territories: Alaks, Aleutian Islands, Hawaiian Islands, Johnston Island, and Line Islands.</span><br/>
+          <input type="checkbox" value="5" className="checkBox"/><span>5 IPCs if the United States controls all of the following territories: Mexico, South Eastern Mexico, Central America, and West Indies.</span><br/>
+          <input type="checkbox" value="5" className="checkBox"/><span>5 IPCs if the United States controls Philippines.</span><br/>
+          <input type="checkbox" value="5" className="checkBox"/><span>5 IPCs if there is at least 1 United States land unit in the territory France.</span>
+        </div>
+      }
+      {country.c_id === 4 &&
+        <div className="col-xs-12 col-sm-9">
+          <input type="checkbox" value="6" className="checkBox"/><span>6 IPCs if the Burma Road is totally open (India, Burma, Yunnan, and Szechwan), and China can purchase artillery units.</span>
+        </div>
+      }
+      {country.c_id === 5 &&
+        <div className="col-xs-12 col-sm-9">
+          <input type="checkbox" value="5" className="checkBox"/><span>5 IPCs if the United Kingdom controls all of its original territories.</span>
+        </div>
+      }
+      {country.c_id === 6 &&
+        <div className="col-xs-12 col-sm-9">
+          <input type="checkbox" value="5" className="checkBox"/><span>5 IPCs if the United Kingdom is at war with Japan and controls both Kwangtung and Malaya.</span>
+        </div>
+      }
+      {country.c_id === 7 &&
+        <div className="col-xs-12 col-sm-9">
+          <p>When Italy Is at War:</p>
+          <input type="checkbox" value="5" className="checkBox"/><span>5 IPCs if Axis powers control at least 3 of the following territories: Gibraltar, Southern France, Greece, and Egypt.</span><br/>
+          <input type="checkbox" value="5" className="checkBox"/><span>5 IPCs if there are no Allied surface warships in the Mediterranean sea (sea zones 92 through 99).</span><br/>
+          <input type="checkbox" value="5" className="checkBox"/><span>5 IPCs if Axis powers control all of the following territories: Morocco, Algeria, Tunisia, Libya, Tobruk, and Alexandria.</span><br/>
+          <input type="checkbox" value="2" className="checkBox"/><span>2 IPCs if Italy controls Iraq.</span><br/>
+          <input type="checkbox" value="2" className="checkBox"/><span>2 IPCs if Italy controls Persia.</span><br/>
+          <input type="checkbox" value="2" className="checkBox"/><span>2 IPCs if Italy controls Northwest Persia.</span>
+        </div>
+      }
+      {country.c_id === 8 &&
+        <div className="col-xs-12 col-sm-9">
+          <p>When ANZAC Is at War with Japan:</p>
+          <input type="checkbox" value="5" className="checkBox"/><span>5 IPCs if an Allied power controls Malaya and ANZAC controls all of its original territories.</span><br/>
+          <input type="checkbox" value="5" className="checkBox"/><span>5 IPCs if the Allies (not including the Dutch) control Dutch New Guinea, New Guinea, New Britain, and the Solomon Islands.</span>
+        </div>
+      }
+      {country.c_id === 9 &&
+        <div className="col-xs-12 col-sm-9">
+          <p>When the territory France is liberated by the Allies, the player controlling France immediately places their choice of up to 12 IPCs' worth of any French units on the territory France for free. This happens only once per game.</p>
+        </div>
+      }
 
       <div className="col-xs-12 col-sm-3">
         <h2>Calculate IPCs</h2>
