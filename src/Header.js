@@ -32,8 +32,8 @@ export function Header(props) {
         <ul>
           <li><a href="#purchaseRoot">Purchase</a></li>
           <li><a href="#incomeRoot">Income</a></li>
-          <li><a href="#reportRoot">Report</a></li>
           <li><a href="#researchRoot">Research</a></li>
+          <li><a href="#reportRoot">Report</a></li>
           <li className="rules"><a href="rules/global.pdf" target="_blank">Global Rules</a></li>
           <li className="rules"><a href="rules/europe.pdf" target="_blank">Europe Rules</a></li>
           <li className="rules"><a href="rules/pacific.pdf" target="_blank">Pacific Rules</a></li>
