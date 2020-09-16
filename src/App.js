@@ -6,6 +6,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import {getCountry, getPurchase, getIncome, getCountryTurn, deletePurchase, deleteIncome, deleteCountryTurn} from './actions';
 import {Report} from './Report';
 import {IPCs} from './IPCs';
+import {Research} from './Research';
 
 function App() {
   const dispatch = useDispatch();
@@ -104,6 +105,9 @@ function App() {
       </div>
       <div id="incomeRoot" className="row">
         <IPCs country={country} turn={turn} seasonYear={seasonYear}/>
+      </div>
+      <div id="researchRoot" className="row">
+        <Research />
       </div>
       <div id="reportRoot">
         {countryTurns.map(countryTurn => <Report key={countryTurn.c_id + "" + countryTurn.turn} countryTurn={countryTurn} purchases={purchases} incomes={incomes}/>)}
