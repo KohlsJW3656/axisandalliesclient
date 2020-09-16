@@ -9,12 +9,10 @@ export function Research(props) {
 */
   return (
     <div>
-      <div className="row center">
-        <div className="col-xs-12">
-          <h2>Research Chart 1</h2>
-        </div>
-        
-        <div className="col-lg-2 tooltip">
+      <h2 className="center">Research Chart 1</h2>
+
+      <div className="container center">  
+        <div className="tooltip">
           <div id="advancedArtillery" className="research">
             <div className="researchText">
               <div className="researchDisplay">test</div>
@@ -24,7 +22,7 @@ export function Research(props) {
           </div>
         </div>
 
-        <div className="col-lg-2 tooltip">
+        <div className="tooltip">
           <div id="advancedArtillery" className="research">
             <div className="researchText">
               <div className="researchDisplay">test</div>
@@ -34,7 +32,7 @@ export function Research(props) {
           </div>
         </div>
 
-        <div className="col-lg-2 tooltip">
+        <div className="tooltip">
           <div id="advancedArtillery" className="research">
             <div className="researchText">
               <div className="researchDisplay">test</div>
@@ -44,7 +42,7 @@ export function Research(props) {
           </div>
         </div>
 
-        <div className="col-lg-2 tooltip">
+        <div className="tooltip">
           <div id="advancedArtillery" className="research">
             <div className="researchText">
               <div className="researchDisplay">test</div>
@@ -54,7 +52,7 @@ export function Research(props) {
           </div>
         </div>
 
-        <div className="col-lg-2 tooltip">
+        <div className="tooltip">
           <div id="advancedArtillery" className="research">
             <div className="researchText">
               <div className="researchDisplay">test</div>
@@ -64,7 +62,7 @@ export function Research(props) {
           </div>
         </div>
 
-        <div className="col-lg-2 tooltip">
+        <div className="tooltip">
           <div id="advancedArtillery" className="research">
             <div className="researchText">
               <div className="researchDisplay">test</div>
@@ -75,68 +73,66 @@ export function Research(props) {
         </div>
       </div>
 
-      <div className="row center">
-        <div className="col-xs-12">
-          <h2>Research Chart 2</h2>
-        </div>
+      <h2 className="center">Research Chart 2</h2>
 
-        <div className="col-lg-2 tooltip">
+      <div className="container center">
+        <div className="tooltiptop">
           <div id="advancedArtillery" className="research">
             <div className="researchText">
               <div className="researchDisplay">test</div>
               <p>Super Submarines</p>
             </div>
-            <span className="tooltiptext">The attack value of your submarines is now 3 instead of 2.</span>
+            <span className="tooltiptexttop">The attack value of your submarines is now 3 instead of 2.</span>
           </div>
         </div>
 
-        <div className="col-lg-2 tooltip">
+        <div className="tooltiptop">
           <div id="advancedArtillery" className="research">
             <div className="researchText">
               <div className="researchDisplay">test</div>
               <p>Jet Fighters</p>
             </div>
-            <span className="tooltiptext">The attack value of your fighters is now 4 instead of 3. In addition, during bombing raids your escorting or intercepting fighters now hit on a “1” or “2” instead of just a “1”.</span>
+            <span className="tooltiptexttop">The attack value of your fighters is now 4 instead of 3. In addition, during bombing raids your escorting or intercepting fighters now hit on a “1” or “2” instead of just a “1”.</span>
           </div>
         </div>
 
-        <div className="col-lg-2 tooltip">
+        <div className="tooltiptop">
           <div id="advancedArtillery" className="research">
             <div className="researchText">
               <div className="researchDisplay">test</div>
               <p>Improved Shipyards</p>
             </div>
-            <span className="tooltiptext">Your sea units are now cheaper to build.</span>
+            <span className="tooltiptexttop">Your sea units are now cheaper to build.</span>
           </div>
         </div>
 
-        <div className="col-lg-2 tooltip">
+        <div className="tooltiptop">
           <div id="advancedArtillery" className="research">
             <div className="researchText">
               <div className="researchDisplay">test</div>
               <p>Radar</p>
             </div>
-            <span className="tooltiptext">Your antiaircraft fire, both from AAA (antiaircraft artillery) units and facilities, now hits on a “1” or “2” instead of just a “1”.</span>
+            <span className="tooltiptexttop">Your antiaircraft fire, both from AAA (antiaircraft artillery) units and facilities, now hits on a “1” or “2” instead of just a “1”.</span>
           </div>
         </div>
 
-        <div className="col-lg-2 tooltip">
+        <div className="tooltiptop">
           <div id="advancedArtillery" className="research">
             <div className="researchText">
               <div className="researchDisplay">test</div>
               <p>Long-Range Aircraft</p>
             </div>
-            <span className="tooltiptext">All of your air units’ ranges are increased by 1 space.</span>
+            <span className="tooltiptexttop">All of your air units’ ranges are increased by 1 space.</span>
           </div>
         </div>
 
-        <div className="col-lg-2 tooltip">
+        <div className="tooltiptop">
           <div id="advancedArtillery" className="research">
             <div className="researchText">
               <div className="researchDisplay">test</div>
               <p>Heavy Bombers</p>
             </div>
-            <span className="tooltiptext">Your strategic bombers are now heavy bombers. When attacking, whether in a battle or a strategic bombing raid, roll two dice for each bomber and select the best result.</span>
+            <span className="tooltiptexttop">Your strategic bombers are now heavy bombers. When attacking, whether in a battle or a strategic bombing raid, roll two dice for each bomber and select the best result.</span>
           </div>
         </div>
       </div>

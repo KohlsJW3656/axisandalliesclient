@@ -503,6 +503,12 @@ nav li:hover {
   bottom: 5px;
 }
 
+.container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+}
+
 .research  {
   background-color: transparent;
   border-radius: 25px;
@@ -512,6 +518,7 @@ nav li:hover {
   transition: 0.5s;
   border: 3px solid gray;
   outline: none;
+  margin-top: 5px;
 }
 
 .research:hover {
@@ -539,7 +546,7 @@ nav li:hover {
   padding: 5px 0;
   position: absolute;
   z-index: 1;
-  top: 95%;
+  top: 101%;
   left: 20%;
   margin-left: -60px;
   font-size: 15px;
@@ -557,6 +564,7 @@ nav li:hover {
 }
 
 .tooltip:hover .tooltiptext {
+  transition-delay: 1.5s;
   visibility: visible;
   font-size: 15px;
 }
@@ -576,7 +584,7 @@ nav li:hover {
   padding: 5px 0;
   position: absolute;
   z-index: 1;
-  bottom: 95%;
+  bottom: 99%;
   left: 20%;
   margin-left: -60px;
   font-size: 15px;
@@ -594,6 +602,7 @@ nav li:hover {
 }
 
 .tooltiptop:hover .tooltiptexttop {
+  transition-delay: 1.5s;
   visibility: visible;
   font-size: 15px;
 }
