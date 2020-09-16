@@ -1,12 +1,12 @@
-import React, {useState} from 'react';
+import React/*, {useState}*/ from 'react';
 
 export function Research(props) {
-
-
+  
+/*
   const addResearch = () => {
 
   }
-
+*/
   return (
     <div>
       <div className="row center">
