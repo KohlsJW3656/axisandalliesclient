@@ -71,6 +71,7 @@ export function Header(props) {
           <p><b>View Report:</b> View all history.</p>
           <p><b>Reset Database:</b> Clears purchase history and income history.</p>
           <p><b>Select Country Arrows:</b> Change country. When all countries cycle, turn changes.</p>
+          <p><b>Starting values:</b> 30, 37, 26, 52, 12, 28, 17, 10, 10, 19</p>
         </div>
       </div>
       }

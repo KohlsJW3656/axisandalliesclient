@@ -107,7 +107,7 @@ function App() {
         <IPCs country={country} turn={turn} seasonYear={seasonYear}/>
       </div>
       <div id="researchRoot" className="row">
-        <Research />
+        <Research country={country} turn={turn} seasonYear={seasonYear}/>
       </div>
       <div id="reportRoot">
         {countryTurns.map(countryTurn => <Report key={countryTurn.c_id + "" + countryTurn.turn} countryTurn={countryTurn} purchases={purchases} incomes={incomes}/>)}
