@@ -3,11 +3,12 @@ import {ResearchDisplay} from './ResearchDisplay';
 
 export function Research(props) {
   const [researchIcons, setResearchIcons] =  useState([]);
+  const countrySrc = ["germany", "sovietunion", "japan", "usa", "china", "ukeurope", "ukpacific", "italy", "anzac", "france"];
   const country = props.country;
   const turn = props.turn;
   
   const addCountryResearch = (newResearch) => {
-
+    setResearchIcons(researchIcons => researchIcons + countrySrc[newResearch.c_id]);
   }
 
   return (
