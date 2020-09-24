@@ -8,7 +8,10 @@ export function Research(props) {
   const turn = props.turn;
   
   const addCountryResearch = (newResearch) => {
-    setResearchIcons(researchIcons => researchIcons + countrySrc[newResearch.c_id]);
+    if (researchIcons.filter(researchIcon => researchIcon.r_id === newResearch.r_id && researchIcon.c_id === newResearch.c_id).length < 1) {
+      //setResearchIcons(researchIcons => [newResearch, ...researchIcons.filter(researchIcon => researchIcon.c_id !== newResearch.c_id && researchIcon.r_id !== newResearch.r_id)]);
+      setResearchIcons(researchIcons => [newResearch, ...researchIcons]);
+    }
     console.log(researchIcons);
   }
 
@@ -18,7 +21,7 @@ export function Research(props) {
 
       <div className="container center">  
         <div className="tooltip">
-          <div id="advancedArtillery" className="research" onClick={() => addCountryResearch({c_id: country.c_id, id: 0, turn: turn})}>
+          <div id="advancedArtillery" className="research" onClick={() => addCountryResearch({c_id: country.c_id, r_id: 0, turn: turn})}>
             <div className="researchText">
               <ResearchDisplay />
               <p>Advanced Artillery</p>
@@ -28,7 +31,7 @@ export function Research(props) {
         </div>
 
         <div className="tooltip">
-          <div id="rockets" className="research">
+          <div id="rockets" className="research" onClick={() => addCountryResearch({c_id: country.c_id, r_id: 1, turn: turn})}>
             <div className="researchText">
               <div className="researchDisplay"></div>
               <p>Rockets</p>
