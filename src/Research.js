@@ -9,6 +9,7 @@ export function Research(props) {
   
   const addCountryResearch = (newResearch) => {
     setResearchIcons(researchIcons => researchIcons + countrySrc[newResearch.c_id]);
+    console.log(researchIcons);
   }
 
   return (
