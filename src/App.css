@@ -524,6 +524,7 @@ nav li:hover {
 .research:hover {
   background-color: #111;
   color: white;
+  cursor: pointer;
 }
 
 .researchText {
