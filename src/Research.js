@@ -9,7 +9,6 @@ export function Research(props) {
   
   const addCountryResearch = (newResearch) => {
     if (researchIcons.filter(researchIcon => researchIcon.r_id === newResearch.r_id && researchIcon.c_id === newResearch.c_id).length < 1) {
-      //setResearchIcons(researchIcons => [newResearch, ...researchIcons.filter(researchIcon => researchIcon.c_id !== newResearch.c_id && researchIcon.r_id !== newResearch.r_id)]);
       setResearchIcons(researchIcons => [newResearch, ...researchIcons]);
     }
     console.log(researchIcons);
