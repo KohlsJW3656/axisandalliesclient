@@ -509,6 +509,22 @@ nav li:hover {
   justify-content: space-evenly;
 }
 
+.active {
+  background-color: black;
+  border-radius: 25px;
+  color: white;
+  width: 200px;
+  height: 150px;
+  transition: 0.5s;
+  border: 3px solid gray;
+  outline: none;
+  margin-top: 5px;
+}
+
+.active:hover {
+  cursor: pointer;
+}
+
 .research  {
   background-color: transparent;
   border-radius: 25px;
@@ -529,7 +545,16 @@ nav li:hover {
 
 .researchText {
   position: relative;
-  top: 25px;
+  top: 30px;
+}
+
+.researchDisplay {
+  position: relative;
+  top: 40px;
+}
+
+.researchDisplay img {
+  width: 10%;
 }
 
 .tooltip {
