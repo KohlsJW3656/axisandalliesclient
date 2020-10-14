@@ -40,7 +40,7 @@ export function Research(props) {
         </div>
 
         <div className="tooltip">
-          <div id="paratroopers" className="research">
+          <div id="paratroopers" className="research" onClick={() => addCountryResearch({c_id: country.c_id, r_id: 2, turn: turn})}>
             <div className="researchText">
               <div className="researchDisplay"></div>
               <p>Paratroopers</p>
@@ -50,7 +50,7 @@ export function Research(props) {
         </div>
 
         <div className="tooltip">
-          <div id="increasedFactoryProduction" className="research">
+          <div id="increasedFactoryProduction" className="research" onClick={() => addCountryResearch({c_id: country.c_id, r_id: 3, turn: turn})}>
             <div className="researchText">
               <div className="researchDisplay"></div>
               <p>Increased Factory Production</p>
@@ -60,7 +60,7 @@ export function Research(props) {
         </div>
 
         <div className="tooltip">
-          <div id="warBonds" className="research">
+          <div id="warBonds" className="research" onClick={() => addCountryResearch({c_id: country.c_id, r_id: 4, turn: turn})}>
             <div className="researchText">
               <div className="researchDisplay"></div>
               <p>War Bonds</p>
@@ -70,7 +70,7 @@ export function Research(props) {
         </div>
 
         <div className="tooltip">
-          <div id="improvedMechanizedInfantry" className="research">
+          <div id="improvedMechanizedInfantry" className="research" onClick={() => addCountryResearch({c_id: country.c_id, r_id: 5, turn: turn})}>
             <div className="researchText">
               <div className="researchDisplay"></div>
               <p>Improved Mechanized Infantry</p>
@@ -84,7 +84,7 @@ export function Research(props) {
 
       <div className="container center">
         <div className="tooltiptop">
-          <div id="superSubmarines" className="research">
+          <div id="superSubmarines" className="research" onClick={() => addCountryResearch({c_id: country.c_id, r_id: 6, turn: turn})}>
             <div className="researchText">
               <div className="researchDisplay"></div>
               <p>Super Submarines</p>
@@ -94,7 +94,7 @@ export function Research(props) {
         </div>
 
         <div className="tooltiptop">
-          <div id="jetFighters" className="research">
+          <div id="jetFighters" className="research" onClick={() => addCountryResearch({c_id: country.c_id, r_id: 7, turn: turn})}>
             <div className="researchText">
               <div className="researchDisplay"></div>
               <p>Jet Fighters</p>
@@ -104,7 +104,7 @@ export function Research(props) {
         </div>
 
         <div className="tooltiptop">
-          <div id="improvedShipyards" className="research">
+          <div id="improvedShipyards" className="research" onClick={() => addCountryResearch({c_id: country.c_id, r_id: 8, turn: turn})}>
             <div className="researchText">
               <div className="researchDisplay"></div>
               <p>Improved Shipyards</p>
@@ -114,7 +114,7 @@ export function Research(props) {
         </div>
 
         <div className="tooltiptop">
-          <div id="radar" className="research">
+          <div id="radar" className="research" onClick={() => addCountryResearch({c_id: country.c_id, r_id: 9, turn: turn})}>
             <div className="researchText">
               <div className="researchDisplay"></div>
               <p>Radar</p>
@@ -124,7 +124,7 @@ export function Research(props) {
         </div>
 
         <div className="tooltiptop">
-          <div id="longRangeAircraft" className="research">
+          <div id="longRangeAircraft" className="research" onClick={() => addCountryResearch({c_id: country.c_id, r_id: 10, turn: turn})}>
             <div className="researchText">
               <div className="researchDisplay"></div>
               <p>Long-Range Aircraft</p>
@@ -134,7 +134,7 @@ export function Research(props) {
         </div>
 
         <div className="tooltiptop">
-          <div id="heavyBombers" className="research">
+          <div id="heavyBombers" className="research" onClick={() => addCountryResearch({c_id: country.c_id, r_id: 11, turn: turn})}>
             <div className="researchText">
               <div className="researchDisplay"></div>
               <p>Heavy Bombers</p>
