@@ -3,7 +3,7 @@ import './App.css';
 import {Header} from './Header';
 import {Body} from './Body';
 import {useSelector, useDispatch} from 'react-redux';
-import {getCountry, getPurchase, getIncome, getCountryTurn, deletePurchase, deleteIncome, deleteCountryTurn} from './actions';
+import {getCountry, getPurchase, getIncome, getCountryTurn, getCountryResearch, deletePurchase, deleteIncome, deleteCountryTurn, deleteCountryResearch} from './actions';
 import {Report} from './Report';
 import {IPCs} from './IPCs';
 import {Research} from './Research';
@@ -23,6 +23,7 @@ function App() {
   const purchases = useSelector(state => state.purchases);
   const incomes = useSelector(state => state.incomes);
   const countryTurns = useSelector(state => state.countryTurns);
+  const countryResearches = useSelector(state => state.countryResearches)
 
   useEffect(() => {
     dispatch(getCountry(i));
@@ -82,12 +83,14 @@ function App() {
     dispatch(deleteCountryTurn());
     dispatch(deleteIncome());
     dispatch(deletePurchase());
+    dispatch(deleteCountryResearch());
   }
 
   const viewReport = () => {
     dispatch(getCountryTurn());
     dispatch(getIncome());
     dispatch(getPurchase());
+    dispatch(getCountryResearch());
   }
 
   const setFavicon = (i) => {
@@ -110,7 +113,7 @@ function App() {
         <Research country={country} turn={turn} seasonYear={seasonYear}/>
       </div>
       <div id="reportRoot">
-        {countryTurns.map(countryTurn => <Report key={countryTurn.c_id + "" + countryTurn.turn} countryTurn={countryTurn} purchases={purchases} incomes={incomes}/>)}
+        {countryTurns.map(countryTurn => <Report key={countryTurn.c_id + "" + countryTurn.turn} countryTurn={countryTurn} purchases={purchases} incomes={incomes} countryResearches={countryResearches}/>)}
       </div>
       <div>
         <p className="center">&copy; 2020 All rights reserved.<br/>This page is not authorized, endorsed or affiliated with Axis and Allies or its subsidiaries.</p>

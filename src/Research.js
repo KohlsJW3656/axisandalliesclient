@@ -1,12 +1,15 @@
 import React, {useState, useEffect} from 'react';
+import {useDispatch} from 'react-redux';
+import {startAddingCountryResearch, startAddingCountryTurn} from './actions';
 
 export function Research(props) {
   const [researchIcons, setResearchIcons] =  useState([]);
   const targets = document.getElementsByClassName("researchDisplay");
-
+  const dispatch = useDispatch();
   const countrySrc = ["germany", "sovietunion", "japan", "usa", "china", "ukeurope", "ukpacific", "italy", "anzac", "france"];
   const country = props.country;
   const turn = props.turn;
+  const seasonYear = props.seasonYear;
   
   useEffect(() => {
     sortIcons(researchIcons);
@@ -31,6 +34,8 @@ export function Research(props) {
       }
       if (researchIcons.filter(researchIcon => researchIcon.r_id === newResearch.r_id && researchIcon.c_id === newResearch.c_id).length < 1) {
         setResearchIcons(researchIcons => [newResearch, ...researchIcons]);
+        dispatch(startAddingCountryTurn(country.c_id, turn, seasonYear));
+        dispatch(startAddingCountryResearch(newResearch.c_id, newResearch.r_id, newResearch.turn));
       }
     }
   }

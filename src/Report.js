@@ -3,6 +3,7 @@ import {Unit} from './Unit';
 
 export function Report(props) {
   const countryTurn = props.countryTurn;
+  const countryResearches = props.countryResearches;
   const purchases = props.purchases;
   const incomes = props.incomes;
   const countries = ["Germany", "Soviet Union", "Japan", "United States", "China", "UK Europe", "UK Pacific", "Italy", "ANZAC", "France"];
@@ -47,6 +48,13 @@ export function Report(props) {
             <p>Convoy Disruptions: {countryIncome.convoy}</p>
             <p className="reportTotal">Total Expenses: {countryIncome.convoy}</p>
             <h3>New IPC Amount: {}</h3>
+          </div>)}
+      </div>
+      <div className="researchReport">
+        {countryResearches.filter(research => countryTurn.c_id === research.c_id && countryTurn.turn === research.turn).map(countryResearch =>
+          <div key={countryResearch.c_id + countryResearch.r_id}>
+            <h2>Research Aquired</h2>
+            <h3>Name: {countryResearch.r_id}</h3>
           </div>)}
       </div>
     </div>

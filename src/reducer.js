@@ -6,6 +6,7 @@ const initialState = {
 	purchases: [],
 	incomes: [],
 	countryTurns: [],
+	countryResearches: [],
 };
 
 function reducer(state = initialState, action) {
@@ -15,11 +16,12 @@ function reducer(state = initialState, action) {
 				...state,
 				isWaiting: true,
 			};
+		/******************************************** Country Turn ********************************************/	
 		case Action.FinishAddingCountryTurn:
 			return {
 				...state,
 				isWaiting: false,
-			}
+			};
 		case Action.LoadCountryTurn:
 			return {
 				...state,
@@ -32,18 +34,20 @@ function reducer(state = initialState, action) {
 				isWaiting: false,
 				countryTurns: [],
 			};
+		/******************************************** Country ********************************************/
 		case Action.FinishEditingCountry:
 			return {
 				...state,
 				isWaiting: false,
 				country: action.payload,
-			}
+			};
 		case Action.LoadCountry:
 			return {
 				...state,
 				isWaiting: false,
 				country: action.payload[0],
 			};
+		/******************************************** Purchase ********************************************/	
 		case Action.FinishAddingPurchase:
 			return {
 				...state,
@@ -61,6 +65,7 @@ function reducer(state = initialState, action) {
 				isWaiting: false,
 				purchases: [],
 			};
+		/******************************************** Income ********************************************/
 		case Action.FinishAddingIncome:
 			return {
 				...state,
@@ -71,13 +76,31 @@ function reducer(state = initialState, action) {
 				...state,
 				isWaiting: false,
 				incomes: action.payload,
-			}
+			};
 		case Action.StartDeletingIncome:
 			return {
 				...state,
 				isWaiting: false,
 				incomes: [],
-			}
+			};
+		/******************************************** Country Research ********************************************/
+		case Action.FinishAddingCountryResearch:
+			return {
+				...state,
+				isWaiting: false,
+			};
+		case Action.LoadCountryResearch:
+			return {
+				...state,
+				isWaiting: false,
+				countryResearches: action.payload,
+			};
+		case Action.StartDeletingCountryResearch:
+			return {
+				...state,
+				isWaiting: false,
+				countryResearches: [],
+			};
 		default:
   		return state;
 	}
