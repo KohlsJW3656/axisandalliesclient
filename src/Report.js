@@ -50,13 +50,15 @@ export function Report(props) {
             <h3>New IPC Amount: {}</h3>
           </div>)}
       </div>
+      {(countryResearches.filter(research => countryTurn.c_id === research.c_id && countryTurn.turn === research.turn).length >= 1) &&
       <div className="researchReport">
-        {countryResearches.filter(research => countryTurn.c_id === research.c_id && countryTurn.turn === research.turn).map(countryResearch =>
-          <div key={countryResearch.c_id + countryResearch.r_id}>
-            <h2>Research Aquired</h2>
-            <h3>Name: {countryResearch.r_id}</h3>
-          </div>)}
+          <h2>Research Aquired</h2>
+          {countryResearches.filter(research => countryTurn.c_id === research.c_id && countryTurn.turn === research.turn).map(countryResearch =>
+          <p key={countryResearch.c_id + countryResearch.r_id}>
+            {countryResearch.r_id}
+          </p>)}
       </div>
+      }
     </div>
   );
 }
