@@ -7,16 +7,16 @@ export function Report(props) {
   const purchases = props.purchases;
   const incomes = props.incomes;
   const countries = ["Germany", "Soviet Union", "Japan", "United States", "China", "UK Europe", "UK Pacific", "Italy", "ANZAC", "France"];
-  const backgroundSrc = ["germany.png", "sovietunion.png", "japan.png", "unitedstates.png", "china.png", "ukeurope.png", "ukpacific.png", "italy.png", "anzac.png", "france.png"];
+  //const backgroundSrc = ["germany.png", "sovietunion.png", "japan.png", "unitedstates.png", "china.png", "ukeurope.png", "ukpacific.png", "italy.png", "anzac.png", "france.png"];
   const flagSrc = ["germany.png", "sovietunion.jpg", "japan.png", "usa.jpg", "china.png", "ukeurope.png", "ukpacific.png", "italy.png", "anzac.jpg", "france.jpg"];
-  const backgroundClass = ["backgroundGermany", "backgroundSovietUnion", "backgroundJapan", "backgroundUnitedStates", "", "", "", "", "", "backgroundFrance"];
-  let flag, background;
+  //const backgroundClass = ["backgroundGermany", "backgroundSovietUnion", "backgroundJapan", "backgroundUnitedStates", "", "", "", "", "", "backgroundFrance"];
+  let flag/*, background*/;
   
   const purchaseTurnCountry = purchases.filter(purchase => purchase.c_id === countryTurn.c_id && purchase.turn === countryTurn.turn);
 
   if (countryTurn.c_id !== undefined) {
     flag = "images/flags/" + flagSrc[countryTurn.c_id];
-    background = "images/background/" + backgroundSrc[countryTurn.c_id];
+    //background = "images/background/" + backgroundSrc[countryTurn.c_id];
   }
 
   return (
@@ -34,7 +34,7 @@ export function Report(props) {
         <h2>Purchased: <span>{purchaseTurnCountry.map(purchaseTurnCountry => <Unit key={purchaseTurnCountry.p_name} purchase={purchaseTurnCountry}/>)}</span></h2>
         <p>IPCs Spent: {Math.max.apply(null, purchaseTurnCountry.map(purchaseTurnCountry => purchaseTurnCountry.cost))}</p>
       </div>
-      <img className={backgroundClass[countryTurn.c_id] + " backgroundImage"} src={background} alt="Country background"/>
+      {/*<img className={backgroundClass[countryTurn.c_id] + " backgroundImage"} src={background} alt="Country background"/>*/}
       <div className="incomeReport">
         {incomes.filter(income => countryTurn.c_id === income.c_id && income.turn === countryTurn.turn).map(countryIncome => 
           <div key={countryIncome.c_id + countryIncome.turn}>
@@ -57,8 +57,7 @@ export function Report(props) {
           <p key={countryResearch.c_id + countryResearch.r_id}>
             {countryResearch.r_id}
           </p>)}
-      </div>
-      }
+      </div>}
     </div>
   );
 }

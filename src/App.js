@@ -23,9 +23,10 @@ function App() {
   const purchases = useSelector(state => state.purchases);
   const incomes = useSelector(state => state.incomes);
   const countryTurns = useSelector(state => state.countryTurns);
-  const countryResearches = useSelector(state => state.countryResearches)
+  const countryResearches = useSelector(state => state.countryResearches);
 
   useEffect(() => {
+    dispatch(getCountryResearch());
     dispatch(getCountry(i));
   }, [dispatch, i]);
 
@@ -110,7 +111,7 @@ function App() {
         <IPCs country={country} turn={turn} seasonYear={seasonYear}/>
       </div>
       <div id="researchRoot" className="row">
-        <Research country={country} turn={turn} seasonYear={seasonYear}/>
+        <Research country={country} turn={turn} seasonYear={seasonYear} countryResearches={countryResearches}/>
       </div>
       <div id="reportRoot">
         {countryTurns.map(countryTurn => <Report key={countryTurn.c_id + "" + countryTurn.turn} countryTurn={countryTurn} purchases={purchases} incomes={incomes} countryResearches={countryResearches}/>)}
