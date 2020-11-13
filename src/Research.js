@@ -1,23 +1,24 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import {useDispatch} from 'react-redux';
 import {startAddingCountryResearch, startAddingCountryTurn} from './actions';
 
 export function Research(props) {
-  const countryResearches = props.countryResearches;
+  //const countryResearches = props.countryResearches;
   const country = props.country;
   const turn = props.turn;
   const seasonYear = props.seasonYear;
-  const [researchIcons, setResearchIcons] =  useState([countryResearches]);
+  const [researchIcons, setResearchIcons] =  useState([]);
 
   const targets = document.getElementsByClassName("researchDisplay");
   const dispatch = useDispatch();
   const countrySrc = ["germany", "sovietunion", "japan", "usa", "china", "ukeurope", "ukpacific", "italy", "anzac", "france"];
 
   useEffect(() => {
-    sortIcons(countryResearches);
+    sortIcons(researchIcons);
+    //sortIcons(countryResearches)
   });
 
-  const sortIcons = (researchArray) => {
+  const sortIcons = useCallback((researchArray) => {
     for (let i = 0; i < targets.length; i++) {
       let targetResearch = researchArray.filter(countryResearch => countryResearch.r_id === parseInt(targets[i].getAttribute("value")));
       targets[i].innerHTML = targetResearch.map(countryResearch => "<img src='images/icons/" + countrySrc[countryResearch.c_id] + ".png' alt='" + countrySrc[countryResearch.c_id] + " research icon'/>").join('');
@@ -27,8 +28,8 @@ export function Research(props) {
       else {
         targets[i].parentElement.setAttribute("class", "research");
       }
-    }
-  }
+   }
+  }, [countrySrc, targets]);
 
   const addCountryResearch = (newResearch) => {
     //China cannot research
@@ -39,7 +40,6 @@ export function Research(props) {
       }
       if (researchIcons.filter(researchIcon => researchIcon.r_id === newResearch.r_id && researchIcon.c_id === newResearch.c_id).length < 1) {
         setResearchIcons(researchIcons => [newResearch, ...researchIcons]);
-        //sortIcons(researchIcons);
         dispatch(startAddingCountryTurn(country.c_id, turn, seasonYear));
         dispatch(startAddingCountryResearch(newResearch.c_id, newResearch.r_id, newResearch.turn));
       }
