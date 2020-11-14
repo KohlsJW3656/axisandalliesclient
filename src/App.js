@@ -80,6 +80,10 @@ function App() {
     }
   }
 
+  //function activeResearch() {
+    //this.refs.Body.activeResearch(countryResearches);
+  //}
+
   const resetDatabase = () => {
     dispatch(deleteCountryTurn());
     dispatch(deleteIncome());
@@ -105,13 +109,13 @@ function App() {
       </div>
       {isWaiting && <div className="spinner" />}
       <div id="purchaseRoot" className="row">
-        <Body country={country} seasonYear={seasonYear} turn={turn}/>
+        <Body country={country} seasonYear={seasonYear} turn={turn} countryResearches={countryResearches}/>
       </div>
       <div id="incomeRoot" className="row">
         <IPCs country={country} turn={turn} seasonYear={seasonYear}/>
       </div>
       <div id="researchRoot" className="row">
-        <Research country={country} turn={turn} seasonYear={seasonYear} countryResearches={countryResearches}/>
+        <Research country={country} turn={turn} seasonYear={seasonYear} countryResearches={countryResearches} /*activeResearch={activeResearch}*//>
       </div>
       <div id="reportRoot">
         {countryTurns.map(countryTurn => <Report key={countryTurn.c_id + "" + countryTurn.turn} countryTurn={countryTurn} purchases={purchases} incomes={incomes} countryResearches={countryResearches}/>)}

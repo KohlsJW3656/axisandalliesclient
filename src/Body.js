@@ -6,8 +6,9 @@ import {startAddingPurchase, startEditingCountry, startAddingCountryTurn} from '
 export function Body(props) {
   const turn = props.turn;
   const seasonYear = props.seasonYear;
-  const dispatch = useDispatch();
   const country = props.country;
+  //const countryResearches = props.countryResearches;
+  const dispatch = useDispatch();
   const [orders, setOrders] =  useState([]);
   const [totalCost, setTotalCost] = useState(0);
   const [purchasingPower, setPurchasingPower] = useState(country.ipcs);
@@ -86,6 +87,15 @@ export function Body(props) {
     dispatch(startAddingCountryTurn(country.c_id, turn, seasonYear));
     clearOrders();
   }
+
+  /*const activeResearch = (countryResearches) => {
+    alert("Called");
+    countryResearches.filter(research => country.c_id === research.c_id).map(countryResearch => {
+      if (countryResearch.r_id === 8) {
+        console.log(countryResearch);
+      }
+    });
+  }*/
   
   const tabClick = (tabName) => {
     const tabs = document.getElementsByClassName("Tab");

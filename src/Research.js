@@ -52,7 +52,7 @@ export function Research(props) {
 
       <div className="container center">  
         <div className="tooltip">
-          <div id="advancedArtillery" className="research" onClick={() => addCountryResearch({c_id: country.c_id, r_id: 0, turn: turn})}>
+          <div id="advancedArtillery" className="research" onClick={() => {addCountryResearch({c_id: country.c_id, r_id: 0, turn: turn}); /*props.activeResearch();*/}}>
             <div className="researchDisplay" value='0'></div>
             <p className="researchText">Advanced Artillery</p>
             <span className="tooltiptext">Each of your artillery units can now provide greater support. One artillery unit can support up to 2 infantry and/or mechanized infantry units per attack. Up to 2 infantry and/or mechanized infantry units when coupled with 1 artillery unit have attack values of 2.</span>
