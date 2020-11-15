@@ -54,8 +54,8 @@ export function Report(props) {
       <div className="researchReport">
           <h2>Research Aquired</h2>
           {countryResearches.filter(research => countryTurn.c_id === research.c_id && countryTurn.turn === research.turn).map(countryResearch =>
-          <p key={countryResearch.c_id + countryResearch.r_id}>
-            {countryResearch.r_id}
+          <p key={countryResearch.c_id + countryResearch.r_name}>
+            {countryResearch.r_name}
           </p>)}
       </div>}
     </div>
