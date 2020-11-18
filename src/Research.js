@@ -3,7 +3,7 @@ import {useDispatch} from 'react-redux';
 import {startAddingCountryResearch, startAddingCountryTurn} from './actions';
 
 export function Research(props) {
-  //const countryResearches = props.countryResearches;
+  const countryResearches = props.countryResearches;
   const country = props.country;
   const turn = props.turn;
   const seasonYear = props.seasonYear;
@@ -14,8 +14,8 @@ export function Research(props) {
   const countrySrc = ["germany", "sovietunion", "japan", "usa", "china", "ukeurope", "ukpacific", "italy", "anzac", "france"];
 
   useEffect(() => {
-    sortIcons(researchIcons);
-    //sortIcons(countryResearches)
+    //sortIcons(researchIcons);
+    sortIcons(countryResearches)
   });
 
   const sortIcons = useCallback((researchArray) => {

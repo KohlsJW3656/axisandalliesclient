@@ -52,7 +52,7 @@ export function Header(props) {
             <br/>
             <button type="button" className="closeButtons" onClick={() => {setPressed(pressed => !pressed)}}>Instructions</button>
             <button type="button" className="closeButtons" onClick={() => props.viewReport()}>View Report</button>
-            <button type="button" className="closeButtons" onClick={() => props.resetDatabase()}>Reset Database</button>
+            {/*<button type="button" className="closeButtons" onClick={() => props.resetDatabase()}>Reset Database</button>*/}
           </div>
           <div className="col-xs-12 col-md-3 col-lg-2">
             <br/>
