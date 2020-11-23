@@ -11,8 +11,8 @@ import {Research} from './Research';
 function App() {
   const dispatch = useDispatch();
   const seasons = ["Spring/Summer, ", "Fall/Winter, "];
-  const [turn, setTurn] = useState(1);
-  const [year, setYear] = useState(1940);
+  const [turn, setTurn] = useState(3);
+  const [year, setYear] = useState(1941);
   const [seasonYear, setSeasonYear] = useState(seasons[0] + year);
   const [i, setI] = useState(0);
 
