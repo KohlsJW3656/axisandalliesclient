@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {useDispatch} from 'react-redux';
 import {Order} from './Order';
+import {Purchase} from './Purchase';
 import {startAddingPurchase, startEditingCountry, startAddingCountryTurn} from './actions';
 
 export function Body(props) {
@@ -12,6 +13,7 @@ export function Body(props) {
   const [orders, setOrders] =  useState([]);
   const [totalCost, setTotalCost] = useState(0);
   const [purchasingPower, setPurchasingPower] = useState(country.ipcs);
+  const [purchased, setPurchased] = useState([]);
 
   const countrySrc = ["germany", "sovietunion", "japan", "usa", "china", "uk", "uk", "italy", "anzac", "france"];
   let infantryIcon, artilleryIcon, mechIcon, tankIcon, aaaIcon, fighterIcon, tacBomberIcon, stratBomberIcon, subIcon, transportIcon, destroyerIcon, cruiserIcon, carrierIcon, battleshipIcon, minorIcon, airbaseIcon, navalbaseIcon, upgradeIcon, majorIcon, repairIcon, researchIcon, airliftIcon;
@@ -50,6 +52,10 @@ export function Body(props) {
     setPurchasingPower(country.ipcs);
   }, [country.ipcs]);
 
+  useEffect(() => {
+    setPurchased([]);
+  }, [country.c_id]);
+
   const removeOrder = (name, amount, cost) => {
     setOrders(orders => orders.filter(order => order.name !== name));
     setTotalCost(totalCost => totalCost - (amount * cost));
@@ -79,6 +85,7 @@ export function Body(props) {
 
   const addPurchase = (orders, country, totalCost, turn) => {
     orders.map(order => dispatch(startAddingPurchase(order.name, order.amount, country.c_id, totalCost, turn)));
+    setPurchased(purchased => orders);
     dispatch(startEditingCountry({
       c_id: country.c_id,
       c_name: country.c_name,
@@ -126,8 +133,18 @@ export function Body(props) {
         <button type="button" className="closeButtons" onClick={() => addPurchase(orders, country, totalCost, turn)}>Purchase</button>
         <button type="button" className="closeButtons" onClick={() => clearOrders()}>Clear Orders</button>
 
-        <h3>Ordered:</h3>
-        {orders.map(order => <Order key={order.name} order={order} remove={removeOrder}/>)}
+        {orders.length > 0 &&
+          <div>
+            <h3>Ordered:</h3>
+            {orders.map(order => <Order key={order.name} order={order} remove={removeOrder}/>)}
+          </div>
+        }
+        {purchased.length > 0 &&
+          <div>
+            <h3>Purchased:</h3>
+            {purchased.map(purchase => <Purchase key={purchase.name} purchase={purchase} />)}
+          </div>
+        }
       </div>
 
       <div className="col-xs-12 col-md-10"  id="tableColumn">
