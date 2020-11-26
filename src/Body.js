@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {useDispatch} from 'react-redux';
-import {Order} from './Order';
-import {Purchase} from './Purchase';
+import {Order, Purchase} from './Order-Purchase';
 import {startAddingPurchase, startEditingCountry, startAddingCountryTurn} from './actions';
 
 export function Body(props) {
