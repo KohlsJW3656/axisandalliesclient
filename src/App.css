@@ -590,7 +590,7 @@ nav li:hover {
 }
 
 .tooltip:hover .tooltiptext {
-  transition-delay: 1.5s;
+  transition-delay: 1s;
   visibility: visible;
   font-size: 15px;
 }

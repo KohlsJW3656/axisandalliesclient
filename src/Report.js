@@ -30,10 +30,11 @@ export function Report(props) {
           <h3 className="right">Turn: {countryTurn.turn}</h3>
         </div>
       </div>
+      {(purchases.filter(purchase => purchase.c_id === countryTurn.c_id && purchase.turn === countryTurn.turn).length >= 1) &&
       <div className="purchaseReport">
-        <h2>Purchased: <span>{purchaseTurnCountry.map(purchaseTurnCountry => <Unit key={purchaseTurnCountry.p_name} purchase={purchaseTurnCountry}/>)}</span></h2>
+        <h2>Units Purchased: <span>{purchaseTurnCountry.map(purchaseTurnCountry => <Unit key={purchaseTurnCountry.p_name} purchase={purchaseTurnCountry}/>)}</span></h2>
         <p>IPCs Spent: {Math.max.apply(null, purchaseTurnCountry.map(purchaseTurnCountry => purchaseTurnCountry.cost))}</p>
-      </div>
+      </div>}
       {/*<img className={backgroundClass[countryTurn.c_id] + " backgroundImage"} src={background} alt="Country background"/>*/}
       <div className="incomeReport">
         {incomes.filter(income => countryTurn.c_id === income.c_id && income.turn === countryTurn.turn).map(countryIncome => 
@@ -47,7 +48,7 @@ export function Report(props) {
             <h3>Expenses</h3>
             <p>Convoy Disruptions: {countryIncome.convoy}</p>
             <p className="reportTotal">Total Expenses: {countryIncome.convoy}</p>
-            <h3>New IPC Amount: {}</h3>
+            {/*<h3>New IPC Amount: {}</h3>*/}
           </div>)}
       </div>
       {(countryResearches.filter(research => countryTurn.c_id === research.c_id && countryTurn.turn === research.turn).length >= 1) &&
