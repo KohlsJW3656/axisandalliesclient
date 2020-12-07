@@ -11,6 +11,7 @@ export function Report(props) {
   const flagSrc = ["germany.png", "sovietunion.jpg", "japan.png", "usa.jpg", "china.png", "ukeurope.png", "ukpacific.png", "italy.png", "anzac.jpg", "france.jpg"];
   //const backgroundClass = ["backgroundGermany", "backgroundSovietUnion", "backgroundJapan", "backgroundUnitedStates", "", "", "", "", "", "backgroundFrance"];
   let flag/*, background*/;
+  let cost = 0;
   
   const purchaseTurnCountry = purchases.filter(purchase => purchase.c_id === countryTurn.c_id && purchase.turn === countryTurn.turn);
 
@@ -19,21 +20,27 @@ export function Report(props) {
     //background = "images/background/" + backgroundSrc[countryTurn.c_id];
   }
 
+  if (Number.isFinite(Math.max.apply(0, purchaseTurnCountry.map(purchaseTurnCountry => purchaseTurnCountry.cost)))) {
+    cost = Math.max.apply(0, purchaseTurnCountry.map(purchaseTurnCountry => purchaseTurnCountry.cost));
+  }
+
   return (
     <div className="report">
       <div className="rowReport">
-        <div className="col-xs-12 col-sm-10">
+        <div className="col-xs-12 col-sm-9">
           <h1>{countries[countryTurn.c_id]}<img className="flag" src={flag} alt="Country Flag"/></h1>
         </div>
-        <div className="col-xs-12 col-sm-2">
+        <div className="col-xs-12 col-sm-3">
           <h3 className="right">{countryTurn.season_year}</h3> 
           <h3 className="right">Turn: {countryTurn.turn}</h3>
         </div>
       </div>
       {(purchases.filter(purchase => purchase.c_id === countryTurn.c_id && purchase.turn === countryTurn.turn).length >= 1) &&
       <div className="purchaseReport">
-        <h2>Units Purchased: <span>{purchaseTurnCountry.map(purchaseTurnCountry => <Unit key={purchaseTurnCountry.p_name} purchase={purchaseTurnCountry}/>)}</span></h2>
-        <p>IPCs Spent: {Math.max.apply(null, purchaseTurnCountry.map(purchaseTurnCountry => purchaseTurnCountry.cost))}</p>
+        <h2>Purchased</h2>
+        <div id="unitList">
+          <span>{purchaseTurnCountry.map(purchaseTurnCountry => <Unit key={purchaseTurnCountry.p_name} purchase={purchaseTurnCountry}/>)}</span>
+        </div>
       </div>}
       {/*<img className={backgroundClass[countryTurn.c_id] + " backgroundImage"} src={background} alt="Country background"/>*/}
       <div className="incomeReport">
@@ -46,8 +53,9 @@ export function Report(props) {
             <p>Research: {countryIncome.research}</p>
             <p className="reportTotal">Total Revenue: {countryIncome.base + countryIncome.bonus + countryIncome.research}</p>
             <h3>Expenses</h3>
+            <p>Purchases: {cost}</p>
             <p>Convoy Disruptions: {countryIncome.convoy}</p>
-            <p className="reportTotal">Total Expenses: {countryIncome.convoy}</p>
+            <p className="reportTotal">Total Expenses: {countryIncome.convoy + cost}</p>
             {/*<h3>New IPC Amount: {}</h3>*/}
           </div>)}
       </div>

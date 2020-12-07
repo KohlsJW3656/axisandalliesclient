@@ -15,7 +15,7 @@ export function Body(props) {
   const [purchased, setPurchased] = useState([]);
 
   const countrySrc = ["germany", "sovietunion", "japan", "usa", "china", "uk", "uk", "italy", "anzac", "france"];
-  let infantryIcon, artilleryIcon, mechIcon, tankIcon, aaaIcon, fighterIcon, tacBomberIcon, stratBomberIcon, subIcon, transportIcon, destroyerIcon, cruiserIcon, carrierIcon, battleshipIcon, minorIcon, airbaseIcon, navalbaseIcon, upgradeIcon, majorIcon, repairIcon, researchIcon, airliftIcon;
+  let infantryIcon, artilleryIcon, mechIcon, tankIcon, aaaIcon, fighterIcon, tacBomberIcon, stratBomberIcon, subIcon, transportIcon, destroyerIcon, cruiserIcon, carrierIcon, battleshipIcon, minorIcon, airbaseIcon, navalbaseIcon, upgradeIcon, majorIcon, repairIcon, researchIcon/*, airliftIcon*/;
 
   //Prevent errors on startup
   if(country.c_id !== undefined) {
@@ -43,7 +43,7 @@ export function Body(props) {
       majorIcon       = "images/facilities/major.png";
       repairIcon      = "images/utilities/repair.jpg";
       researchIcon    = "images/utilities/research.png";
-      airliftIcon     = "images/utilities/airlift.png";
+      /*airliftIcon     = "images/utilities/airlift.png";*/
     }
   }
 
@@ -305,13 +305,14 @@ export function Body(props) {
             <h3>Research</h3>
             <p>5</p>
           </div>
-
+          {/*
           <div style={{order:3}} className="Rtable-cell table-item utilities hiddenSmall" onClick={orders => addOrder({name: "Airlift", amount: 1, cost: 5})}>
             <img className="utilities" src={airliftIcon} alt="Airlift icon"/>
             <h3>Airlift</h3>
             <p>5</p>
           </div>
-
+          */}
+          <div style={{order:3}} className="Rtable-cell table-item empty utilities hiddenSmall"></div>
           <div style={{order:4}} className="Rtable-cell table-item empty utilities hiddenSmall"></div>
           <div style={{order:5}} className="Rtable-cell table-item empty utilities hiddenSmall"></div>
           <div style={{order:6}} className="Rtable-cell table-item empty utilities hiddenSmall"></div>

@@ -69,6 +69,12 @@ body {
   left: 20px;
 }
 
+#unitList {
+  position: relative;
+  top: -20px;
+  left: 10px;
+}
+
 .reportTotal {
   padding-left: 10px;
 }

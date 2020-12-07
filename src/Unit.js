@@ -17,10 +17,12 @@ export function Unit(props) {
       imageFolder = "images/utilities/";
       unitName = purchase.p_name + ".png";
       break;
+    /*  
     case "Airlift":
       imageFolder = "images/utilities/";
       unitName = purchase.p_name + ".png";
       break;
+    */  
     case "Major IC":
       imageFolder = "images/facilities/";
       unitName = "major.png";
