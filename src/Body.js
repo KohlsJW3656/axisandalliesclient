@@ -53,6 +53,8 @@ export function Body(props) {
 
   useEffect(() => {
     setPurchased([]);
+    setOrders([]);
+    setTotalCost(0);
   }, [country.c_id]);
 
   const removeOrder = (name, amount, cost) => {
