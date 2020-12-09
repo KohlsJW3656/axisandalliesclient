@@ -11,9 +11,9 @@ import {Research} from './Research';
 function App() {
   const dispatch = useDispatch();
   const seasons = ["Spring/Summer, ", "Fall/Winter, "];
-  const [turn, setTurn] = useState(5);
+  const [turn, setTurn] = useState(6);
   const [year, setYear] = useState(1942);
-  const [seasonYear, setSeasonYear] = useState(seasons[0] + year);
+  const [seasonYear, setSeasonYear] = useState(seasons[1] + year);
   const [i, setI] = useState(0);
 
   const countrySrc = ["germany", "sovietunion", "japan", "usa", "china", "ukeurope", "ukpacific", "italy", "anzac", "france"];
