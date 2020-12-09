@@ -121,6 +121,7 @@ function App() {
         {countryTurns.map(countryTurn => <Report key={countryTurn.c_id + "" + countryTurn.turn} countryTurn={countryTurn} purchases={purchases} incomes={incomes} countryResearches={countryResearches}/>)}
       </div>
       <div>
+        <p className="center"><a href="#headerRoot">Back To Top</a></p>
         <p id="reportBottom" className="center">&copy; 2020 All rights reserved.<br/>This page is not authorized, endorsed or affiliated with Axis and Allies or its subsidiaries.</p>
       </div>
     </div>
