@@ -81,7 +81,7 @@ export function IPCs(props) {
         <div className="col-xs-12 col-sm-9">
           <p>When the Soviet Union is at War in Europe:</p>
           <input type="checkbox" value="5" className="checkBox"/><span>5 IPCs if the convoy in sea zone 125 is free of Axis warchips, Archangel is controlled by the Soviet Union, and there are no units belonging to other Allied powers present in any territories originally controlled by the Soviet Union.</span><br/>
-          <input type="checkbox" value="3" className="checkBox"/><input type="checkbox" value="3" className="checkBox"/><input type="checkbox" value="3" className="checkBox"/><input type="checkbox" value="3" className="checkBox"/><input type="checkbox" value="3" className="checkBox"/><span>3 IPCs for each original German, Italian, or pro-Axis neutral territory that the Soviet Union controls</span><br/>
+          <input type="checkbox" value="3" className="checkBox"/><input type="checkbox" value="3" className="checkBox"/><input type="checkbox" value="3" className="checkBox"/><input type="checkbox" value="3" className="checkBox"/><input type="checkbox" value="3" className="checkBox"/><input type="checkbox" value="3" className="checkBox"/><input type="checkbox" value="3" className="checkBox"/><input type="checkbox" value="3" className="checkBox"/><input type="checkbox" value="3" className="checkBox"/><input type="checkbox" value="3" className="checkBox"/><span>3 IPCs for each original German, Italian, or pro-Axis neutral territory that the Soviet Union controls</span><br/>
           <input type="checkbox" value="10" className="checkBox"/><span>10 IPCs the first time the Soviet Union controls Berlin.</span>
         </div>
       }
