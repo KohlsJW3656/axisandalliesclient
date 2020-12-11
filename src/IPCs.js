@@ -23,6 +23,9 @@ export function IPCs(props) {
         bonus+= parseInt(checkBoxes[i].value);
       }
     }
+    if (country.c_id === 1) {
+      bonus+= parseInt(document.getElementById("russianSelect").value);
+    }
     if (research === "") {
       research = 0;
     }
@@ -81,7 +84,25 @@ export function IPCs(props) {
         <div className="col-xs-12 col-sm-9">
           <p>When the Soviet Union is at War in Europe:</p>
           <input type="checkbox" value="5" className="checkBox"/><span>5 IPCs if the convoy in sea zone 125 is free of Axis warchips, Archangel is controlled by the Soviet Union, and there are no units belonging to other Allied powers present in any territories originally controlled by the Soviet Union.</span><br/>
-          <input type="checkbox" value="3" className="checkBox"/><input type="checkbox" value="3" className="checkBox"/><input type="checkbox" value="3" className="checkBox"/><input type="checkbox" value="3" className="checkBox"/><input type="checkbox" value="3" className="checkBox"/><input type="checkbox" value="3" className="checkBox"/><input type="checkbox" value="3" className="checkBox"/><input type="checkbox" value="3" className="checkBox"/><input type="checkbox" value="3" className="checkBox"/><input type="checkbox" value="3" className="checkBox"/><span>3 IPCs for each original German, Italian, or pro-Axis neutral territory that the Soviet Union controls</span><br/>
+          <select id="russianSelect">
+            <option value="0">0 territories</option>
+            <option value="3">1 territory</option>
+            <option value="6">2 territories</option>
+            <option value="9">3 territories</option>
+            <option value="12">4 territories</option>
+            <option value="15">5 territories</option>
+            <option value="18">6 territories</option>
+            <option value="21">7 territories</option>
+            <option value="24">8 territories</option>
+            <option value="27">9 territories</option>
+            <option value="30">10 territories</option>
+            <option value="33">11 territories</option>
+            <option value="36">12 territories</option>
+            <option value="39">13 territories</option>
+            <option value="42">14 territories</option>
+            <option value="45">15 territories</option>
+          </select>
+          <span> 3 IPCs for each original German, Italian, or pro-Axis neutral territory that the Soviet Union controls</span><br/>
           <input type="checkbox" value="10" className="checkBox"/><span>10 IPCs the first time the Soviet Union controls Berlin.</span>
         </div>
       }
