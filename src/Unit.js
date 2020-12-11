@@ -73,8 +73,11 @@ export function Unit(props) {
 
   return (
     <span>
-      <img src={srcString.toLowerCase()} alt={purchase.p_name + ' icon'} className='unit'/>
-      <span className="unitAmount">{purchase.amount}</span>
+      <div className="tooltipunit">
+        <img src={srcString.toLowerCase()} alt={purchase.p_name + ' icon'} className='unit'/>
+        <span className="unitAmount">{purchase.amount}</span>
+        <span className="tooltiptextunit">{purchase.p_name}</span>
+      </div>
     </span>
   );
 }

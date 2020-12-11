@@ -93,6 +93,10 @@ body {
   top: 20px;
 }
 
+.unit:hover {
+  cursor: pointer;
+}
+
 .unitAmount {
   position: relative;
   left: -10px;
@@ -635,6 +639,42 @@ nav li:hover {
 
 .tooltiptop:hover .tooltiptexttop {
   transition-delay: 1.5s;
+  visibility: visible;
+  font-size: 15px;
+}
+
+.tooltipunit {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltipunit .tooltiptextunit {
+  visibility: hidden;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 30px;
+  right: 10px;
+  font-size: 15px;
+}
+
+.tooltipunit .tooltiptextunit::after {
+  content: "";
+  position: absolute;
+  top: 100%; /* At the bottom of the tooltip */
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+}
+
+.tooltipunit:hover .tooltiptextunit {
+  transition-delay: .5s;
   visibility: visible;
   font-size: 15px;
 }
