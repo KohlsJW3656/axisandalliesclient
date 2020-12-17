@@ -80,10 +80,6 @@ function App() {
     }
   }
 
-  //function activeResearch() {
-    //this.refs.Body.activeResearch(countryResearches);
-  //}
-
   const resetDatabase = () => {
     dispatch(deleteCountryTurn());
     dispatch(deleteIncome());

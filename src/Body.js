@@ -7,12 +7,14 @@ export function Body(props) {
   const turn = props.turn;
   const seasonYear = props.seasonYear;
   const country = props.country;
-  //const countryResearches = props.countryResearches;
+  const countryResearches = props.countryResearches;
   const dispatch = useDispatch();
   const [orders, setOrders] =  useState([]);
   const [totalCost, setTotalCost] = useState(0);
   const [purchasingPower, setPurchasingPower] = useState(country.ipcs);
   const [purchased, setPurchased] = useState([]);
+  const [activeResearch, setActiveResearch] =  useState([]);
+  const [shipyards, setShipyards] = useState(false);
 
   const countrySrc = ["germany", "sovietunion", "japan", "usa", "china", "uk", "uk", "italy", "anzac", "france"];
   let infantryIcon, artilleryIcon, mechIcon, tankIcon, aaaIcon, fighterIcon, tacBomberIcon, stratBomberIcon, subIcon, transportIcon, destroyerIcon, cruiserIcon, carrierIcon, battleshipIcon, minorIcon, airbaseIcon, navalbaseIcon, upgradeIcon, majorIcon, repairIcon, researchIcon/*, airliftIcon*/;
@@ -46,6 +48,14 @@ export function Body(props) {
       /*airliftIcon     = "images/utilities/airlift.png";*/
     }
   }
+
+  useEffect(() => {
+    setActiveResearch(countryResearches);
+  }, [setActiveResearch, countryResearches]);
+
+  useEffect(() => {
+    getActiveResearch(activeResearch);
+  });
 
   useEffect(() => {
     setPurchasingPower(country.ipcs);
@@ -96,14 +106,19 @@ export function Body(props) {
     clearOrders();
   }
 
-  /*const activeResearch = (countryResearches) => {
-    alert("Called");
-    countryResearches.filter(research => country.c_id === research.c_id).map(countryResearch => {
-      if (countryResearch.r_id === 8) {
-        console.log(countryResearch);
+  const getActiveResearch = (researchArray) => {
+    let countryId = country.c_id;
+    setShipyards(shipyards => false);
+    if (country.c_id === 6) {
+      countryId = 5;
+    }
+    let countryResearch = researchArray.filter(research => countryId === research.c_id);
+    for (let i = 0; i < countryResearch.length; i++) {
+      if (countryResearch[i].r_id === 8) {
+        setShipyards(shipyards => true);
       }
-    });
-  }*/
+    }
+  };
   
   const tabClick = (tabName) => {
     const tabs = document.getElementsByClassName("Tab");
@@ -116,7 +131,6 @@ export function Body(props) {
         tabs[j].setAttribute("aria-selected", "false");
       }
     }
-    
     for (let j = 0; j < cells.length; j++) {
       let classAttribute = cells[j].getAttribute("class").replace(" hiddenSmall", "");
       cells[j].setAttribute("class", classAttribute);
@@ -221,42 +235,90 @@ export function Body(props) {
 
           {/*Naval Column*/}
           <div style={{order:0}} className="Rtable-cell Rtable-cell--head naval hiddenSmall"><h3>Naval Units</h3></div>
+          {!shipyards &&
           <div style={{order:1}} className="Rtable-cell table-item naval hiddenSmall" onClick={orders => addOrder({name: "Submarine", amount: 1, cost: 6})}>
             <img src={subIcon} alt="Submarine icon"/>
             <h3>Submarine</h3>
             <p>6</p>
           </div>
-
+          }
+          {shipyards &&
+          <div style={{order:1}} className="Rtable-cell table-item naval hiddenSmall" onClick={orders => addOrder({name: "Submarine", amount: 1, cost: 5})}>
+            <img src={subIcon} alt="Submarine icon"/>
+            <h3>Submarine</h3>
+            <p>5</p>
+          </div>
+          }
+          {!shipyards &&
           <div style={{order:2}} className="Rtable-cell table-item naval hiddenSmall" onClick={orders => addOrder({name: "Transport", amount: 1, cost: 7})}>
             <img src={transportIcon} alt="Transport icon"/>
             <h3>Transport</h3>
             <p>7</p>
           </div>
-
+          }
+          {shipyards &&
+          <div style={{order:2}} className="Rtable-cell table-item naval hiddenSmall" onClick={orders => addOrder({name: "Transport", amount: 1, cost: 6})}>
+            <img src={transportIcon} alt="Transport icon"/>
+            <h3>Transport</h3>
+            <p>6</p>
+          </div>
+          }
+          {!shipyards &&
           <div style={{order:3}} className="Rtable-cell table-item naval hiddenSmall" onClick={orders => addOrder({name: "Destroyer", amount: 1, cost: 8})}>
             <img src={destroyerIcon} alt="Destroyer icon"/>
             <h3>Destroyer</h3>
             <p>8</p>
           </div>
-            
+          }
+          {shipyards &&
+          <div style={{order:3}} className="Rtable-cell table-item naval hiddenSmall" onClick={orders => addOrder({name: "Destroyer", amount: 1, cost: 7})}>
+            <img src={destroyerIcon} alt="Destroyer icon"/>
+            <h3>Destroyer</h3>
+            <p>7</p>
+          </div>
+          }
+          {!shipyards &&
           <div style={{order:4}} className="Rtable-cell table-item naval hiddenSmall" onClick={orders => addOrder({name: "Cruiser", amount: 1, cost: 12})}>
             <img src={cruiserIcon} alt="Cruiser icon"/>
             <h3>Cruiser</h3>
             <p>12</p>
           </div>
-            
+          }
+          {shipyards &&
+          <div style={{order:4}} className="Rtable-cell table-item naval hiddenSmall" onClick={orders => addOrder({name: "Cruiser", amount: 1, cost: 9})}>
+            <img src={cruiserIcon} alt="Cruiser icon"/>
+            <h3>Cruiser</h3>
+            <p>9</p>
+          </div>
+          }  
+          {!shipyards &&
           <div style={{order:5}} className="Rtable-cell table-item naval hiddenSmall" onClick={orders => addOrder({name: "Aircraft Carrier", amount: 1, cost: 16})}>
             <img src={carrierIcon} alt="Aircraft Carrier icon"/>
             <h3>Aircraft Carrier</h3>
             <p>16</p>
           </div>
-
+          }
+          {shipyards &&
+          <div style={{order:5}} className="Rtable-cell table-item naval hiddenSmall" onClick={orders => addOrder({name: "Aircraft Carrier", amount: 1, cost: 13})}>
+            <img src={carrierIcon} alt="Aircraft Carrier icon"/>
+            <h3>Aircraft Carrier</h3>
+            <p>13</p>
+          </div>
+          }
+          {!shipyards &&
           <div style={{order:6}} className="Rtable-cell table-item naval hiddenSmall" onClick={orders => addOrder({name: "Battleship", amount: 1, cost: 20})}>
             <img src={battleshipIcon} alt="Battleship icon"/>
             <h3>Battleship</h3>
             <p>20</p>
           </div>
-          
+          }
+          {shipyards &&
+          <div style={{order:6}} className="Rtable-cell table-item naval hiddenSmall" onClick={orders => addOrder({name: "Battleship", amount: 1, cost: 17})}>
+            <img src={battleshipIcon} alt="Battleship icon"/>
+            <h3>Battleship</h3>
+            <p>17</p>
+          </div>
+          }
           <div style={{order:7}} className="Rtable-cell Rtable-cell--foot naval hiddenSmall"></div>
 
           {/*Facilities Column*/}

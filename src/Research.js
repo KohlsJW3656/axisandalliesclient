@@ -14,8 +14,11 @@ export function Research(props) {
   const countrySrc = ["germany", "sovietunion", "japan", "usa", "china", "ukeurope", "ukpacific", "italy", "anzac", "france"];
 
   useEffect(() => {
-    //sortIcons(researchIcons);
-    sortIcons(countryResearches)
+    setResearchIcons(countryResearches);
+  }, [setResearchIcons, countryResearches]);
+
+  useEffect(() => {
+    sortIcons(researchIcons);
   });
 
   const sortIcons = useCallback((researchArray) => {
@@ -35,7 +38,7 @@ export function Research(props) {
     //China cannot research
     if (country.c_id !== 4) {
       //British research shared throughout faction
-      if (country.c_id === 5 || country.c_id === 6) {
+      if (country.c_id === 6) {
         newResearch.c_id = 5;
       }
       if (researchIcons.filter(researchIcon => researchIcon.r_id === newResearch.r_id && researchIcon.c_id === newResearch.c_id).length < 1) {
