@@ -11,9 +11,9 @@ import {Research} from './Research';
 function App() {
   const dispatch = useDispatch();
   const seasons = ["Spring/Summer, ", "Fall/Winter, "];
-  const [turn, setTurn] = useState(7);
+  const [turn, setTurn] = useState(8);
   const [year, setYear] = useState(1943);
-  const [seasonYear, setSeasonYear] = useState(seasons[0] + year);
+  const [seasonYear, setSeasonYear] = useState(seasons[1] + year);
   const [i, setI] = useState(0);
 
   const countrySrc = ["germany", "sovietunion", "japan", "usa", "china", "ukeurope", "ukpacific", "italy", "anzac", "france"];
@@ -111,7 +111,7 @@ function App() {
         <IPCs country={country} turn={turn} seasonYear={seasonYear}/>
       </div>
       <div id="researchRoot" className="row">
-        <Research country={country} turn={turn} seasonYear={seasonYear} countryResearches={countryResearches} /*activeResearch={activeResearch}*//>
+        <Research country={country} turn={turn} seasonYear={seasonYear} countryResearches={countryResearches}/>
       </div>
       <div id="reportRoot">
         {countryTurns.map(countryTurn => <Report key={countryTurn.c_id + "" + countryTurn.turn} countryTurn={countryTurn} purchases={purchases} incomes={incomes} countryResearches={countryResearches}/>)}

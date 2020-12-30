@@ -31,7 +31,7 @@ export function Research(props) {
       else {
         targets[i].parentElement.setAttribute("class", "research");
       }
-   }
+    }
   }, [countrySrc, targets]);
 
   const addCountryResearch = (newResearch) => {
