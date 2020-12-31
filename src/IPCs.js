@@ -101,6 +101,16 @@ export function IPCs(props) {
             <option value="39">13 territories</option>
             <option value="42">14 territories</option>
             <option value="45">15 territories</option>
+            <option value="48">16 territories</option>
+            <option value="51">17 territories</option>
+            <option value="54">18 territories</option>
+            <option value="57">19 territories</option>
+            <option value="60">20 territories</option>
+            <option value="63">21 territories</option>
+            <option value="66">22 territories</option>
+            <option value="69">23 territories</option>
+            <option value="72">24 territories</option>
+            <option value="75">25 territories</option>
           </select>
           <span> 3 IPCs for each original German, Italian, or pro-Axis neutral territory that the Soviet Union controls</span><br/>
           <input type="checkbox" value="10" className="checkBox"/><span>10 IPCs the first time the Soviet Union controls Berlin.</span>
