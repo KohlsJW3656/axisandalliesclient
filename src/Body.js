@@ -67,10 +67,16 @@ export function Body(props) {
     setTotalCost(0);
   }, [country.c_id]);
 
-  const removeOrder = (name, amount, cost) => {
-    setOrders(orders => orders.filter(order => order.name !== name));
-    setTotalCost(totalCost => totalCost - (amount * cost));
-    setPurchasingPower(purchasingPower => purchasingPower + (amount * cost))
+  const decrementOrder = (name, amount, cost) => {
+    if (amount === 1) {
+      removeOrder(name, amount, cost);
+    }
+    else {
+      let oldOrder = orders.filter(order => order.name === name)[0];
+      oldOrder.amount--;
+      setTotalCost(totalCost => totalCost - cost);
+      setPurchasingPower(purchasingPower => purchasingPower + cost);
+    }
   }
   
   const addOrder = (newOrder) => {
@@ -81,11 +87,16 @@ export function Body(props) {
       else {
         let oldOrder = orders.filter(order => order.name === newOrder.name)[0];
         oldOrder.amount++;
-        setOrders(orders => [oldOrder, ...orders.filter(order => order.name !== newOrder.name)])
       }
       setTotalCost(totalCost => totalCost + newOrder.cost);
       setPurchasingPower(purchasingPower => purchasingPower - newOrder.cost);
     }
+  }
+
+  const removeOrder = (name, amount, cost) => {
+    setOrders(orders => orders.filter(order => order.name !== name));
+    setTotalCost(totalCost => totalCost - (amount * cost));
+    setPurchasingPower(purchasingPower => purchasingPower + (amount * cost))
   }
 
   const clearOrders = () => {
@@ -151,7 +162,7 @@ export function Body(props) {
         {orders.length > 0 &&
           <div>
             <h3>Ordered:</h3>
-            {orders.map(order => <Order key={order.name} order={order} remove={removeOrder}/>)}
+            {orders.map(order => <Order key={order.name} order={order} remove={removeOrder} add={addOrder} subtract={decrementOrder}/>)}
           </div>
         }
         {purchased.length > 0 &&

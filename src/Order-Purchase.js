@@ -8,6 +8,8 @@ export function Order(props) {
       <span>{order.amount}</span>
       <span> x </span>
       <span>{order.name}</span>
+      <span className="minusButton" onClick={() => props.subtract(order.name, order.amount, order.cost)}>&minus;</span>
+      <span className="plusButton" onClick={() => props.add(order)}>&#x2B;</span>
       <span className="deleteButton" onClick={() => props.remove(order.name, order.amount, order.cost)}>&#x2716;</span>
     </div>
   );
