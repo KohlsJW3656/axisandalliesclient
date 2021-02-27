@@ -1,30 +1,22 @@
 export const Action = Object.freeze({
   StartWaiting: 'StartWaiting',
-  StartAddingPurchase: 'StartAddingPurchase',
   FinishAddingPurchase: 'FinishAddingPurchase',
-
-  StartAddingIncome: 'StartAddingIncome',
   FinishAddingIncome: 'FinishAddingIncome',
-
-  StartAddingCountryTurn: 'StartAddingCountryTurn',
   FinishAddingCountryTurn: 'FinishAddingCountryTurn',
-
-  StartAddingCountryResearch: 'StartAddingCountryResearch',
   FinishAddingCountryResearch: 'FinishAddingCountryResearch',
 
-  StartEditingCountry: 'StartEditingCountry',
   FinishEditingCountry: 'FinishEditingCountry',
 
-  LoadCountry: 'LoadCountry', 
-  LoadPurchase: 'LoadPurchase',
-  LoadIncome: 'LoadIncome',
-  LoadCountryTurn: 'LoadCountryTurn',
-  LoadCountryResearch: 'LoadCountryResearch',
+  FinishLoadingCountry: 'FinishLoadingCountry', 
+  FinishLoadingPurchase: 'FinishLoadingPurchase',
+  FinishLoadingIncome: 'FinishLoadingIncome',
+  FinishLoadingCountryTurn: 'FinishLoadingCountryTurn',
+  FinishLoadingCountryResearch: 'FinishLoadingCountryResearch',
 
-  StartDeletingPurchase: 'StartDeletingPurchase',
-  StartDeletingIncome: 'StartDeletingIncome',
-  StartDeletingCountryTurn: 'StartDeletingCountryTurn',
-  StartDeletingCountryResearch: 'StartDeletingCountryResearch',
+  FinishDeletingPurchase: 'FinishDeletingPurchase',
+  FinishDeletingIncome: 'FinishDeletingIncome',
+  FinishDeletingCountryTurn: 'FinishDeletingCountryTurn',
+  FinishDeletingCountryResearch: 'FinishDeletingCountryResearch',
 });
 
 const host = 'https://axisandallies-server.duckdns.org:8442';
@@ -43,13 +35,6 @@ export function startWaiting() {
 }
 
 /******************************************** Country Turn ********************************************/
-
-export function finishAddingCountryTurn(countryTurn) {
-  return {
-    type: Action.FinishAddingCountryTurn,
-    payload: countryTurn,
-  };
-}
 
 export function startAddingCountryTurn(c_id, turn, season_year) {
   const countryTurn = {c_id, turn, season_year};
@@ -75,11 +60,11 @@ export function startAddingCountryTurn(c_id, turn, season_year) {
   }
 }
 
-export function loadCountryTurn(countryTurn) {
+export function finishAddingCountryTurn(countryTurn) {
   return {
-    type: Action.LoadCountryTurn,
+    type: Action.FinishAddingCountryTurn,
     payload: countryTurn,
-  }
+  };
 }
 
 export function getCountryTurn() {
@@ -90,18 +75,18 @@ export function getCountryTurn() {
     .then(response => response.json())
     .then(data => {
       if (data.ok){
-        dispatch(loadCountryTurn(data.countryTurn));
+        dispatch(finishLoadingCountryTurn(data.countryTurn));
       }
     })
     .catch(e => console.error(e));
   };
 }
 
-export function startDeletingCountryTurn(countryTurn) {
+export function finishLoadingCountryTurn(countryTurn) {
   return {
-    type: Action.StartDeletingCountryTurn,
+    type: Action.FinishLoadingCountryTurn,
     payload: countryTurn,
-  };
+  }
 }
 
 export function deleteCountryTurn() {
@@ -115,21 +100,21 @@ export function deleteCountryTurn() {
     .then(response => response.json())
     .then(data => {
       if (data.ok){
-        dispatch(startDeletingCountryTurn());
+        dispatch(finishDeletingCountryTurn());
       }
     })
     .catch(e => console.error(e));
   };
 }
 
-/******************************************** Purchase ********************************************/
-
-export function finishAddingPurchase(purchase) {
+export function finishDeletingCountryTurn(countryTurn) {
   return {
-    type: Action.FinishAddingPurchase,
-    payload: purchase,
+    type: Action.FinishDeletingCountryTurn,
+    payload: countryTurn,
   };
 }
+
+/******************************************** Purchase ********************************************/
 
 export function startAddingPurchase(p_name, amount, c_id, cost, turn) {
   const purchase = {p_name, amount, c_id, cost, turn};
@@ -156,12 +141,13 @@ export function startAddingPurchase(p_name, amount, c_id, cost, turn) {
   };
 }
 
-export function loadPurchase(purchase) {
+export function finishAddingPurchase(purchase) {
   return {
-    type: Action.LoadPurchase,
+    type: Action.FinishAddingPurchase,
     payload: purchase,
-  }
+  };
 }
+
 /* Offline Testing */
 /*
 export function getPurchase() {
@@ -219,18 +205,18 @@ export function getPurchase() {
     .then(response => response.json())
     .then(data => {
       if (data.ok){
-        dispatch(loadPurchase(data.purchase));
+        dispatch(finishLoadingPurchase(data.purchase));
       }
     })
     .catch(e => console.error(e));
   };
 }
 
-export function startDeletingPurchase(purchase) {
+export function finishLoadingPurchase(purchase) {
   return {
-    type: Action.StartDeletingPurchase,
+    type: Action.FinishLoadingPurchase,
     payload: purchase,
-  };
+  }
 }
 
 export function deletePurchase() {
@@ -244,21 +230,21 @@ export function deletePurchase() {
     .then(response => response.json())
     .then(data => {
       if (data.ok){
-        dispatch(startDeletingPurchase());
+        dispatch(finishDeletingPurchase());
       }
     })
     .catch(e => console.error(e));
   };
 }
 
-/******************************************** Country ********************************************/
-
-export function loadCountry(country) {
+export function finishDeletingPurchase(purchase) {
   return {
-    type: Action.LoadCountry,
-    payload: country,
-  }
+    type: Action.FinishDeletingPurchase,
+    payload: purchase,
+  };
 }
+
+/******************************************** Country ********************************************/
 
 /* Offline Testing */
 /*
@@ -278,18 +264,18 @@ export function getCountry(c_id) {
     .then(response => response.json())
     .then(data => {
       if (data.ok){
-        dispatch(loadCountry(data.country));
+        dispatch(finishLoadingCountry(data.country));
       }
     })
     .catch(e => console.error(e));
   };
 }
 
-export function finishEditingCountry(country) {
+export function finishLoadingCountry(country) {
   return {
-    type: Action.FinishEditingCountry,
+    type: Action.FinishLoadingCountry,
     payload: country,
-  };
+  }
 }
 
 export function startEditingCountry(country) {
@@ -314,14 +300,14 @@ export function startEditingCountry(country) {
   };
 }
 
-/******************************************** Income ********************************************/
-
-export function finishAddingIncome(income) {
+export function finishEditingCountry(country) {
   return {
-    type: Action.FinishAddingIncome,
-    payload: income,
+    type: Action.FinishEditingCountry,
+    payload: country,
   };
 }
+
+/******************************************** Income ********************************************/
 
 export function startAddingIncome(c_id, base, bonus, research, convoy, turn) {
   const income = {c_id, base, bonus, research, convoy, turn};
@@ -348,11 +334,11 @@ export function startAddingIncome(c_id, base, bonus, research, convoy, turn) {
   };
 }
 
-export function loadIncome(income) {
+export function finishAddingIncome(income) {
   return {
-    type: Action.LoadIncome,
+    type: Action.FinishAddingIncome,
     payload: income,
-  }
+  };
 }
 
 export function getIncome() {
@@ -363,18 +349,18 @@ export function getIncome() {
     .then(response => response.json())
     .then(data => {
       if (data.ok){
-        dispatch(loadIncome(data.income));
+        dispatch(finishLoadingIncome(data.income));
       }
     })
     .catch(e => console.error(e));
   };
 }
 
-export function startDeletingIncome(income) {
+export function finishLoadingIncome(income) {
   return {
-    type: Action.StartDeletingIncome,
+    type: Action.FinishLoadingIncome,
     payload: income,
-  };
+  }
 }
 
 export function deleteIncome() {
@@ -388,21 +374,21 @@ export function deleteIncome() {
     .then(response => response.json())
     .then(data => {
       if (data.ok){
-        dispatch(startDeletingIncome());
+        dispatch(finishDeletingIncome());
       }
     })
     .catch(e => console.error(e));
   };
 }
 
-/******************************************** Country Research ********************************************/
-
-export function finishAddingCountryResearch(countryResearch) {
+export function finishDeletingIncome(income) {
   return {
-    type: Action.FinishAddingCountryResearch,
-    payload: countryResearch,
+    type: Action.FinishDeletingIncome,
+    payload: income,
   };
 }
+
+/******************************************** Country Research ********************************************/
 
 export function startAddingCountryResearch(c_id, r_id, turn) {
   const countryResearch = {c_id, r_id, turn};
@@ -428,11 +414,11 @@ export function startAddingCountryResearch(c_id, r_id, turn) {
   }
 }
 
-export function loadCountryResearch(countryResearch) {
+export function finishAddingCountryResearch(countryResearch) {
   return {
-    type: Action.LoadCountryResearch,
+    type: Action.FinishAddingCountryResearch,
     payload: countryResearch,
-  }
+  };
 }
 
 export function getCountryResearch() {
@@ -443,18 +429,18 @@ export function getCountryResearch() {
     .then(response => response.json())
     .then(data => {
       if (data.ok){
-        dispatch(loadCountryResearch(data.countryResearch));
+        dispatch(finishLoadingCountryResearch(data.countryResearch));
       }
     })
     .catch(e => console.error(e));
   };
 }
 
-export function startDeletingCountryResearch(countryResearch) {
+export function finishLoadingCountryResearch(countryResearch) {
   return {
-    type: Action.StartDeletingCountryResearch,
+    type: Action.FinishLoadingCountryResearch,
     payload: countryResearch,
-  };
+  }
 }
 
 export function deleteCountryResearch() {
@@ -468,9 +454,16 @@ export function deleteCountryResearch() {
     .then(response => response.json())
     .then(data => {
       if (data.ok){
-        dispatch(startDeletingCountryResearch());
+        dispatch(finishDeletingCountryResearch());
       }
     })
     .catch(e => console.error(e));
+  };
+}
+
+export function finishDeletingCountryResearch(countryResearch) {
+  return {
+    type: Action.FinishDeletingCountryResearch,
+    payload: countryResearch,
   };
 }

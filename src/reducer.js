@@ -22,13 +22,13 @@ function reducer(state = initialState, action) {
 				...state,
 				isWaiting: false,
 			};
-		case Action.LoadCountryTurn:
+		case Action.FinishLoadingCountryTurn:
 			return {
 				...state,
 				isWaiting: false,
 				countryTurns: action.payload,
 			};
-		case Action.StartDeletingCountryTurn:
+		case Action.FinishDeletingCountryTurn:
 			return {
 				...state,
 				isWaiting: false,
@@ -41,7 +41,7 @@ function reducer(state = initialState, action) {
 				isWaiting: false,
 				country: action.payload,
 			};
-		case Action.LoadCountry:
+		case Action.FinishLoadingCountry:
 			return {
 				...state,
 				isWaiting: false,
@@ -53,13 +53,13 @@ function reducer(state = initialState, action) {
 				...state,
 				isWaiting: false,
 			};
-		case Action.LoadPurchase:
+		case Action.FinishLoadingPurchase:
 			return {
 				...state,
 				isWaiting: false,
 				purchases: action.payload,
 			};
-		case Action.StartDeletingPurchase:
+		case Action.FinishDeletingPurchase:
 			return {
 				...state,
 				isWaiting: false,
@@ -71,13 +71,13 @@ function reducer(state = initialState, action) {
 				...state,
 				isWaiting: false,
 			};
-		case Action.LoadIncome:
+		case Action.FinishLoadingIncome:
 			return {
 				...state,
 				isWaiting: false,
 				incomes: action.payload,
 			};
-		case Action.StartDeletingIncome:
+		case Action.FinishDeletingIncome:
 			return {
 				...state,
 				isWaiting: false,
@@ -89,13 +89,13 @@ function reducer(state = initialState, action) {
 				...state,
 				isWaiting: false,
 			};
-		case Action.LoadCountryResearch:
+		case Action.FinishLoadingCountryResearch:
 			return {
 				...state,
 				isWaiting: false,
 				countryResearches: action.payload,
 			};
-		case Action.StartDeletingCountryResearch:
+		case Action.FinishDeletingCountryResearch:
 			return {
 				...state,
 				isWaiting: false,
