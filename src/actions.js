@@ -1,25 +1,25 @@
 export const Action = Object.freeze({
-  StartWaiting: 'StartWaiting',
-  FinishAddingPurchase: 'FinishAddingPurchase',
-  FinishAddingIncome: 'FinishAddingIncome',
-  FinishAddingCountryTurn: 'FinishAddingCountryTurn',
-  FinishAddingCountryResearch: 'FinishAddingCountryResearch',
+  StartWaiting: "StartWaiting",
+  FinishAddingPurchase: "FinishAddingPurchase",
+  FinishAddingIncome: "FinishAddingIncome",
+  FinishAddingCountryTurn: "FinishAddingCountryTurn",
+  FinishAddingCountryResearch: "FinishAddingCountryResearch",
 
-  FinishEditingCountry: 'FinishEditingCountry',
+  FinishEditingCountry: "FinishEditingCountry",
 
-  FinishLoadingCountry: 'FinishLoadingCountry', 
-  FinishLoadingPurchase: 'FinishLoadingPurchase',
-  FinishLoadingIncome: 'FinishLoadingIncome',
-  FinishLoadingCountryTurn: 'FinishLoadingCountryTurn',
-  FinishLoadingCountryResearch: 'FinishLoadingCountryResearch',
+  FinishLoadingCountry: "FinishLoadingCountry",
+  FinishLoadingPurchase: "FinishLoadingPurchase",
+  FinishLoadingIncome: "FinishLoadingIncome",
+  FinishLoadingCountryTurn: "FinishLoadingCountryTurn",
+  FinishLoadingCountryResearch: "FinishLoadingCountryResearch",
 
-  FinishDeletingPurchase: 'FinishDeletingPurchase',
-  FinishDeletingIncome: 'FinishDeletingIncome',
-  FinishDeletingCountryTurn: 'FinishDeletingCountryTurn',
-  FinishDeletingCountryResearch: 'FinishDeletingCountryResearch',
+  FinishDeletingPurchase: "FinishDeletingPurchase",
+  FinishDeletingIncome: "FinishDeletingIncome",
+  FinishDeletingCountryTurn: "FinishDeletingCountryTurn",
+  FinishDeletingCountryResearch: "FinishDeletingCountryResearch",
 });
 
-const host = 'https://axisandallies-server.duckdns.org:8442';
+const host = "https://axisandallies.duckdns.org:8442";
 
 function checkForErrors(response) {
   if (!response.ok) {
@@ -37,27 +37,27 @@ export function startWaiting() {
 /******************************************** Country Turn ********************************************/
 
 export function startAddingCountryTurn(c_id, turn, season_year) {
-  const countryTurn = {c_id, turn, season_year};
+  const countryTurn = { c_id, turn, season_year };
   const options = {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     body: JSON.stringify(countryTurn),
-  }
-  return dispatch => {
+  };
+  return (dispatch) => {
     dispatch(startWaiting());
     fetch(`${host}/countryturn`, options)
-    .then(checkForErrors)
-    .then(response => response.json())
-    .then(data => {
-      if (data.ok) {
-        countryTurn.c_id = data.c_id;
-        countryTurn.turn = data.turn;
-        dispatch(finishAddingCountryTurn(countryTurn));
-      }
-    })
-  }
+      .then(checkForErrors)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.ok) {
+          countryTurn.c_id = data.c_id;
+          countryTurn.turn = data.turn;
+          dispatch(finishAddingCountryTurn(countryTurn));
+        }
+      });
+  };
 }
 
 export function finishAddingCountryTurn(countryTurn) {
@@ -68,17 +68,17 @@ export function finishAddingCountryTurn(countryTurn) {
 }
 
 export function getCountryTurn() {
-  return dispatch => {
-  dispatch(startWaiting());
-  fetch(`${host}/countryturn`)
-    .then(checkForErrors)
-    .then(response => response.json())
-    .then(data => {
-      if (data.ok){
-        dispatch(finishLoadingCountryTurn(data.countryTurn));
-      }
-    })
-    .catch(e => console.error(e));
+  return (dispatch) => {
+    dispatch(startWaiting());
+    fetch(`${host}/countryturn`)
+      .then(checkForErrors)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.ok) {
+          dispatch(finishLoadingCountryTurn(data.countryTurn));
+        }
+      })
+      .catch((e) => console.error(e));
   };
 }
 
@@ -86,24 +86,24 @@ export function finishLoadingCountryTurn(countryTurn) {
   return {
     type: Action.FinishLoadingCountryTurn,
     payload: countryTurn,
-  }
+  };
 }
 
 export function deleteCountryTurn() {
   const requestDelete = {
-    method: 'DELETE'
+    method: "DELETE",
   };
-  return dispatch => {
+  return (dispatch) => {
     dispatch(startWaiting());
     fetch(`${host}/countryturn`, requestDelete)
-    .then(checkForErrors)
-    .then(response => response.json())
-    .then(data => {
-      if (data.ok){
-        dispatch(finishDeletingCountryTurn());
-      }
-    })
-    .catch(e => console.error(e));
+      .then(checkForErrors)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.ok) {
+          dispatch(finishDeletingCountryTurn());
+        }
+      })
+      .catch((e) => console.error(e));
   };
 }
 
@@ -117,27 +117,27 @@ export function finishDeletingCountryTurn(countryTurn) {
 /******************************************** Purchase ********************************************/
 
 export function startAddingPurchase(p_name, amount, c_id, cost, turn) {
-  const purchase = {p_name, amount, c_id, cost, turn};
+  const purchase = { p_name, amount, c_id, cost, turn };
   const options = {
-    method: 'PUT',
+    method: "PUT",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     body: JSON.stringify(purchase),
-  }
-  return dispatch => {
+  };
+  return (dispatch) => {
     dispatch(startWaiting());
     fetch(`${host}/purchase`, options)
-    .then(checkForErrors)
-    .then(response => response.json())
-    .then(data => {
-      if (data.ok) {
-        purchase.c_id = data.c_id;
-        purchase.turn = data.turn;
-        dispatch(finishAddingPurchase(purchase));
-      }
-    })
-    .catch(e => console.error(e));
+      .then(checkForErrors)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.ok) {
+          purchase.c_id = data.c_id;
+          purchase.turn = data.turn;
+          dispatch(finishAddingPurchase(purchase));
+        }
+      })
+      .catch((e) => console.error(e));
   };
 }
 
@@ -198,17 +198,17 @@ export function getPurchase() {
 */
 
 export function getPurchase() {
-  return dispatch => {
-  dispatch(startWaiting());
-  fetch(`${host}/purchase`)
-    .then(checkForErrors)
-    .then(response => response.json())
-    .then(data => {
-      if (data.ok){
-        dispatch(finishLoadingPurchase(data.purchase));
-      }
-    })
-    .catch(e => console.error(e));
+  return (dispatch) => {
+    dispatch(startWaiting());
+    fetch(`${host}/purchase`)
+      .then(checkForErrors)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.ok) {
+          dispatch(finishLoadingPurchase(data.purchase));
+        }
+      })
+      .catch((e) => console.error(e));
   };
 }
 
@@ -216,24 +216,24 @@ export function finishLoadingPurchase(purchase) {
   return {
     type: Action.FinishLoadingPurchase,
     payload: purchase,
-  }
+  };
 }
 
 export function deletePurchase() {
   const requestDelete = {
-    method: 'DELETE'
+    method: "DELETE",
   };
-  return dispatch => {
+  return (dispatch) => {
     dispatch(startWaiting());
     fetch(`${host}/purchase`, requestDelete)
-    .then(checkForErrors)
-    .then(response => response.json())
-    .then(data => {
-      if (data.ok){
-        dispatch(finishDeletingPurchase());
-      }
-    })
-    .catch(e => console.error(e));
+      .then(checkForErrors)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.ok) {
+          dispatch(finishDeletingPurchase());
+        }
+      })
+      .catch((e) => console.error(e));
   };
 }
 
@@ -257,17 +257,17 @@ export function getCountry(c_id) {
 */
 
 export function getCountry(c_id) {
-  return dispatch => {
-  dispatch(startWaiting());
-  fetch(`${host}/country/${c_id}`)
-    .then(checkForErrors)
-    .then(response => response.json())
-    .then(data => {
-      if (data.ok){
-        dispatch(finishLoadingCountry(data.country));
-      }
-    })
-    .catch(e => console.error(e));
+  return (dispatch) => {
+    dispatch(startWaiting());
+    fetch(`${host}/country/${c_id}`)
+      .then(checkForErrors)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.ok) {
+          dispatch(finishLoadingCountry(data.country));
+        }
+      })
+      .catch((e) => console.error(e));
   };
 }
 
@@ -275,28 +275,28 @@ export function finishLoadingCountry(country) {
   return {
     type: Action.FinishLoadingCountry,
     payload: country,
-  }
+  };
 }
 
 export function startEditingCountry(country) {
   const options = {
-    method: 'PATCH',
+    method: "PATCH",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     body: JSON.stringify(country),
-  }
-  return dispatch => {
+  };
+  return (dispatch) => {
     dispatch(startWaiting());
     fetch(`${host}/country/${country.c_id}`, options)
-    .then(checkForErrors)
-    .then(response => response.json())
-    .then(data => {
-      if (data.ok) {
-        dispatch(finishEditingCountry(country));
-      }
-    })
-    .catch(e => console.error(e));
+      .then(checkForErrors)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.ok) {
+          dispatch(finishEditingCountry(country));
+        }
+      })
+      .catch((e) => console.error(e));
   };
 }
 
@@ -310,27 +310,27 @@ export function finishEditingCountry(country) {
 /******************************************** Income ********************************************/
 
 export function startAddingIncome(c_id, base, bonus, research, convoy, turn) {
-  const income = {c_id, base, bonus, research, convoy, turn};
+  const income = { c_id, base, bonus, research, convoy, turn };
   const options = {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     body: JSON.stringify(income),
-  }
-  return dispatch => {
+  };
+  return (dispatch) => {
     dispatch(startWaiting());
     fetch(`${host}/income`, options)
-    .then(checkForErrors)
-    .then(response => response.json())
-    .then(data => {
-      if (data.ok) {
-        income.c_id = data.c_id;
-        income.turn = data.turn;
-        dispatch(finishAddingIncome(income));
-      }
-    })
-    .catch(e => console.error(e));
+      .then(checkForErrors)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.ok) {
+          income.c_id = data.c_id;
+          income.turn = data.turn;
+          dispatch(finishAddingIncome(income));
+        }
+      })
+      .catch((e) => console.error(e));
   };
 }
 
@@ -342,17 +342,17 @@ export function finishAddingIncome(income) {
 }
 
 export function getIncome() {
-  return dispatch => {
-  dispatch(startWaiting());
-  fetch(`${host}/income`)
-    .then(checkForErrors)
-    .then(response => response.json())
-    .then(data => {
-      if (data.ok){
-        dispatch(finishLoadingIncome(data.income));
-      }
-    })
-    .catch(e => console.error(e));
+  return (dispatch) => {
+    dispatch(startWaiting());
+    fetch(`${host}/income`)
+      .then(checkForErrors)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.ok) {
+          dispatch(finishLoadingIncome(data.income));
+        }
+      })
+      .catch((e) => console.error(e));
   };
 }
 
@@ -360,24 +360,24 @@ export function finishLoadingIncome(income) {
   return {
     type: Action.FinishLoadingIncome,
     payload: income,
-  }
+  };
 }
 
 export function deleteIncome() {
   const requestDelete = {
-    method: 'DELETE'
+    method: "DELETE",
   };
-  return dispatch => {
+  return (dispatch) => {
     dispatch(startWaiting());
     fetch(`${host}/income`, requestDelete)
-    .then(checkForErrors)
-    .then(response => response.json())
-    .then(data => {
-      if (data.ok){
-        dispatch(finishDeletingIncome());
-      }
-    })
-    .catch(e => console.error(e));
+      .then(checkForErrors)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.ok) {
+          dispatch(finishDeletingIncome());
+        }
+      })
+      .catch((e) => console.error(e));
   };
 }
 
@@ -391,27 +391,27 @@ export function finishDeletingIncome(income) {
 /******************************************** Country Research ********************************************/
 
 export function startAddingCountryResearch(c_id, r_id, turn) {
-  const countryResearch = {c_id, r_id, turn};
+  const countryResearch = { c_id, r_id, turn };
   const options = {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     body: JSON.stringify(countryResearch),
-  }
-  return dispatch => {
+  };
+  return (dispatch) => {
     dispatch(startWaiting());
     fetch(`${host}/countryresearch`, options)
-    .then(checkForErrors)
-    .then(response => response.json())
-    .then(data => {
-      if (data.ok) {
-        countryResearch.c_id = data.c_id;
-        countryResearch.r_id = data.r_id;
-        dispatch(finishAddingCountryResearch(countryResearch));
-      }
-    })
-  }
+      .then(checkForErrors)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.ok) {
+          countryResearch.c_id = data.c_id;
+          countryResearch.r_id = data.r_id;
+          dispatch(finishAddingCountryResearch(countryResearch));
+        }
+      });
+  };
 }
 
 export function finishAddingCountryResearch(countryResearch) {
@@ -422,17 +422,17 @@ export function finishAddingCountryResearch(countryResearch) {
 }
 
 export function getCountryResearch() {
-  return dispatch => {
-  dispatch(startWaiting());
-  fetch(`${host}/countryresearch`)
-    .then(checkForErrors)
-    .then(response => response.json())
-    .then(data => {
-      if (data.ok){
-        dispatch(finishLoadingCountryResearch(data.countryResearch));
-      }
-    })
-    .catch(e => console.error(e));
+  return (dispatch) => {
+    dispatch(startWaiting());
+    fetch(`${host}/countryresearch`)
+      .then(checkForErrors)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.ok) {
+          dispatch(finishLoadingCountryResearch(data.countryResearch));
+        }
+      })
+      .catch((e) => console.error(e));
   };
 }
 
@@ -440,24 +440,24 @@ export function finishLoadingCountryResearch(countryResearch) {
   return {
     type: Action.FinishLoadingCountryResearch,
     payload: countryResearch,
-  }
+  };
 }
 
 export function deleteCountryResearch() {
   const requestDelete = {
-    method: 'DELETE'
+    method: "DELETE",
   };
-  return dispatch => {
+  return (dispatch) => {
     dispatch(startWaiting());
     fetch(`${host}/countryresearch`, requestDelete)
-    .then(checkForErrors)
-    .then(response => response.json())
-    .then(data => {
-      if (data.ok){
-        dispatch(finishDeletingCountryResearch());
-      }
-    })
-    .catch(e => console.error(e));
+      .then(checkForErrors)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.ok) {
+          dispatch(finishDeletingCountryResearch());
+        }
+      })
+      .catch((e) => console.error(e));
   };
 }
 
