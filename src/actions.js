@@ -19,7 +19,7 @@ export const Action = Object.freeze({
   FinishDeletingCountryResearch: "FinishDeletingCountryResearch",
 });
 
-const host = "https://axisandallies.duckdns.org:8442";
+const host = "https://axisandallies.duckdns.org:8445";
 
 function checkForErrors(response) {
   if (!response.ok) {
