@@ -78,7 +78,20 @@ export function getCountryTurn() {
           dispatch(finishLoadingCountryTurn(data.countryTurn));
         }
       })
-      .catch((e) => console.error(e));
+      .catch((e) => {
+        console.error(e);
+        dispatch(
+          finishLoadingCountryTurn([
+            { c_id: 0, turn: 1, season_year: "Spring/Summer, 1940" },
+            { c_id: 1, turn: 1, season_year: "Spring/Summer, 1940" },
+            { c_id: 2, turn: 1, season_year: "Spring/Summer, 1940" },
+            { c_id: 3, turn: 1, season_year: "Spring/Summer, 1940" },
+            { c_id: 0, turn: 2, season_year: "Fall/Winter, 1940" },
+            { c_id: 1, turn: 7, season_year: "Spring/Summer, 1943" },
+          ])
+        );
+        alert("Not connected to database, loading testing data");
+      });
   };
 }
 
@@ -148,55 +161,6 @@ export function finishAddingPurchase(purchase) {
   };
 }
 
-/* Offline Testing */
-/*
-export function getPurchase() {
-  return dispatch => {
-  dispatch(startWaiting());
-  dispatch(loadPurchase([
-    {p_name: "Tank", amount: 1, c_id: 0, season_year: "Spring/Summer, 1940", turn: 1},
-    {p_name: "Strategic Bomber", amount: 2, c_id: 0, season_year: "Spring/Summer, 1940", turn: 1}, 
-    {p_name: "Infantry", amount: 3, c_id: 0, season_year: "Spring/Summer, 1940", turn: 1}, 
-
-    {p_name: "Infantry", amount: 3, c_id: 1, season_year: "Spring/Summer, 1940", turn: 1}, 
-
-    {p_name: "Infantry", amount: 3, c_id: 2, season_year: "Spring/Summer, 1940", turn: 1}, 
-    
-    {p_name: "Infantry", amount: 3, c_id: 3, season_year: "Spring/Summer, 1940", turn: 1}, 
-    {p_name: "Research", amount: 3, c_id: 3, season_year: "Spring/Summer, 1940", turn: 1}, 
-    {p_name: "Battleship", amount: 2, c_id: 3, season_year: "Spring/Summer, 1940", turn: 1}, 
-    
-    {p_name: "Infantry", amount: 2, c_id: 0, season_year: "Fall/Winter, 1940", turn: 2},
-    {p_name: "Tank", amount: 3, c_id: 0, season_year: "Fall/Winter, 1940", turn: 2},
-
-    {p_name: "AAA",                 amount: 3, c_id: 1, season_year: "Spring/Summer, 1943", turn: 7},
-    {p_name: "Air Base",            amount: 1, c_id: 1, season_year: "Spring/Summer, 1943", turn: 7},
-    {p_name: "Aircraft Carrier",    amount: 1, c_id: 1, season_year: "Spring/Summer, 1943", turn: 7},
-    {p_name: "Airlift",             amount: 2, c_id: 1, season_year: "Spring/Summer, 1943", turn: 7},
-    {p_name: "Artillery",           amount: 4, c_id: 1, season_year: "Spring/Summer, 1943", turn: 7},
-    {p_name: "Battleship",          amount: 3, c_id: 1, season_year: "Spring/Summer, 1943", turn: 7},
-    {p_name: "Cruiser",             amount: 2, c_id: 1, season_year: "Spring/Summer, 1943", turn: 7},
-    {p_name: "Destroyer",           amount: 1, c_id: 1, season_year: "Spring/Summer, 1943", turn: 7},
-    {p_name: "Fighter",             amount: 7, c_id: 1, season_year: "Spring/Summer, 1943", turn: 7},
-    {p_name: "Infantry",            amount: 3, c_id: 1, season_year: "Spring/Summer, 1943", turn: 7},
-    {p_name: "Major IC",            amount: 1, c_id: 1, season_year: "Spring/Summer, 1943", turn: 7},
-    {p_name: "Mechanized Infantry", amount: 3, c_id: 1, season_year: "Spring/Summer, 1943", turn: 7},
-    {p_name: "Minor IC",            amount: 2, c_id: 1, season_year: "Spring/Summer, 1943", turn: 7},
-    {p_name: "Naval Base",          amount: 2, c_id: 1, season_year: "Spring/Summer, 1943", turn: 7},
-    {p_name: "Repair",              amount: 20, c_id: 1, season_year: "Spring/Summer, 1943", turn: 7},
-    {p_name: "Research",            amount: 10, c_id: 1, season_year: "Spring/Summer, 1943", turn: 7},
-    {p_name: "Strategic Bomber",    amount: 57, c_id: 1, season_year: "Spring/Summer, 1943", turn: 7},
-    {p_name: "Submarine",           amount: 6, c_id: 1, season_year: "Spring/Summer, 1943", turn: 7},
-    {p_name: "Tactical Bomber",     amount: 11, c_id: 1, season_year: "Spring/Summer, 1943", turn: 7},
-    {p_name: "Tank",                amount: 29, c_id: 1, season_year: "Spring/Summer, 1943", turn: 7},
-    {p_name: "Transport",           amount: 1, c_id: 1, season_year: "Spring/Summer, 1943", turn: 7},
-    {p_name: "Upgraded Minor IC",   amount: 1, c_id: 1, season_year: "Spring/Summer, 1943", turn: 7},
-
-    ]));
-  };
-}
-*/
-
 export function getPurchase() {
   return (dispatch) => {
     dispatch(startWaiting());
@@ -208,7 +172,243 @@ export function getPurchase() {
           dispatch(finishLoadingPurchase(data.purchase));
         }
       })
-      .catch((e) => console.error(e));
+      .catch((e) => {
+        console.error(e);
+        dispatch(
+          finishLoadingPurchase([
+            {
+              p_name: "Tank",
+              amount: 1,
+              c_id: 0,
+              season_year: "Spring/Summer, 1940",
+              turn: 1,
+            },
+            {
+              p_name: "Strategic Bomber",
+              amount: 2,
+              c_id: 0,
+              season_year: "Spring/Summer, 1940",
+              turn: 1,
+            },
+            {
+              p_name: "Infantry",
+              amount: 3,
+              c_id: 0,
+              season_year: "Spring/Summer, 1940",
+              turn: 1,
+            },
+
+            {
+              p_name: "Infantry",
+              amount: 3,
+              c_id: 1,
+              season_year: "Spring/Summer, 1940",
+              turn: 1,
+            },
+
+            {
+              p_name: "Infantry",
+              amount: 3,
+              c_id: 2,
+              season_year: "Spring/Summer, 1940",
+              turn: 1,
+            },
+
+            {
+              p_name: "Infantry",
+              amount: 3,
+              c_id: 3,
+              season_year: "Spring/Summer, 1940",
+              turn: 1,
+            },
+            {
+              p_name: "Research",
+              amount: 3,
+              c_id: 3,
+              season_year: "Spring/Summer, 1940",
+              turn: 1,
+            },
+            {
+              p_name: "Battleship",
+              amount: 2,
+              c_id: 3,
+              season_year: "Spring/Summer, 1940",
+              turn: 1,
+            },
+
+            {
+              p_name: "Infantry",
+              amount: 2,
+              c_id: 0,
+              season_year: "Fall/Winter, 1940",
+              turn: 2,
+            },
+            {
+              p_name: "Tank",
+              amount: 3,
+              c_id: 0,
+              season_year: "Fall/Winter, 1940",
+              turn: 2,
+            },
+
+            {
+              p_name: "AAA",
+              amount: 3,
+              c_id: 1,
+              season_year: "Spring/Summer, 1943",
+              turn: 7,
+            },
+            {
+              p_name: "Air Base",
+              amount: 1,
+              c_id: 1,
+              season_year: "Spring/Summer, 1943",
+              turn: 7,
+            },
+            {
+              p_name: "Aircraft Carrier",
+              amount: 1,
+              c_id: 1,
+              season_year: "Spring/Summer, 1943",
+              turn: 7,
+            },
+            {
+              p_name: "Airlift",
+              amount: 2,
+              c_id: 1,
+              season_year: "Spring/Summer, 1943",
+              turn: 7,
+            },
+            {
+              p_name: "Artillery",
+              amount: 4,
+              c_id: 1,
+              season_year: "Spring/Summer, 1943",
+              turn: 7,
+            },
+            {
+              p_name: "Battleship",
+              amount: 3,
+              c_id: 1,
+              season_year: "Spring/Summer, 1943",
+              turn: 7,
+            },
+            {
+              p_name: "Cruiser",
+              amount: 2,
+              c_id: 1,
+              season_year: "Spring/Summer, 1943",
+              turn: 7,
+            },
+            {
+              p_name: "Destroyer",
+              amount: 1,
+              c_id: 1,
+              season_year: "Spring/Summer, 1943",
+              turn: 7,
+            },
+            {
+              p_name: "Fighter",
+              amount: 7,
+              c_id: 1,
+              season_year: "Spring/Summer, 1943",
+              turn: 7,
+            },
+            {
+              p_name: "Infantry",
+              amount: 3,
+              c_id: 1,
+              season_year: "Spring/Summer, 1943",
+              turn: 7,
+            },
+            {
+              p_name: "Major IC",
+              amount: 1,
+              c_id: 1,
+              season_year: "Spring/Summer, 1943",
+              turn: 7,
+            },
+            {
+              p_name: "Mechanized Infantry",
+              amount: 3,
+              c_id: 1,
+              season_year: "Spring/Summer, 1943",
+              turn: 7,
+            },
+            {
+              p_name: "Minor IC",
+              amount: 2,
+              c_id: 1,
+              season_year: "Spring/Summer, 1943",
+              turn: 7,
+            },
+            {
+              p_name: "Naval Base",
+              amount: 2,
+              c_id: 1,
+              season_year: "Spring/Summer, 1943",
+              turn: 7,
+            },
+            {
+              p_name: "Repair",
+              amount: 20,
+              c_id: 1,
+              season_year: "Spring/Summer, 1943",
+              turn: 7,
+            },
+            {
+              p_name: "Research",
+              amount: 10,
+              c_id: 1,
+              season_year: "Spring/Summer, 1943",
+              turn: 7,
+            },
+            {
+              p_name: "Strategic Bomber",
+              amount: 57,
+              c_id: 1,
+              season_year: "Spring/Summer, 1943",
+              turn: 7,
+            },
+            {
+              p_name: "Submarine",
+              amount: 6,
+              c_id: 1,
+              season_year: "Spring/Summer, 1943",
+              turn: 7,
+            },
+            {
+              p_name: "Tactical Bomber",
+              amount: 11,
+              c_id: 1,
+              season_year: "Spring/Summer, 1943",
+              turn: 7,
+            },
+            {
+              p_name: "Tank",
+              amount: 29,
+              c_id: 1,
+              season_year: "Spring/Summer, 1943",
+              turn: 7,
+            },
+            {
+              p_name: "Transport",
+              amount: 1,
+              c_id: 1,
+              season_year: "Spring/Summer, 1943",
+              turn: 7,
+            },
+            {
+              p_name: "Upgraded Minor IC",
+              amount: 1,
+              c_id: 1,
+              season_year: "Spring/Summer, 1943",
+              turn: 7,
+            },
+          ])
+        );
+        alert("Not connected to database, loading testing data");
+      });
   };
 }
 
@@ -246,16 +446,6 @@ export function finishDeletingPurchase(purchase) {
 
 /******************************************** Country ********************************************/
 
-/* Offline Testing */
-/*
-export function getCountry(c_id) {
-  return dispatch => {
-  dispatch(startWaiting());
-  dispatch(loadCountry([{c_id: 0, c_name: "Germany", ipcs: 30}]));
-  };
-}
-*/
-
 export function getCountry(c_id) {
   return (dispatch) => {
     dispatch(startWaiting());
@@ -267,7 +457,13 @@ export function getCountry(c_id) {
           dispatch(finishLoadingCountry(data.country));
         }
       })
-      .catch((e) => console.error(e));
+      .catch((e) => {
+        console.error(e);
+        dispatch(
+          finishLoadingCountry([{ c_id: 3, c_name: "United States", ipcs: 52 }])
+        );
+        alert("Not connected to database, loading testing data");
+      });
   };
 }
 
