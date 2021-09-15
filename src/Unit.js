@@ -1,14 +1,25 @@
-import React from 'react';
+import React from "react";
 
 export function Unit(props) {
   const purchase = props.purchase;
 
-  const countrySRC = ["germany", "sovietunion", "japan", "usa", "china", "uk", "uk", "italy", "anzac", "france"];
+  const countrySRC = [
+    "germany",
+    "sovietunion",
+    "japan",
+    "usa",
+    "china",
+    "uk",
+    "uk",
+    "italy",
+    "anzac",
+    "france",
+  ];
   let imageFolder = "";
   let unitName = "";
   let srcString = "";
 
-  switch(purchase.p_name) {
+  switch (purchase.p_name) {
     case "Repair":
       imageFolder = "images/utilities/";
       unitName = purchase.p_name + ".jpg";
@@ -22,7 +33,7 @@ export function Unit(props) {
       imageFolder = "images/utilities/";
       unitName = purchase.p_name + ".png";
       break;
-    */  
+    */
     case "Major IC":
       imageFolder = "images/facilities/";
       unitName = "major.png";
@@ -64,17 +75,23 @@ export function Unit(props) {
       unitName = purchase.p_name + ".png";
   }
 
-  if (imageFolder === "images/utilities/" || imageFolder === "images/facilities/"){
+  if (
+    imageFolder === "images/utilities/" ||
+    imageFolder === "images/facilities/"
+  ) {
     srcString = imageFolder + unitName;
-  }
-  else {
+  } else {
     srcString = imageFolder + countrySRC[purchase.c_id] + "/" + unitName;
   }
 
   return (
     <span>
       <div className="tooltipunit">
-        <img src={srcString.toLowerCase()} alt={purchase.p_name + ' icon'} className='unit'/>
+        <img
+          src={srcString.toLowerCase()}
+          alt={purchase.p_name + " icon"}
+          className="unit"
+        />
         <span className="unitAmount">{purchase.amount}</span>
         <span className="tooltiptextunit">{purchase.p_name}</span>
       </div>
